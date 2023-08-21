@@ -16,22 +16,23 @@ using System.Threading;
 
 namespace GameZBDAlchemyStoneTapper
 {
-
     public partial class SODForm : Form
     {
-
         private int ScreenX;
         private int ScreenY;
         private int ScreenWidth;
         private int ScreenHeight;
         private List<string> selectedAlchemyStone = new List<string>();
         private List<string> selectedMaterial = new List<string>();
+        private Bitmap toDisplay;
+
         public SODForm()
         {
             InitializeComponent();
         }
 
         #region selection area
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             updateAlchemyStoneList(sender);
@@ -67,8 +68,8 @@ namespace GameZBDAlchemyStoneTapper
             updateAlchemyStoneList(sender);
         }
 
-        private void updateAlchemyStoneList(object sender) {
-
+        private void updateAlchemyStoneList(object sender)
+        {
             if (selectedAlchemyStone.Contains(((PictureBox)sender).Name))
             {
                 selectedAlchemyStone.Remove((((PictureBox)sender).Name));
@@ -120,7 +121,6 @@ namespace GameZBDAlchemyStoneTapper
 
         private void updateMaterialList(object sender)
         {
-
             if (selectedMaterial.Contains(((PictureBox)sender).Name))
             {
                 selectedMaterial.Remove((((PictureBox)sender).Name));
@@ -134,10 +134,12 @@ namespace GameZBDAlchemyStoneTapper
                 ((PictureBox)sender).BorderStyle = BorderStyle.Fixed3D;
             }
         }
-        #endregion
+
+        #endregion selection area
+
         private void startBtn_Click(object sender, EventArgs e)
         {
-            using(SelectArea tempArea = new SelectArea())
+            using (SelectArea tempArea = new SelectArea())
             {
                 if (tempArea.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
@@ -147,29 +149,24 @@ namespace GameZBDAlchemyStoneTapper
                     this.ScreenHeight = tempArea.Height;
                 }
             }
-            ObjectDetection OD = new ObjectDetection(ScreenX,ScreenY,ScreenWidth,ScreenHeight);
             while (true)
             {
-                Bitmap toDisplay = CaptureScreen.Snip(ScreenX, ScreenY, ScreenWidth, ScreenHeight);
-                ScreenShotBox.Image = toDisplay;
+                var oldPic = ScreenShotBox.Image;
+                ScreenShotBox.Image = CaptureScreen.Snip(ScreenX, ScreenY, ScreenWidth, ScreenHeight); ;
+                if (oldPic != null)
+                {
+                    oldPic.Dispose();
+                }
                 ScreenShotBox.Refresh();
-                toDisplay.Save("save.png", ImageFormat.Png);
-                toDisplay.Dispose();
-                Thread.Sleep(1000);
             }
             /*
             List<Bitmap> allScreenShots  = CaptureScreen.TakeAllScreens();
             for(int i = 0; i < allScreenShots.Count; i++)
             {
-                allScreenShots[i].Save(i.ToString() + "text.png", ImageFormat.Png); 
+                allScreenShots[i].Save(i.ToString() + "text.png", ImageFormat.Png);
             }
             //sc.CaptureWindow(process.Handle).Save("test.png", ImageFormat.Png);
             */
         }
-
-
-
-
-
-}
+    }
 }
