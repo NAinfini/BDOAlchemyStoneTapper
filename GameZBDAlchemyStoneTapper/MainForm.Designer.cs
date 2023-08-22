@@ -56,9 +56,9 @@ namespace GameZBDAlchemyStoneTapper
             this.MainPanelAllSelection.Controls.Add(this.panel3);
             this.MainPanelAllSelection.Dock = System.Windows.Forms.DockStyle.Left;
             this.MainPanelAllSelection.Location = new System.Drawing.Point(0, 0);
-            this.MainPanelAllSelection.Margin = new System.Windows.Forms.Padding(4);
+            this.MainPanelAllSelection.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MainPanelAllSelection.Name = "MainPanelAllSelection";
-            this.MainPanelAllSelection.Size = new System.Drawing.Size(323, 969);
+            this.MainPanelAllSelection.Size = new System.Drawing.Size(176, 546);
             this.MainPanelAllSelection.TabIndex = 0;
             // 
             // SOLMainPanelBtn
@@ -69,10 +69,10 @@ namespace GameZBDAlchemyStoneTapper
             this.SOLMainPanelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SOLMainPanelBtn.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.SOLMainPanelBtn.Image = ((System.Drawing.Image)(resources.GetObject("SOLMainPanelBtn.Image")));
-            this.SOLMainPanelBtn.Location = new System.Drawing.Point(0, 383);
-            this.SOLMainPanelBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.SOLMainPanelBtn.Location = new System.Drawing.Point(0, 207);
+            this.SOLMainPanelBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SOLMainPanelBtn.Name = "SOLMainPanelBtn";
-            this.SOLMainPanelBtn.Size = new System.Drawing.Size(323, 103);
+            this.SOLMainPanelBtn.Size = new System.Drawing.Size(176, 56);
             this.SOLMainPanelBtn.TabIndex = 4;
             this.SOLMainPanelBtn.Text = "Stone of Life";
             this.SOLMainPanelBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -88,10 +88,10 @@ namespace GameZBDAlchemyStoneTapper
             this.SOPMainPanelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SOPMainPanelBtn.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.SOPMainPanelBtn.Image = ((System.Drawing.Image)(resources.GetObject("SOPMainPanelBtn.Image")));
-            this.SOPMainPanelBtn.Location = new System.Drawing.Point(0, 281);
-            this.SOPMainPanelBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.SOPMainPanelBtn.Location = new System.Drawing.Point(0, 152);
+            this.SOPMainPanelBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SOPMainPanelBtn.Name = "SOPMainPanelBtn";
-            this.SOPMainPanelBtn.Size = new System.Drawing.Size(323, 102);
+            this.SOPMainPanelBtn.Size = new System.Drawing.Size(176, 55);
             this.SOPMainPanelBtn.TabIndex = 3;
             this.SOPMainPanelBtn.Text = "Stone of Protection";
             this.SOPMainPanelBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -107,10 +107,10 @@ namespace GameZBDAlchemyStoneTapper
             this.SODMainPanelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SODMainPanelBtn.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.SODMainPanelBtn.Image = ((System.Drawing.Image)(resources.GetObject("SODMainPanelBtn.Image")));
-            this.SODMainPanelBtn.Location = new System.Drawing.Point(0, 172);
-            this.SODMainPanelBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.SODMainPanelBtn.Location = new System.Drawing.Point(0, 93);
+            this.SODMainPanelBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SODMainPanelBtn.Name = "SODMainPanelBtn";
-            this.SODMainPanelBtn.Size = new System.Drawing.Size(323, 109);
+            this.SODMainPanelBtn.Size = new System.Drawing.Size(176, 59);
             this.SODMainPanelBtn.TabIndex = 1;
             this.SODMainPanelBtn.Text = "Stone of Destruction";
             this.SODMainPanelBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -123,27 +123,27 @@ namespace GameZBDAlchemyStoneTapper
             this.MainPanelImage.Controls.Add(this.Logo);
             this.MainPanelImage.Dock = System.Windows.Forms.DockStyle.Top;
             this.MainPanelImage.Location = new System.Drawing.Point(0, 0);
-            this.MainPanelImage.Margin = new System.Windows.Forms.Padding(4);
+            this.MainPanelImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MainPanelImage.Name = "MainPanelImage";
-            this.MainPanelImage.Size = new System.Drawing.Size(323, 172);
+            this.MainPanelImage.Size = new System.Drawing.Size(176, 93);
             this.MainPanelImage.TabIndex = 2;
             // 
             // Logo
             // 
             this.Logo.Image = ((System.Drawing.Image)(resources.GetObject("Logo.Image")));
-            this.Logo.Location = new System.Drawing.Point(114, 42);
-            this.Logo.Margin = new System.Windows.Forms.Padding(4);
+            this.Logo.Location = new System.Drawing.Point(62, 23);
+            this.Logo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(79, 94);
+            this.Logo.Size = new System.Drawing.Size(43, 51);
             this.Logo.TabIndex = 2;
             this.Logo.TabStop = false;
             // 
             // panel3
             // 
-            this.panel3.Location = new System.Drawing.Point(26, 13);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
+            this.panel3.Location = new System.Drawing.Point(14, 7);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(200, 100);
+            this.panel3.Size = new System.Drawing.Size(109, 54);
             this.panel3.TabIndex = 1;
             // 
             // NameOfFormLbl
@@ -151,19 +151,17 @@ namespace GameZBDAlchemyStoneTapper
             this.NameOfFormLbl.AutoSize = true;
             this.NameOfFormLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NameOfFormLbl.ForeColor = System.Drawing.Color.White;
-            this.NameOfFormLbl.Location = new System.Drawing.Point(370, 22);
-            this.NameOfFormLbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.NameOfFormLbl.Location = new System.Drawing.Point(202, 12);
             this.NameOfFormLbl.Name = "NameOfFormLbl";
-            this.NameOfFormLbl.Size = new System.Drawing.Size(187, 67);
+            this.NameOfFormLbl.Size = new System.Drawing.Size(109, 39);
             this.NameOfFormLbl.TabIndex = 2;
             this.NameOfFormLbl.Text = "label1";
             // 
             // SubSectionPanel
             // 
-            this.SubSectionPanel.Location = new System.Drawing.Point(332, 118);
-            this.SubSectionPanel.Margin = new System.Windows.Forms.Padding(6);
+            this.SubSectionPanel.Location = new System.Drawing.Point(181, 64);
             this.SubSectionPanel.Name = "SubSectionPanel";
-            this.SubSectionPanel.Size = new System.Drawing.Size(1186, 851);
+            this.SubSectionPanel.Size = new System.Drawing.Size(648, 470);
             this.SubSectionPanel.TabIndex = 3;
             // 
             // fileSystemWatcher1
@@ -174,15 +172,15 @@ namespace GameZBDAlchemyStoneTapper
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(1522, 969);
+            this.ClientSize = new System.Drawing.Size(841, 546);
             this.Controls.Add(this.SubSectionPanel);
             this.Controls.Add(this.NameOfFormLbl);
             this.Controls.Add(this.MainPanelAllSelection);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";

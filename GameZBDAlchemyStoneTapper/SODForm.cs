@@ -22,8 +22,8 @@ namespace GameZBDAlchemyStoneTapper
         private int ScreenY;
         private int ScreenWidth;
         private int ScreenHeight;
-        private List<string> selectedAlchemyStone = new List<string>();
-        private List<string> selectedMaterial = new List<string>();
+        private List<Image> selectedAlchemyStone = new List<Image>();
+        private List<Image> selectedMaterial = new List<Image>();
         private Bitmap toDisplay;
 
         public SODForm()
@@ -70,15 +70,15 @@ namespace GameZBDAlchemyStoneTapper
 
         private void updateAlchemyStoneList(object sender)
         {
-            if (selectedAlchemyStone.Contains(((PictureBox)sender).Name))
+            if (selectedAlchemyStone.Contains(((PictureBox)sender).Image))
             {
-                selectedAlchemyStone.Remove((((PictureBox)sender).Name));
+                selectedAlchemyStone.Remove((((PictureBox)sender).Image));
                 ((PictureBox)sender).BackColor = Color.FromArgb(41, 53, 73);
                 ((PictureBox)sender).BorderStyle = BorderStyle.None;
             }
             else
             {
-                selectedAlchemyStone.Add((((PictureBox)sender).Name));
+                selectedAlchemyStone.Add((((PictureBox)sender).Image));
                 ((PictureBox)sender).BackColor = Color.FromArgb(52, 73, 235);
                 ((PictureBox)sender).BorderStyle = BorderStyle.Fixed3D;
             }
@@ -121,15 +121,15 @@ namespace GameZBDAlchemyStoneTapper
 
         private void updateMaterialList(object sender)
         {
-            if (selectedMaterial.Contains(((PictureBox)sender).Name))
+            if (selectedMaterial.Contains(((PictureBox)sender).Image))
             {
-                selectedMaterial.Remove((((PictureBox)sender).Name));
+                selectedMaterial.Remove((((PictureBox)sender).Image));
                 ((PictureBox)sender).BackColor = Color.FromArgb(41, 53, 73);
                 ((PictureBox)sender).BorderStyle = BorderStyle.None;
             }
             else
             {
-                selectedMaterial.Add((((PictureBox)sender).Name));
+                selectedMaterial.Add((((PictureBox)sender).Image));
                 ((PictureBox)sender).BackColor = Color.FromArgb(52, 73, 235);
                 ((PictureBox)sender).BorderStyle = BorderStyle.Fixed3D;
             }
@@ -149,16 +149,19 @@ namespace GameZBDAlchemyStoneTapper
                     this.ScreenHeight = tempArea.Height;
                 }
             }
-            while (true)
+            toDisplay = CaptureScreen.Snip(ScreenX, ScreenY, ScreenWidth, ScreenHeight);
+            RunTemplateMatch(toDisplay, new Bitmap(selectedAlchemyStone[0]));
+            /*while (true)
             {
                 var oldPic = ScreenShotBox.Image;
-                ScreenShotBox.Image = CaptureScreen.Snip(ScreenX, ScreenY, ScreenWidth, ScreenHeight); ;
+
                 if (oldPic != null)
                 {
                     oldPic.Dispose();
                 }
                 ScreenShotBox.Refresh();
             }
+            */
             /*
             List<Bitmap> allScreenShots  = CaptureScreen.TakeAllScreens();
             for(int i = 0; i < allScreenShots.Count; i++)
@@ -167,6 +170,22 @@ namespace GameZBDAlchemyStoneTapper
             }
             //sc.CaptureWindow(process.Handle).Save("test.png", ImageFormat.Png);
             */
+        }
+
+        private void RunTemplateMatch(Bitmap reference, Bitmap template)
+        {
+            var image = BitmapConverter.ToMat(reference);
+            var Item = BitmapConverter.ToMat(template);
+            Mat output = new Mat();
+            Cv2.MatchTemplate(image, Item, output, TemplateMatchModes.CCoeffNormed);
+            OpenCvSharp.Point minLoc, maxLoc;
+            double minVal, maxVal;
+            Cv2.MinMaxLoc(output, out minVal, out maxVal, out minLoc, out maxLoc);
+            Cv2.Threshold(output, output, 0.85, 1, ThresholdTypes.Tozero);
+
+            Cv2.Rectangle(output, new OpenCvSharp.Point(minLoc.X, minLoc.Y),
+                    new OpenCvSharp.Point(maxLoc.X, maxLoc.Y), Scalar.DarkRed, 2);
+            Window.ShowImages(output);
         }
     }
 }
