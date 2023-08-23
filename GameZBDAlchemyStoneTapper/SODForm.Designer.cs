@@ -89,8 +89,8 @@ namespace GameZBDAlchemyStoneTapper
             this.SOFTopTextLbl.AutoSize = true;
             this.SOFTopTextLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SOFTopTextLbl.ForeColor = System.Drawing.Color.White;
-            this.SOFTopTextLbl.Location = new System.Drawing.Point(22, 17);
-            this.SOFTopTextLbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.SOFTopTextLbl.Location = new System.Drawing.Point(18, 14);
+            this.SOFTopTextLbl.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.SOFTopTextLbl.Name = "SOFTopTextLbl";
             this.SOFTopTextLbl.Size = new System.Drawing.Size(641, 46);
             this.SOFTopTextLbl.TabIndex = 1;
@@ -101,8 +101,8 @@ namespace GameZBDAlchemyStoneTapper
             this.SODText2Lbl.AutoSize = true;
             this.SODText2Lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SODText2Lbl.ForeColor = System.Drawing.Color.White;
-            this.SODText2Lbl.Location = new System.Drawing.Point(22, 253);
-            this.SODText2Lbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.SODText2Lbl.Location = new System.Drawing.Point(18, 211);
+            this.SODText2Lbl.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.SODText2Lbl.Name = "SODText2Lbl";
             this.SODText2Lbl.Size = new System.Drawing.Size(420, 46);
             this.SODText2Lbl.TabIndex = 2;
@@ -113,9 +113,9 @@ namespace GameZBDAlchemyStoneTapper
             this.Imperfect.Dock = System.Windows.Forms.DockStyle.Left;
             this.Imperfect.Image = ((System.Drawing.Image)(resources.GetObject("Imperfect.Image")));
             this.Imperfect.Location = new System.Drawing.Point(0, 0);
-            this.Imperfect.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Imperfect.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Imperfect.Name = "Imperfect";
-            this.Imperfect.Size = new System.Drawing.Size(123, 118);
+            this.Imperfect.Size = new System.Drawing.Size(101, 98);
             this.Imperfect.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Imperfect.TabIndex = 0;
             this.Imperfect.TabStop = false;
@@ -125,10 +125,10 @@ namespace GameZBDAlchemyStoneTapper
             // 
             this.Rough.Dock = System.Windows.Forms.DockStyle.Left;
             this.Rough.Image = ((System.Drawing.Image)(resources.GetObject("Rough.Image")));
-            this.Rough.Location = new System.Drawing.Point(123, 0);
-            this.Rough.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Rough.Location = new System.Drawing.Point(101, 0);
+            this.Rough.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Rough.Name = "Rough";
-            this.Rough.Size = new System.Drawing.Size(121, 118);
+            this.Rough.Size = new System.Drawing.Size(99, 98);
             this.Rough.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Rough.TabIndex = 1;
             this.Rough.TabStop = false;
@@ -138,10 +138,10 @@ namespace GameZBDAlchemyStoneTapper
             // 
             this.Polished.Dock = System.Windows.Forms.DockStyle.Left;
             this.Polished.Image = ((System.Drawing.Image)(resources.GetObject("Polished.Image")));
-            this.Polished.Location = new System.Drawing.Point(244, 0);
-            this.Polished.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Polished.Location = new System.Drawing.Point(200, 0);
+            this.Polished.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Polished.Name = "Polished";
-            this.Polished.Size = new System.Drawing.Size(106, 118);
+            this.Polished.Size = new System.Drawing.Size(87, 98);
             this.Polished.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Polished.TabIndex = 2;
             this.Polished.TabStop = false;
@@ -151,10 +151,10 @@ namespace GameZBDAlchemyStoneTapper
             // 
             this.Sturdy.Dock = System.Windows.Forms.DockStyle.Left;
             this.Sturdy.Image = ((System.Drawing.Image)(resources.GetObject("Sturdy.Image")));
-            this.Sturdy.Location = new System.Drawing.Point(350, 0);
-            this.Sturdy.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Sturdy.Location = new System.Drawing.Point(287, 0);
+            this.Sturdy.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Sturdy.Name = "Sturdy";
-            this.Sturdy.Size = new System.Drawing.Size(110, 118);
+            this.Sturdy.Size = new System.Drawing.Size(90, 98);
             this.Sturdy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Sturdy.TabIndex = 3;
             this.Sturdy.TabStop = false;
@@ -164,10 +164,10 @@ namespace GameZBDAlchemyStoneTapper
             // 
             this.Sharp.Dock = System.Windows.Forms.DockStyle.Left;
             this.Sharp.Image = ((System.Drawing.Image)(resources.GetObject("Sharp.Image")));
-            this.Sharp.Location = new System.Drawing.Point(460, 0);
-            this.Sharp.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Sharp.Location = new System.Drawing.Point(377, 0);
+            this.Sharp.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Sharp.Name = "Sharp";
-            this.Sharp.Size = new System.Drawing.Size(116, 118);
+            this.Sharp.Size = new System.Drawing.Size(95, 98);
             this.Sharp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Sharp.TabIndex = 4;
             this.Sharp.TabStop = false;
@@ -177,10 +177,10 @@ namespace GameZBDAlchemyStoneTapper
             // 
             this.Resplendent.Dock = System.Windows.Forms.DockStyle.Left;
             this.Resplendent.Image = ((System.Drawing.Image)(resources.GetObject("Resplendent.Image")));
-            this.Resplendent.Location = new System.Drawing.Point(576, 0);
-            this.Resplendent.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Resplendent.Location = new System.Drawing.Point(472, 0);
+            this.Resplendent.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Resplendent.Name = "Resplendent";
-            this.Resplendent.Size = new System.Drawing.Size(116, 118);
+            this.Resplendent.Size = new System.Drawing.Size(95, 98);
             this.Resplendent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Resplendent.TabIndex = 5;
             this.Resplendent.TabStop = false;
@@ -190,10 +190,10 @@ namespace GameZBDAlchemyStoneTapper
             // 
             this.Splendid.Dock = System.Windows.Forms.DockStyle.Left;
             this.Splendid.Image = ((System.Drawing.Image)(resources.GetObject("Splendid.Image")));
-            this.Splendid.Location = new System.Drawing.Point(692, 0);
-            this.Splendid.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Splendid.Location = new System.Drawing.Point(567, 0);
+            this.Splendid.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Splendid.Name = "Splendid";
-            this.Splendid.Size = new System.Drawing.Size(116, 118);
+            this.Splendid.Size = new System.Drawing.Size(95, 98);
             this.Splendid.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Splendid.TabIndex = 6;
             this.Splendid.TabStop = false;
@@ -208,10 +208,10 @@ namespace GameZBDAlchemyStoneTapper
             this.SODStonePanel.Controls.Add(this.Polished);
             this.SODStonePanel.Controls.Add(this.Rough);
             this.SODStonePanel.Controls.Add(this.Imperfect);
-            this.SODStonePanel.Location = new System.Drawing.Point(22, 98);
-            this.SODStonePanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.SODStonePanel.Location = new System.Drawing.Point(18, 82);
+            this.SODStonePanel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.SODStonePanel.Name = "SODStonePanel";
-            this.SODStonePanel.Size = new System.Drawing.Size(1140, 118);
+            this.SODStonePanel.Size = new System.Drawing.Size(933, 98);
             this.SODStonePanel.TabIndex = 0;
             // 
             // SODMaterialPanel
@@ -223,20 +223,20 @@ namespace GameZBDAlchemyStoneTapper
             this.SODMaterialPanel.Controls.Add(this.Lead);
             this.SODMaterialPanel.Controls.Add(this.Iron);
             this.SODMaterialPanel.Controls.Add(this.Copper);
-            this.SODMaterialPanel.Location = new System.Drawing.Point(22, 332);
-            this.SODMaterialPanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.SODMaterialPanel.Location = new System.Drawing.Point(18, 277);
+            this.SODMaterialPanel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.SODMaterialPanel.Name = "SODMaterialPanel";
-            this.SODMaterialPanel.Size = new System.Drawing.Size(1140, 118);
+            this.SODMaterialPanel.Size = new System.Drawing.Size(933, 98);
             this.SODMaterialPanel.TabIndex = 7;
             // 
             // Vanadium
             // 
             this.Vanadium.Dock = System.Windows.Forms.DockStyle.Left;
             this.Vanadium.Image = ((System.Drawing.Image)(resources.GetObject("Vanadium.Image")));
-            this.Vanadium.Location = new System.Drawing.Point(692, 0);
-            this.Vanadium.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Vanadium.Location = new System.Drawing.Point(567, 0);
+            this.Vanadium.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Vanadium.Name = "Vanadium";
-            this.Vanadium.Size = new System.Drawing.Size(116, 118);
+            this.Vanadium.Size = new System.Drawing.Size(95, 98);
             this.Vanadium.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Vanadium.TabIndex = 6;
             this.Vanadium.TabStop = false;
@@ -246,10 +246,10 @@ namespace GameZBDAlchemyStoneTapper
             // 
             this.Titanium.Dock = System.Windows.Forms.DockStyle.Left;
             this.Titanium.Image = ((System.Drawing.Image)(resources.GetObject("Titanium.Image")));
-            this.Titanium.Location = new System.Drawing.Point(576, 0);
-            this.Titanium.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Titanium.Location = new System.Drawing.Point(472, 0);
+            this.Titanium.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Titanium.Name = "Titanium";
-            this.Titanium.Size = new System.Drawing.Size(116, 118);
+            this.Titanium.Size = new System.Drawing.Size(95, 98);
             this.Titanium.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Titanium.TabIndex = 5;
             this.Titanium.TabStop = false;
@@ -259,10 +259,10 @@ namespace GameZBDAlchemyStoneTapper
             // 
             this.Zinc.Dock = System.Windows.Forms.DockStyle.Left;
             this.Zinc.Image = ((System.Drawing.Image)(resources.GetObject("Zinc.Image")));
-            this.Zinc.Location = new System.Drawing.Point(460, 0);
-            this.Zinc.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Zinc.Location = new System.Drawing.Point(377, 0);
+            this.Zinc.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Zinc.Name = "Zinc";
-            this.Zinc.Size = new System.Drawing.Size(116, 118);
+            this.Zinc.Size = new System.Drawing.Size(95, 98);
             this.Zinc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Zinc.TabIndex = 4;
             this.Zinc.TabStop = false;
@@ -272,10 +272,10 @@ namespace GameZBDAlchemyStoneTapper
             // 
             this.Tin.Dock = System.Windows.Forms.DockStyle.Left;
             this.Tin.Image = ((System.Drawing.Image)(resources.GetObject("Tin.Image")));
-            this.Tin.Location = new System.Drawing.Point(350, 0);
-            this.Tin.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Tin.Location = new System.Drawing.Point(287, 0);
+            this.Tin.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Tin.Name = "Tin";
-            this.Tin.Size = new System.Drawing.Size(110, 118);
+            this.Tin.Size = new System.Drawing.Size(90, 98);
             this.Tin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Tin.TabIndex = 3;
             this.Tin.TabStop = false;
@@ -285,10 +285,10 @@ namespace GameZBDAlchemyStoneTapper
             // 
             this.Lead.Dock = System.Windows.Forms.DockStyle.Left;
             this.Lead.Image = ((System.Drawing.Image)(resources.GetObject("Lead.Image")));
-            this.Lead.Location = new System.Drawing.Point(244, 0);
-            this.Lead.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Lead.Location = new System.Drawing.Point(200, 0);
+            this.Lead.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Lead.Name = "Lead";
-            this.Lead.Size = new System.Drawing.Size(106, 118);
+            this.Lead.Size = new System.Drawing.Size(87, 98);
             this.Lead.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Lead.TabIndex = 2;
             this.Lead.TabStop = false;
@@ -298,10 +298,10 @@ namespace GameZBDAlchemyStoneTapper
             // 
             this.Iron.Dock = System.Windows.Forms.DockStyle.Left;
             this.Iron.Image = ((System.Drawing.Image)(resources.GetObject("Iron.Image")));
-            this.Iron.Location = new System.Drawing.Point(123, 0);
-            this.Iron.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Iron.Location = new System.Drawing.Point(101, 0);
+            this.Iron.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Iron.Name = "Iron";
-            this.Iron.Size = new System.Drawing.Size(121, 118);
+            this.Iron.Size = new System.Drawing.Size(99, 98);
             this.Iron.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Iron.TabIndex = 1;
             this.Iron.TabStop = false;
@@ -312,9 +312,9 @@ namespace GameZBDAlchemyStoneTapper
             this.Copper.Dock = System.Windows.Forms.DockStyle.Left;
             this.Copper.Image = ((System.Drawing.Image)(resources.GetObject("Copper.Image")));
             this.Copper.Location = new System.Drawing.Point(0, 0);
-            this.Copper.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Copper.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Copper.Name = "Copper";
-            this.Copper.Size = new System.Drawing.Size(123, 118);
+            this.Copper.Size = new System.Drawing.Size(101, 98);
             this.Copper.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Copper.TabIndex = 0;
             this.Copper.TabStop = false;
@@ -323,10 +323,10 @@ namespace GameZBDAlchemyStoneTapper
             // startBtn
             // 
             this.startBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.startBtn.Location = new System.Drawing.Point(1017, 785);
+            this.startBtn.Location = new System.Drawing.Point(832, 654);
             this.startBtn.Margin = new System.Windows.Forms.Padding(2);
             this.startBtn.Name = "startBtn";
-            this.startBtn.Size = new System.Drawing.Size(145, 53);
+            this.startBtn.Size = new System.Drawing.Size(119, 44);
             this.startBtn.TabIndex = 8;
             this.startBtn.Text = "Start";
             this.startBtn.UseVisualStyleBackColor = true;
@@ -335,10 +335,11 @@ namespace GameZBDAlchemyStoneTapper
             // ScreenShotBox
             // 
             this.ScreenShotBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ScreenShotBox.Location = new System.Drawing.Point(22, 458);
+            this.ScreenShotBox.Location = new System.Drawing.Point(18, 382);
             this.ScreenShotBox.Margin = new System.Windows.Forms.Padding(2);
             this.ScreenShotBox.Name = "ScreenShotBox";
-            this.ScreenShotBox.Size = new System.Drawing.Size(601, 379);
+            this.ScreenShotBox.Size = new System.Drawing.Size(492, 316);
+            this.ScreenShotBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ScreenShotBox.TabIndex = 9;
             this.ScreenShotBox.TabStop = false;
             // 
@@ -356,10 +357,10 @@ namespace GameZBDAlchemyStoneTapper
             // 
             // SODForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(1184, 851);
+            this.ClientSize = new System.Drawing.Size(969, 709);
             this.Controls.Add(this.ScreenShotBox);
             this.Controls.Add(this.startBtn);
             this.Controls.Add(this.SODMaterialPanel);
@@ -367,7 +368,7 @@ namespace GameZBDAlchemyStoneTapper
             this.Controls.Add(this.SOFTopTextLbl);
             this.Controls.Add(this.SODStonePanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "SODForm";
             this.Text = "SODForm";
             ((System.ComponentModel.ISupportInitialize)(this.Imperfect)).EndInit();

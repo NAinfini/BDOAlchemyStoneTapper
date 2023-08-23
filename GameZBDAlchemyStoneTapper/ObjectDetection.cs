@@ -5,16 +5,16 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using OpenCvSharp;
 
 namespace GameZBDAlchemyStoneTapper
 {
-    class ObjectDetection
+    internal class ObjectDetection
     {
         private int x;
         private int y;
         private int width;
         private int height;
+
         public ObjectDetection(int x, int y, int width, int height)
         {
             this.x = x;
@@ -22,9 +22,9 @@ namespace GameZBDAlchemyStoneTapper
             this.width = width;
             this.height = height;
         }
+
         public void Starter()
         {
-
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using OpenCvSharp;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,10 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using OpenCvSharp.Extensions;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading;
+using Emgu.CV;
+using Emgu.CV.Structure;
+using Emgu.CV.Util;
 
 namespace GameZBDAlchemyStoneTapper
 {
@@ -73,13 +74,11 @@ namespace GameZBDAlchemyStoneTapper
             if (selectedAlchemyStone.Contains(((PictureBox)sender).Image))
             {
                 selectedAlchemyStone.Remove((((PictureBox)sender).Image));
-                ((PictureBox)sender).BackColor = Color.FromArgb(41, 53, 73);
                 ((PictureBox)sender).BorderStyle = BorderStyle.None;
             }
             else
             {
                 selectedAlchemyStone.Add((((PictureBox)sender).Image));
-                ((PictureBox)sender).BackColor = Color.FromArgb(52, 73, 235);
                 ((PictureBox)sender).BorderStyle = BorderStyle.Fixed3D;
             }
         }
@@ -124,13 +123,11 @@ namespace GameZBDAlchemyStoneTapper
             if (selectedMaterial.Contains(((PictureBox)sender).Image))
             {
                 selectedMaterial.Remove((((PictureBox)sender).Image));
-                ((PictureBox)sender).BackColor = Color.FromArgb(41, 53, 73);
                 ((PictureBox)sender).BorderStyle = BorderStyle.None;
             }
             else
             {
                 selectedMaterial.Add((((PictureBox)sender).Image));
-                ((PictureBox)sender).BackColor = Color.FromArgb(52, 73, 235);
                 ((PictureBox)sender).BorderStyle = BorderStyle.Fixed3D;
             }
         }
@@ -150,7 +147,18 @@ namespace GameZBDAlchemyStoneTapper
                 }
             }
             toDisplay = CaptureScreen.Snip(ScreenX, ScreenY, ScreenWidth, ScreenHeight);
-            RunTemplateMatch(toDisplay, new Bitmap(selectedAlchemyStone[0]));
+            List<List<Rectangle>> StonePositions = findLocations(toDisplay, selectedAlchemyStone);
+            List<List<Rectangle>> MaterialPositions = findLocations(toDisplay, selectedMaterial);
+            Bitmap tempMap = (Bitmap)toDisplay.Clone();
+            foreach (List<Rectangle> tempList in StonePositions)
+            {
+                tempMap = drawRectangles(tempMap, tempList);
+            }
+            foreach (List<Rectangle> tempList in MaterialPositions)
+            {
+                tempMap = drawRectangles(tempMap, tempList);
+            }
+            ScreenShotBox.Image = tempMap;
             /*while (true)
             {
                 var oldPic = ScreenShotBox.Image;
@@ -172,20 +180,68 @@ namespace GameZBDAlchemyStoneTapper
             */
         }
 
-        private void RunTemplateMatch(Bitmap reference, Bitmap template)
+        private List<List<Rectangle>> findLocations(Bitmap reference, List<Image> ImageList)
         {
-            var image = BitmapConverter.ToMat(reference);
-            var Item = BitmapConverter.ToMat(template);
-            Mat output = new Mat();
-            Cv2.MatchTemplate(image, Item, output, TemplateMatchModes.CCoeffNormed);
-            OpenCvSharp.Point minLoc, maxLoc;
-            double minVal, maxVal;
-            Cv2.MinMaxLoc(output, out minVal, out maxVal, out minLoc, out maxLoc);
-            Cv2.Threshold(output, output, 0.85, 1, ThresholdTypes.Tozero);
+            Image<Bgr, byte> source = reference.ToImage<Bgr, byte>(); // Image B
+            Image<Bgr, byte> imageToShow = source.Copy();
+            List<List<Rectangle>> rectangleList = new List<List<Rectangle>>();
+            foreach (Image TempImage in ImageList)
+            {
+                Bitmap tempMap = (Bitmap)TempImage;
+                Image<Bgr, byte> template = tempMap.ToImage<Bgr, byte>();
+                using (Image<Gray, float> result = source.MatchTemplate(template, Emgu.CV.CvEnum.TemplateMatchingType.CcoeffNormed))
+                {
+                    double[] minValues, maxValues;
+                    Point[] minLocations, maxLocations;
+                    result.MinMax(out minValues, out maxValues, out minLocations, out maxLocations);
+                    List<Rectangle> tempRectangle = findLocation(reference, TempImage);
+                    rectangleList.Add(tempRectangle);
+                }
+            }
+            return rectangleList;
+        }
 
-            Cv2.Rectangle(output, new OpenCvSharp.Point(minLoc.X, minLoc.Y),
-                    new OpenCvSharp.Point(maxLoc.X, maxLoc.Y), Scalar.DarkRed, 2);
-            Window.ShowImages(output);
+        private List<Rectangle> findLocation(Bitmap reference, Image TempImage)
+        {
+            Image<Bgr, byte> source = reference.ToImage<Bgr, byte>();
+            Image<Bgr, byte> template = ((Bitmap)TempImage).ToImage<Bgr, byte>();
+            Image<Gray, float> result = source.MatchTemplate(template, Emgu.CV.CvEnum.TemplateMatchingType.CcoeffNormed);
+
+            // Normalize the result image into a matrix of floats (thresholds?)
+            Mat thresholds = new Mat();
+            CvInvoke.Normalize(result, thresholds, 0, 1, Emgu.CV.CvEnum.NormType.MinMax);
+
+            var rectangles = new List<Rectangle>();
+            var size = new Size(template.Width, template.Height);
+
+            // Convert it to a multidimensional array to be able to iterate through it
+            // (is it really necessary, isn't something native in EmguCV for this?)
+            var thresholdData = thresholds.GetData();
+            for (int y = 0; y < thresholdData.GetLength(0); y++)
+            {
+                for (int x = 0; x < thresholdData.GetLength(1); x++)
+                {
+                    if ((float)thresholdData.GetValue(y, x) > 0.95)
+                    {
+                        rectangles.Add(new Rectangle(x, y, size.Width, size.Height));
+                    }
+                }
+            }
+
+            var groupedRectangles = new VectorOfRect(rectangles.ToArray());
+            CvInvoke.GroupRectangles(groupedRectangles, 1);
+            var groupedRectanglesArray = groupedRectangles.ToArray();
+            return groupedRectanglesArray.ToList();
+        }
+
+        private Bitmap drawRectangles(Bitmap reference, List<Rectangle> RecList)
+        {
+            Image<Bgr, byte> source = reference.ToImage<Bgr, byte>();
+            foreach (Rectangle TempRec in RecList)
+            {
+                source.Draw(TempRec, new Bgr(Color.Red), 3);
+            }
+            return source.ToBitmap();
         }
     }
 }
