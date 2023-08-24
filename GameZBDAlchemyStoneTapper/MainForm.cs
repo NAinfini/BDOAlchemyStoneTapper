@@ -9,7 +9,8 @@ namespace GameZBDAlchemyStoneTapper
 {
     public partial class MainForm : Form
     {
-        language Lan = new language();
+        private language Lan = new language();
+
         public MainForm()
         {
             InitializeComponent();
@@ -30,7 +31,8 @@ namespace GameZBDAlchemyStoneTapper
             catch (FileNotFoundException E)
             {
                 MessageBox.Show("Could not find DefaultLanguage.json");
-            }catch(Exception E)
+            }
+            catch (Exception E)
             {
                 MessageBox.Show(E.ToString());
             }
@@ -103,7 +105,6 @@ namespace GameZBDAlchemyStoneTapper
 
         private void fileSystemWatcher1_Changed(object sender, FileSystemEventArgs e)
         {
-
         }
     }
 }

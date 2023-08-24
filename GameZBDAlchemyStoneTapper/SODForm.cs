@@ -183,7 +183,6 @@ namespace GameZBDAlchemyStoneTapper
         private List<List<Rectangle>> findLocations(Bitmap reference, List<Image> ImageList)
         {
             Image<Bgr, byte> source = reference.ToImage<Bgr, byte>(); // Image B
-            Image<Bgr, byte> imageToShow = source.Copy();
             List<List<Rectangle>> rectangleList = new List<List<Rectangle>>();
             foreach (Image TempImage in ImageList)
             {
@@ -203,31 +202,36 @@ namespace GameZBDAlchemyStoneTapper
 
         private List<Rectangle> findLocation(Bitmap reference, Image TempImage)
         {
+            var rectangles = new List<Rectangle>();
             Image<Bgr, byte> source = reference.ToImage<Bgr, byte>();
             Image<Bgr, byte> template = ((Bitmap)TempImage).ToImage<Bgr, byte>();
-            Image<Gray, float> result = source.MatchTemplate(template, Emgu.CV.CvEnum.TemplateMatchingType.CcoeffNormed);
-
-            // Normalize the result image into a matrix of floats (thresholds?)
-            Mat thresholds = new Mat();
-            CvInvoke.Normalize(result, thresholds, 0, 1, Emgu.CV.CvEnum.NormType.MinMax);
-
-            var rectangles = new List<Rectangle>();
-            var size = new Size(template.Width, template.Height);
-
-            // Convert it to a multidimensional array to be able to iterate through it
-            // (is it really necessary, isn't something native in EmguCV for this?)
-            var thresholdData = thresholds.GetData();
-            for (int y = 0; y < thresholdData.GetLength(0); y++)
+            for (float Scale = 0.1F; Scale <= 1.5f; Scale += 0.05f)
             {
-                for (int x = 0; x < thresholdData.GetLength(1); x++)
+                var temp = template.Resize(Scale, Emgu.CV.CvEnum.Inter.Cubic);
+                if (temp.Height >= source.Height || temp.Width >= source.Width) continue;
+                Image<Gray, float> result = source.MatchTemplate(temp, Emgu.CV.CvEnum.TemplateMatchingType.CcoeffNormed);
+
+                // Normalize the result image into a matrix of floats (thresholds?)
+                Mat thresholds = new Mat();
+                CvInvoke.Normalize(result, thresholds, 0, 1, Emgu.CV.CvEnum.NormType.MinMax);
+                var size = new Size(template.Width, template.Height);
+
+                // Convert it to a multidimensional array to be able to iterate through it
+                // (is it really necessary, isn't something native in EmguCV for this?)
+                var thresholdData = thresholds.GetData();
+
+                for (int y = 0; y < thresholdData.GetLength(0); y++)
                 {
-                    if ((float)thresholdData.GetValue(y, x) > 0.95)
+                    for (int x = 0; x < thresholdData.GetLength(1); x++)
                     {
-                        rectangles.Add(new Rectangle(x, y, size.Width, size.Height));
+                        if ((float)thresholdData.GetValue(y, x) > 0.95)
+                        {
+                            rectangles.Add(new Rectangle(x, y, (int)(size.Width * Scale), (int)(size.Height * Scale)));
+                            break;
+                        }
                     }
                 }
             }
-
             var groupedRectangles = new VectorOfRect(rectangles.ToArray());
             CvInvoke.GroupRectangles(groupedRectangles, 1);
             var groupedRectanglesArray = groupedRectangles.ToArray();
