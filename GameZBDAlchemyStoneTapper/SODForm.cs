@@ -1,19 +1,8 @@
-﻿using System;
+﻿using IronSoftware.Drawing;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
-using System.Threading;
-using Emgu.CV;
-using Emgu.CV.Structure;
-using Emgu.CV.Util;
 
 namespace GameZBDAlchemyStoneTapper
 {
@@ -146,7 +135,10 @@ namespace GameZBDAlchemyStoneTapper
                     this.ScreenHeight = tempArea.Height;
                 }
             }
+            AnyBitmap tempMap = CaptureScreen.Snip(ScreenX, ScreenY, ScreenWidth, ScreenHeight);
             toDisplay = CaptureScreen.Snip(ScreenX, ScreenY, ScreenWidth, ScreenHeight);
+            ObjectDetection OBJ = new ObjectDetection();
+            ScreenShotBox.Image = OBJ.Starter(tempMap);
         }
     }
 }
