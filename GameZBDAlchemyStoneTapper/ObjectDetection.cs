@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Compunet.YoloV8;
+using Compunet.YoloV8.Plotting;
+using IronSoftware.Drawing;
+using SixLabors.ImageSharp;
 using System.Drawing;
-using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace GameZBDAlchemyStoneTapper
 {
@@ -23,8 +22,18 @@ namespace GameZBDAlchemyStoneTapper
             this.height = height;
         }
 
-        public void Starter()
+        public ObjectDetection()
         {
+        }
+
+        public Bitmap Starter(AnyBitmap image)
+        {
+            using SixLabors.ImageSharp.Image sharpImage = image;
+            using var predictor = new YoloV8("./yolov8s.onnx");
+            var result = predictor.Pose(sharpImage);
+            using var origin = sharpImage;
+            using AnyBitmap ploted = result.PlotImage(origin);
+            return ploted.ToBitmap<Bitmap>();
         }
     }
 }
