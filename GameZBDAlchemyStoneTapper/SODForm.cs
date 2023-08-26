@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using Yolov7net;
 
 namespace GameZBDAlchemyStoneTapper
 {
@@ -12,9 +13,12 @@ namespace GameZBDAlchemyStoneTapper
         private int ScreenY;
         private int ScreenWidth;
         private int ScreenHeight;
-        private List<Image> selectedAlchemyStone = new List<Image>();
-        private List<Image> selectedMaterial = new List<Image>();
+        private List<string> selectedAlchemyStone = new List<string>();
+        private List<string> selectedMaterial = new List<string>();
         private Bitmap toDisplay;
+        private bool isRunning = false;
+        private ObjectDetection OBJ;
+        private Thread thread;
 
         public SODForm()
         {
@@ -60,14 +64,14 @@ namespace GameZBDAlchemyStoneTapper
 
         private void updateAlchemyStoneList(object sender)
         {
-            if (selectedAlchemyStone.Contains(((PictureBox)sender).Image))
+            if (selectedAlchemyStone.Contains(((PictureBox)sender).Name))
             {
-                selectedAlchemyStone.Remove((((PictureBox)sender).Image));
+                selectedAlchemyStone.Remove((((PictureBox)sender).Name));
                 ((PictureBox)sender).BorderStyle = BorderStyle.None;
             }
             else
             {
-                selectedAlchemyStone.Add((((PictureBox)sender).Image));
+                selectedAlchemyStone.Add((((PictureBox)sender).Name));
                 ((PictureBox)sender).BorderStyle = BorderStyle.Fixed3D;
             }
         }
@@ -109,14 +113,14 @@ namespace GameZBDAlchemyStoneTapper
 
         private void updateMaterialList(object sender)
         {
-            if (selectedMaterial.Contains(((PictureBox)sender).Image))
+            if (selectedMaterial.Contains(((PictureBox)sender).Name))
             {
-                selectedMaterial.Remove((((PictureBox)sender).Image));
+                selectedMaterial.Remove((((PictureBox)sender).Name));
                 ((PictureBox)sender).BorderStyle = BorderStyle.None;
             }
             else
             {
-                selectedMaterial.Add((((PictureBox)sender).Image));
+                selectedMaterial.Add((((PictureBox)sender).Name));
                 ((PictureBox)sender).BorderStyle = BorderStyle.Fixed3D;
             }
         }
@@ -125,20 +129,47 @@ namespace GameZBDAlchemyStoneTapper
 
         private void startBtn_Click(object sender, EventArgs e)
         {
-            using (SelectArea tempArea = new SelectArea())
+            if (!isRunning)
             {
-                if (tempArea.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                isRunning = true;
+                using (SelectArea tempArea = new SelectArea())
                 {
-                    this.ScreenX = tempArea.Location.X;
-                    this.ScreenY = tempArea.Location.Y;
-                    this.ScreenWidth = tempArea.Width;
-                    this.ScreenHeight = tempArea.Height;
+                    if (tempArea.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        this.ScreenX = tempArea.Location.X;
+                        this.ScreenY = tempArea.Location.Y;
+                        this.ScreenWidth = tempArea.Width;
+                        this.ScreenHeight = tempArea.Height;
+                    }
                 }
+                AnyBitmap tempMap = CaptureScreen.Snip(ScreenX, ScreenY, ScreenWidth, ScreenHeight);
+
+                OBJ = new ObjectDetection();
+                OBJ.loadLists(selectedAlchemyStone, selectedMaterial);
+
+                thread = new Thread(new ThreadStart(detectStones));
+                thread.Start();
+                ((Button)sender).Text = "Stop";
             }
-            AnyBitmap tempMap = CaptureScreen.Snip(ScreenX, ScreenY, ScreenWidth, ScreenHeight);
-            toDisplay = CaptureScreen.Snip(ScreenX, ScreenY, ScreenWidth, ScreenHeight);
-            ObjectDetection OBJ = new ObjectDetection();
-            ScreenShotBox.Image = OBJ.Starter(tempMap);
+            else
+            {
+                isRunning = false;
+                thread.Join();
+                while (thread.IsAlive) { }
+                ((Button)sender).Text = "Start";
+            }
+        }
+
+        private void detectStones()
+        {
+            do
+            {
+                toDisplay = CaptureScreen.Snip(ScreenX, ScreenY, ScreenWidth, ScreenHeight);
+                List<YoloPrediction> perdictions = OBJ.getPerdictions(toDisplay);
+                OBJ.getPositions(perdictions);
+                ScreenShotBox.Image = OBJ.drawRectangles(toDisplay, perdictions);
+                Thread.Sleep(50);
+            } while (isRunning);
         }
     }
 }

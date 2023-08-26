@@ -30,310 +30,339 @@ namespace GameZBDAlchemyStoneTapper
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SOPForm));
-            this.SODMaterialPanel = new System.Windows.Forms.Panel();
-            this.Pine = new System.Windows.Forms.PictureBox();
-            this.Palm = new System.Windows.Forms.PictureBox();
-            this.Maple = new System.Windows.Forms.PictureBox();
-            this.Cedar = new System.Windows.Forms.PictureBox();
-            this.Birch = new System.Windows.Forms.PictureBox();
-            this.Ash = new System.Windows.Forms.PictureBox();
-            this.Acacia = new System.Windows.Forms.PictureBox();
-            this.SODText2Lbl = new System.Windows.Forms.Label();
-            this.SOFTopTextLbl = new System.Windows.Forms.Label();
-            this.SODPanelStone = new System.Windows.Forms.Panel();
-            this.Splendid = new System.Windows.Forms.PictureBox();
-            this.Resplendent = new System.Windows.Forms.PictureBox();
-            this.Sharp = new System.Windows.Forms.PictureBox();
-            this.Sturdy = new System.Windows.Forms.PictureBox();
-            this.Polished = new System.Windows.Forms.PictureBox();
-            this.Rough = new System.Windows.Forms.PictureBox();
-            this.Imperfect = new System.Windows.Forms.PictureBox();
-            this.SODMaterialPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Pine)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Palm)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Maple)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Cedar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Birch)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Ash)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Acacia)).BeginInit();
-            this.SODPanelStone.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Splendid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Resplendent)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Sharp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Sturdy)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Polished)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Rough)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Imperfect)).BeginInit();
-            this.SuspendLayout();
+            SODMaterialPanel = new System.Windows.Forms.Panel();
+            Pine = new System.Windows.Forms.PictureBox();
+            Palm = new System.Windows.Forms.PictureBox();
+            Maple = new System.Windows.Forms.PictureBox();
+            Cedar = new System.Windows.Forms.PictureBox();
+            Birch = new System.Windows.Forms.PictureBox();
+            Ash = new System.Windows.Forms.PictureBox();
+            Acacia = new System.Windows.Forms.PictureBox();
+            SODText2Lbl = new System.Windows.Forms.Label();
+            SOFTopTextLbl = new System.Windows.Forms.Label();
+            SODPanelStone = new System.Windows.Forms.Panel();
+            Splendid = new System.Windows.Forms.PictureBox();
+            Resplendent = new System.Windows.Forms.PictureBox();
+            Sharp = new System.Windows.Forms.PictureBox();
+            Sturdy = new System.Windows.Forms.PictureBox();
+            Polished = new System.Windows.Forms.PictureBox();
+            Rough = new System.Windows.Forms.PictureBox();
+            Imperfect = new System.Windows.Forms.PictureBox();
+            ScreenShotBox = new System.Windows.Forms.PictureBox();
+            startBtn = new System.Windows.Forms.Button();
+            SODMaterialPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Pine).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Palm).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Maple).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Cedar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Birch).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Ash).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Acacia).BeginInit();
+            SODPanelStone.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Splendid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Resplendent).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Sharp).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Sturdy).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Polished).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Rough).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Imperfect).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ScreenShotBox).BeginInit();
+            SuspendLayout();
             // 
             // SODMaterialPanel
             // 
-            this.SODMaterialPanel.Controls.Add(this.Pine);
-            this.SODMaterialPanel.Controls.Add(this.Palm);
-            this.SODMaterialPanel.Controls.Add(this.Maple);
-            this.SODMaterialPanel.Controls.Add(this.Cedar);
-            this.SODMaterialPanel.Controls.Add(this.Birch);
-            this.SODMaterialPanel.Controls.Add(this.Ash);
-            this.SODMaterialPanel.Controls.Add(this.Acacia);
-            this.SODMaterialPanel.Location = new System.Drawing.Point(15, 324);
-            this.SODMaterialPanel.Margin = new System.Windows.Forms.Padding(6);
-            this.SODMaterialPanel.Name = "SODMaterialPanel";
-            this.SODMaterialPanel.Size = new System.Drawing.Size(1140, 118);
-            this.SODMaterialPanel.TabIndex = 15;
+            SODMaterialPanel.Controls.Add(Pine);
+            SODMaterialPanel.Controls.Add(Palm);
+            SODMaterialPanel.Controls.Add(Maple);
+            SODMaterialPanel.Controls.Add(Cedar);
+            SODMaterialPanel.Controls.Add(Birch);
+            SODMaterialPanel.Controls.Add(Ash);
+            SODMaterialPanel.Controls.Add(Acacia);
+            SODMaterialPanel.Location = new System.Drawing.Point(11, 270);
+            SODMaterialPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            SODMaterialPanel.Name = "SODMaterialPanel";
+            SODMaterialPanel.Size = new System.Drawing.Size(829, 98);
+            SODMaterialPanel.TabIndex = 15;
             // 
             // Pine
             // 
-            this.Pine.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Pine.Image = ((System.Drawing.Image)(resources.GetObject("Pine.Image")));
-            this.Pine.Location = new System.Drawing.Point(692, 0);
-            this.Pine.Margin = new System.Windows.Forms.Padding(6);
-            this.Pine.Name = "Pine";
-            this.Pine.Size = new System.Drawing.Size(116, 118);
-            this.Pine.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Pine.TabIndex = 6;
-            this.Pine.TabStop = false;
-            this.Pine.Click += new System.EventHandler(this.Pine_Click);
+            Pine.Dock = System.Windows.Forms.DockStyle.Left;
+            Pine.Image = (System.Drawing.Image)resources.GetObject("Pine.Image");
+            Pine.Location = new System.Drawing.Point(502, 0);
+            Pine.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            Pine.Name = "Pine";
+            Pine.Size = new System.Drawing.Size(84, 98);
+            Pine.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            Pine.TabIndex = 6;
+            Pine.TabStop = false;
+            Pine.Click += Pine_Click;
             // 
             // Palm
             // 
-            this.Palm.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Palm.Image = ((System.Drawing.Image)(resources.GetObject("Palm.Image")));
-            this.Palm.Location = new System.Drawing.Point(576, 0);
-            this.Palm.Margin = new System.Windows.Forms.Padding(6);
-            this.Palm.Name = "Palm";
-            this.Palm.Size = new System.Drawing.Size(116, 118);
-            this.Palm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Palm.TabIndex = 5;
-            this.Palm.TabStop = false;
-            this.Palm.Click += new System.EventHandler(this.Palm_Click);
+            Palm.Dock = System.Windows.Forms.DockStyle.Left;
+            Palm.Image = (System.Drawing.Image)resources.GetObject("Palm.Image");
+            Palm.Location = new System.Drawing.Point(418, 0);
+            Palm.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            Palm.Name = "Palm";
+            Palm.Size = new System.Drawing.Size(84, 98);
+            Palm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            Palm.TabIndex = 5;
+            Palm.TabStop = false;
+            Palm.Click += Palm_Click;
             // 
             // Maple
             // 
-            this.Maple.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Maple.Image = ((System.Drawing.Image)(resources.GetObject("Maple.Image")));
-            this.Maple.Location = new System.Drawing.Point(460, 0);
-            this.Maple.Margin = new System.Windows.Forms.Padding(6);
-            this.Maple.Name = "Maple";
-            this.Maple.Size = new System.Drawing.Size(116, 118);
-            this.Maple.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Maple.TabIndex = 4;
-            this.Maple.TabStop = false;
-            this.Maple.Click += new System.EventHandler(this.Maple_Click);
+            Maple.Dock = System.Windows.Forms.DockStyle.Left;
+            Maple.Image = (System.Drawing.Image)resources.GetObject("Maple.Image");
+            Maple.Location = new System.Drawing.Point(334, 0);
+            Maple.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            Maple.Name = "Maple";
+            Maple.Size = new System.Drawing.Size(84, 98);
+            Maple.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            Maple.TabIndex = 4;
+            Maple.TabStop = false;
+            Maple.Click += Maple_Click;
             // 
             // Cedar
             // 
-            this.Cedar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Cedar.Image = ((System.Drawing.Image)(resources.GetObject("Cedar.Image")));
-            this.Cedar.Location = new System.Drawing.Point(350, 0);
-            this.Cedar.Margin = new System.Windows.Forms.Padding(6);
-            this.Cedar.Name = "Cedar";
-            this.Cedar.Size = new System.Drawing.Size(110, 118);
-            this.Cedar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Cedar.TabIndex = 3;
-            this.Cedar.TabStop = false;
-            this.Cedar.Click += new System.EventHandler(this.Cedar_Click);
+            Cedar.Dock = System.Windows.Forms.DockStyle.Left;
+            Cedar.Image = (System.Drawing.Image)resources.GetObject("Cedar.Image");
+            Cedar.Location = new System.Drawing.Point(254, 0);
+            Cedar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            Cedar.Name = "Cedar";
+            Cedar.Size = new System.Drawing.Size(80, 98);
+            Cedar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            Cedar.TabIndex = 3;
+            Cedar.TabStop = false;
+            Cedar.Click += Cedar_Click;
             // 
             // Birch
             // 
-            this.Birch.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Birch.Image = ((System.Drawing.Image)(resources.GetObject("Birch.Image")));
-            this.Birch.Location = new System.Drawing.Point(244, 0);
-            this.Birch.Margin = new System.Windows.Forms.Padding(6);
-            this.Birch.Name = "Birch";
-            this.Birch.Size = new System.Drawing.Size(106, 118);
-            this.Birch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Birch.TabIndex = 2;
-            this.Birch.TabStop = false;
-            this.Birch.Click += new System.EventHandler(this.Birch_Click);
+            Birch.Dock = System.Windows.Forms.DockStyle.Left;
+            Birch.Image = (System.Drawing.Image)resources.GetObject("Birch.Image");
+            Birch.Location = new System.Drawing.Point(177, 0);
+            Birch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            Birch.Name = "Birch";
+            Birch.Size = new System.Drawing.Size(77, 98);
+            Birch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            Birch.TabIndex = 2;
+            Birch.TabStop = false;
+            Birch.Click += Birch_Click;
             // 
             // Ash
             // 
-            this.Ash.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Ash.Image = ((System.Drawing.Image)(resources.GetObject("Ash.Image")));
-            this.Ash.Location = new System.Drawing.Point(123, 0);
-            this.Ash.Margin = new System.Windows.Forms.Padding(6);
-            this.Ash.Name = "Ash";
-            this.Ash.Size = new System.Drawing.Size(121, 118);
-            this.Ash.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Ash.TabIndex = 1;
-            this.Ash.TabStop = false;
-            this.Ash.Click += new System.EventHandler(this.Ash_Click);
+            Ash.Dock = System.Windows.Forms.DockStyle.Left;
+            Ash.Image = (System.Drawing.Image)resources.GetObject("Ash.Image");
+            Ash.Location = new System.Drawing.Point(89, 0);
+            Ash.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            Ash.Name = "Ash";
+            Ash.Size = new System.Drawing.Size(88, 98);
+            Ash.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            Ash.TabIndex = 1;
+            Ash.TabStop = false;
+            Ash.Click += Ash_Click;
             // 
             // Acacia
             // 
-            this.Acacia.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Acacia.Image = ((System.Drawing.Image)(resources.GetObject("Acacia.Image")));
-            this.Acacia.Location = new System.Drawing.Point(0, 0);
-            this.Acacia.Margin = new System.Windows.Forms.Padding(6);
-            this.Acacia.Name = "Acacia";
-            this.Acacia.Size = new System.Drawing.Size(123, 118);
-            this.Acacia.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Acacia.TabIndex = 0;
-            this.Acacia.TabStop = false;
-            this.Acacia.Click += new System.EventHandler(this.Acacia_Click);
+            Acacia.Dock = System.Windows.Forms.DockStyle.Left;
+            Acacia.Image = (System.Drawing.Image)resources.GetObject("Acacia.Image");
+            Acacia.Location = new System.Drawing.Point(0, 0);
+            Acacia.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            Acacia.Name = "Acacia";
+            Acacia.Size = new System.Drawing.Size(89, 98);
+            Acacia.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            Acacia.TabIndex = 0;
+            Acacia.TabStop = false;
+            Acacia.Click += Acacia_Click;
             // 
             // SODText2Lbl
             // 
-            this.SODText2Lbl.AutoSize = true;
-            this.SODText2Lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SODText2Lbl.ForeColor = System.Drawing.Color.White;
-            this.SODText2Lbl.Location = new System.Drawing.Point(15, 245);
-            this.SODText2Lbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.SODText2Lbl.Name = "SODText2Lbl";
-            this.SODText2Lbl.Size = new System.Drawing.Size(487, 54);
-            this.SODText2Lbl.TabIndex = 14;
-            this.SODText2Lbl.Text = "With following material";
+            SODText2Lbl.AutoSize = true;
+            SODText2Lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            SODText2Lbl.ForeColor = System.Drawing.Color.White;
+            SODText2Lbl.Location = new System.Drawing.Point(11, 204);
+            SODText2Lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            SODText2Lbl.Name = "SODText2Lbl";
+            SODText2Lbl.Size = new System.Drawing.Size(358, 39);
+            SODText2Lbl.TabIndex = 14;
+            SODText2Lbl.Text = "With following material";
             // 
             // SOFTopTextLbl
             // 
-            this.SOFTopTextLbl.AutoSize = true;
-            this.SOFTopTextLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SOFTopTextLbl.ForeColor = System.Drawing.Color.White;
-            this.SOFTopTextLbl.Location = new System.Drawing.Point(15, 9);
-            this.SOFTopTextLbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.SOFTopTextLbl.Name = "SOFTopTextLbl";
-            this.SOFTopTextLbl.Size = new System.Drawing.Size(746, 54);
-            this.SOFTopTextLbl.TabIndex = 13;
-            this.SOFTopTextLbl.Text = "Upgrade following Alchemy Stones";
+            SOFTopTextLbl.AutoSize = true;
+            SOFTopTextLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            SOFTopTextLbl.ForeColor = System.Drawing.Color.White;
+            SOFTopTextLbl.Location = new System.Drawing.Point(11, 8);
+            SOFTopTextLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            SOFTopTextLbl.Name = "SOFTopTextLbl";
+            SOFTopTextLbl.Size = new System.Drawing.Size(546, 39);
+            SOFTopTextLbl.TabIndex = 13;
+            SOFTopTextLbl.Text = "Upgrade following Alchemy Stones";
             // 
             // SODPanelStone
             // 
-            this.SODPanelStone.Controls.Add(this.Splendid);
-            this.SODPanelStone.Controls.Add(this.Resplendent);
-            this.SODPanelStone.Controls.Add(this.Sharp);
-            this.SODPanelStone.Controls.Add(this.Sturdy);
-            this.SODPanelStone.Controls.Add(this.Polished);
-            this.SODPanelStone.Controls.Add(this.Rough);
-            this.SODPanelStone.Controls.Add(this.Imperfect);
-            this.SODPanelStone.Location = new System.Drawing.Point(15, 90);
-            this.SODPanelStone.Margin = new System.Windows.Forms.Padding(6);
-            this.SODPanelStone.Name = "SODPanelStone";
-            this.SODPanelStone.Size = new System.Drawing.Size(1140, 118);
-            this.SODPanelStone.TabIndex = 12;
+            SODPanelStone.Controls.Add(Splendid);
+            SODPanelStone.Controls.Add(Resplendent);
+            SODPanelStone.Controls.Add(Sharp);
+            SODPanelStone.Controls.Add(Sturdy);
+            SODPanelStone.Controls.Add(Polished);
+            SODPanelStone.Controls.Add(Rough);
+            SODPanelStone.Controls.Add(Imperfect);
+            SODPanelStone.Location = new System.Drawing.Point(11, 75);
+            SODPanelStone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            SODPanelStone.Name = "SODPanelStone";
+            SODPanelStone.Size = new System.Drawing.Size(829, 98);
+            SODPanelStone.TabIndex = 12;
             // 
             // Splendid
             // 
-            this.Splendid.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Splendid.Image = ((System.Drawing.Image)(resources.GetObject("Splendid.Image")));
-            this.Splendid.Location = new System.Drawing.Point(692, 0);
-            this.Splendid.Margin = new System.Windows.Forms.Padding(6);
-            this.Splendid.Name = "Splendid";
-            this.Splendid.Size = new System.Drawing.Size(116, 118);
-            this.Splendid.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Splendid.TabIndex = 6;
-            this.Splendid.TabStop = false;
-            this.Splendid.Click += new System.EventHandler(this.Splendid_Click);
+            Splendid.Dock = System.Windows.Forms.DockStyle.Left;
+            Splendid.Image = (System.Drawing.Image)resources.GetObject("Splendid.Image");
+            Splendid.Location = new System.Drawing.Point(502, 0);
+            Splendid.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            Splendid.Name = "Splendid";
+            Splendid.Size = new System.Drawing.Size(84, 98);
+            Splendid.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            Splendid.TabIndex = 6;
+            Splendid.TabStop = false;
+            Splendid.Click += Splendid_Click;
             // 
             // Resplendent
             // 
-            this.Resplendent.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Resplendent.Image = ((System.Drawing.Image)(resources.GetObject("Resplendent.Image")));
-            this.Resplendent.Location = new System.Drawing.Point(576, 0);
-            this.Resplendent.Margin = new System.Windows.Forms.Padding(6);
-            this.Resplendent.Name = "Resplendent";
-            this.Resplendent.Size = new System.Drawing.Size(116, 118);
-            this.Resplendent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Resplendent.TabIndex = 5;
-            this.Resplendent.TabStop = false;
-            this.Resplendent.Click += new System.EventHandler(this.Resplendent_Click);
+            Resplendent.Dock = System.Windows.Forms.DockStyle.Left;
+            Resplendent.Image = (System.Drawing.Image)resources.GetObject("Resplendent.Image");
+            Resplendent.Location = new System.Drawing.Point(418, 0);
+            Resplendent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            Resplendent.Name = "Resplendent";
+            Resplendent.Size = new System.Drawing.Size(84, 98);
+            Resplendent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            Resplendent.TabIndex = 5;
+            Resplendent.TabStop = false;
+            Resplendent.Click += Resplendent_Click;
             // 
             // Sharp
             // 
-            this.Sharp.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Sharp.Image = ((System.Drawing.Image)(resources.GetObject("Sharp.Image")));
-            this.Sharp.Location = new System.Drawing.Point(460, 0);
-            this.Sharp.Margin = new System.Windows.Forms.Padding(6);
-            this.Sharp.Name = "Sharp";
-            this.Sharp.Size = new System.Drawing.Size(116, 118);
-            this.Sharp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Sharp.TabIndex = 4;
-            this.Sharp.TabStop = false;
-            this.Sharp.Click += new System.EventHandler(this.Sharp_Click);
+            Sharp.Dock = System.Windows.Forms.DockStyle.Left;
+            Sharp.Image = (System.Drawing.Image)resources.GetObject("Sharp.Image");
+            Sharp.Location = new System.Drawing.Point(334, 0);
+            Sharp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            Sharp.Name = "Sharp";
+            Sharp.Size = new System.Drawing.Size(84, 98);
+            Sharp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            Sharp.TabIndex = 4;
+            Sharp.TabStop = false;
+            Sharp.Click += Sharp_Click;
             // 
             // Sturdy
             // 
-            this.Sturdy.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Sturdy.Image = ((System.Drawing.Image)(resources.GetObject("Sturdy.Image")));
-            this.Sturdy.Location = new System.Drawing.Point(350, 0);
-            this.Sturdy.Margin = new System.Windows.Forms.Padding(6);
-            this.Sturdy.Name = "Sturdy";
-            this.Sturdy.Size = new System.Drawing.Size(110, 118);
-            this.Sturdy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Sturdy.TabIndex = 3;
-            this.Sturdy.TabStop = false;
-            this.Sturdy.Click += new System.EventHandler(this.Sturdy_Click);
+            Sturdy.Dock = System.Windows.Forms.DockStyle.Left;
+            Sturdy.Image = (System.Drawing.Image)resources.GetObject("Sturdy.Image");
+            Sturdy.Location = new System.Drawing.Point(254, 0);
+            Sturdy.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            Sturdy.Name = "Sturdy";
+            Sturdy.Size = new System.Drawing.Size(80, 98);
+            Sturdy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            Sturdy.TabIndex = 3;
+            Sturdy.TabStop = false;
+            Sturdy.Click += Sturdy_Click;
             // 
             // Polished
             // 
-            this.Polished.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Polished.Image = ((System.Drawing.Image)(resources.GetObject("Polished.Image")));
-            this.Polished.Location = new System.Drawing.Point(244, 0);
-            this.Polished.Margin = new System.Windows.Forms.Padding(6);
-            this.Polished.Name = "Polished";
-            this.Polished.Size = new System.Drawing.Size(106, 118);
-            this.Polished.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Polished.TabIndex = 2;
-            this.Polished.TabStop = false;
-            this.Polished.Click += new System.EventHandler(this.Polished_Click);
+            Polished.Dock = System.Windows.Forms.DockStyle.Left;
+            Polished.Image = (System.Drawing.Image)resources.GetObject("Polished.Image");
+            Polished.Location = new System.Drawing.Point(177, 0);
+            Polished.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            Polished.Name = "Polished";
+            Polished.Size = new System.Drawing.Size(77, 98);
+            Polished.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            Polished.TabIndex = 2;
+            Polished.TabStop = false;
+            Polished.Click += Polished_Click;
             // 
             // Rough
             // 
-            this.Rough.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Rough.Image = ((System.Drawing.Image)(resources.GetObject("Rough.Image")));
-            this.Rough.Location = new System.Drawing.Point(123, 0);
-            this.Rough.Margin = new System.Windows.Forms.Padding(6);
-            this.Rough.Name = "Rough";
-            this.Rough.Size = new System.Drawing.Size(121, 118);
-            this.Rough.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Rough.TabIndex = 1;
-            this.Rough.TabStop = false;
-            this.Rough.Click += new System.EventHandler(this.Rough_Click);
+            Rough.Dock = System.Windows.Forms.DockStyle.Left;
+            Rough.Image = (System.Drawing.Image)resources.GetObject("Rough.Image");
+            Rough.Location = new System.Drawing.Point(89, 0);
+            Rough.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            Rough.Name = "Rough";
+            Rough.Size = new System.Drawing.Size(88, 98);
+            Rough.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            Rough.TabIndex = 1;
+            Rough.TabStop = false;
+            Rough.Click += Rough_Click;
             // 
             // Imperfect
             // 
-            this.Imperfect.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Imperfect.Image = ((System.Drawing.Image)(resources.GetObject("Imperfect.Image")));
-            this.Imperfect.Location = new System.Drawing.Point(0, 0);
-            this.Imperfect.Margin = new System.Windows.Forms.Padding(6);
-            this.Imperfect.Name = "Imperfect";
-            this.Imperfect.Size = new System.Drawing.Size(123, 118);
-            this.Imperfect.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Imperfect.TabIndex = 0;
-            this.Imperfect.TabStop = false;
-            this.Imperfect.Click += new System.EventHandler(this.Imperfect_Click);
+            Imperfect.Dock = System.Windows.Forms.DockStyle.Left;
+            Imperfect.Image = (System.Drawing.Image)resources.GetObject("Imperfect.Image");
+            Imperfect.Location = new System.Drawing.Point(0, 0);
+            Imperfect.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            Imperfect.Name = "Imperfect";
+            Imperfect.Size = new System.Drawing.Size(89, 98);
+            Imperfect.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            Imperfect.TabIndex = 0;
+            Imperfect.TabStop = false;
+            Imperfect.Click += Imperfect_Click;
+            // 
+            // ScreenShotBox
+            // 
+            ScreenShotBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            ScreenShotBox.Location = new System.Drawing.Point(11, 375);
+            ScreenShotBox.Margin = new System.Windows.Forms.Padding(2);
+            ScreenShotBox.Name = "ScreenShotBox";
+            ScreenShotBox.Size = new System.Drawing.Size(437, 316);
+            ScreenShotBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            ScreenShotBox.TabIndex = 17;
+            ScreenShotBox.TabStop = false;
+            // 
+            // startBtn
+            // 
+            startBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            startBtn.Location = new System.Drawing.Point(735, 647);
+            startBtn.Margin = new System.Windows.Forms.Padding(2);
+            startBtn.Name = "startBtn";
+            startBtn.Size = new System.Drawing.Size(106, 44);
+            startBtn.TabIndex = 16;
+            startBtn.Text = "Start";
+            startBtn.UseVisualStyleBackColor = true;
+            startBtn.Click += startBtn_Click;
             // 
             // SOPForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(1183, 851);
-            this.Controls.Add(this.SODMaterialPanel);
-            this.Controls.Add(this.SODText2Lbl);
-            this.Controls.Add(this.SOFTopTextLbl);
-            this.Controls.Add(this.SODPanelStone);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "SOPForm";
-            this.Text = "SOPForm";
-            this.SODMaterialPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Pine)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Palm)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Maple)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Cedar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Birch)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Ash)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Acacia)).EndInit();
-            this.SODPanelStone.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Splendid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Resplendent)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Sharp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Sturdy)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Polished)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Rough)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Imperfect)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackColor = System.Drawing.Color.FromArgb(41, 53, 73);
+            ClientSize = new System.Drawing.Size(860, 709);
+            Controls.Add(ScreenShotBox);
+            Controls.Add(startBtn);
+            Controls.Add(SODMaterialPanel);
+            Controls.Add(SODText2Lbl);
+            Controls.Add(SOFTopTextLbl);
+            Controls.Add(SODPanelStone);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            Name = "SOPForm";
+            Text = "SOPForm";
+            SODMaterialPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)Pine).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Palm).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Maple).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Cedar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Birch).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Ash).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Acacia).EndInit();
+            SODPanelStone.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)Splendid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Resplendent).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Sharp).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Sturdy).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Polished).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Rough).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Imperfect).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ScreenShotBox).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -356,5 +385,7 @@ namespace GameZBDAlchemyStoneTapper
         private System.Windows.Forms.PictureBox Polished;
         private System.Windows.Forms.PictureBox Rough;
         private System.Windows.Forms.PictureBox Imperfect;
+        private System.Windows.Forms.PictureBox ScreenShotBox;
+        private System.Windows.Forms.Button startBtn;
     }
 }

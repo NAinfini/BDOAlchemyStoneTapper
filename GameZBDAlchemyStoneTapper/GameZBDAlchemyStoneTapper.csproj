@@ -7,6 +7,7 @@
     <UseWPF>true</UseWPF>
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
     <Platforms>AnyCPU;ARM64;ARM32</Platforms>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <OutputPath>bin\x86\Debug\</OutputPath>
@@ -42,7 +43,10 @@
     <PackageReference Include="SixLabors.ImageSharp" Version="3.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.SystemWebAdapters" Version="1.2.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
     <PackageReference Include="System.ComponentModel.Composition" Version="7.0.0" />
-    <PackageReference Include="YoloV8" Version="1.2.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\Downloads\Yolov7net-master\Yolov7net-master\src\Yolov7net\IVilson.AI.Yolov7net.csproj" />
   </ItemGroup>
 </Project>
