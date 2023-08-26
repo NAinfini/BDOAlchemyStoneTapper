@@ -8,6 +8,7 @@
     <Authors>ivilson.com</Authors>
     <Version>1.0.3</Version>
     <Description>yolov7 onnx interface for .net 6</Description>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <ItemGroup>

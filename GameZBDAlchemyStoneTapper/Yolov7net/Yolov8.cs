@@ -16,7 +16,6 @@ namespace Yolov7net
 
         public Yolov8(string modelPath, bool useCuda = false)
         {
-
             if (useCuda)
             {
                 SessionOptions opts = SessionOptions.MakeSessionOptionWithCudaProvider();
@@ -47,7 +46,7 @@ namespace Yolov7net
             SetupLabels(s);
         }
 
-        public List<YoloPrediction> Predict(Image image, float conf_thres = 0, float iou_thres = 0,bool useNumpy = false)
+        public List<YoloPrediction> Predict(Image image, float conf_thres = 0, float iou_thres = 0, bool useNumpy = false)
         {
             if (conf_thres > 0f)
             {
@@ -137,9 +136,9 @@ namespace Yolov7net
         {
             var result = new ConcurrentBag<YoloPrediction>();
 
-            var (w, h) = (image.Width, image.Height); 
+            var (w, h) = (image.Width, image.Height);
             var (xGain, yGain) = (_model.Width / (float)w, _model.Height / (float)h);
-            var gain = Math.Min(xGain, yGain); 
+            var gain = Math.Min(xGain, yGain);
 
             var (xPad, yPad) = ((_model.Width - w * gain) / 2, (_model.Height - h * gain) / 2);
 
@@ -178,7 +177,6 @@ namespace Yolov7net
             return result.ToList();
         }
 
-
         private List<YoloPrediction> ParseDetectNumpy(DenseTensor<float> output, Image image)
         {
             float[] outputArray = output.ToArray();
@@ -209,10 +207,8 @@ namespace Yolov7net
             return result.ToList();
         }
 
-
         private int[] nms(NDArray boxes, NDArray scores, float iou_threshold = .5f)
         {
-
             // Sort by score
             var sortedIndices = np.argsort<float>(scores)["::-1"];
 
@@ -275,7 +271,6 @@ namespace Yolov7net
 
         private NDArray rescale_boxes(NDArray boxes, int width, int height)
         {
-
             NDArray inputShape = np.array(new float[] { _model.Width, _model.Height, _model.Width, _model.Height });
             NDArray resizedBoxes = np.divide(boxes, inputShape);
             resizedBoxes = np.multiply(resizedBoxes, new float[] { width, height, width, height });
@@ -285,7 +280,6 @@ namespace Yolov7net
         private void prepare_input(Image img)
         {
             Bitmap bmp = Utils.ResizeImage(img, _model.Width, _model.Height);
-
         }
 
         private void get_input_details()

@@ -1,6 +1,4 @@
-﻿using IronSoftware.Drawing;
-using SixLabors.ImageSharp;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -61,7 +59,6 @@ namespace GameZBDAlchemyStoneTapper
                                     new System.Drawing.PointF(x, y));
                 }
             }
-            image.Save("./temp.png");
             return image;
         }
 

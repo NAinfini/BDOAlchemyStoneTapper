@@ -1,5 +1,4 @@
-﻿using IronSoftware.Drawing;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -148,7 +147,7 @@ namespace GameZBDAlchemyStoneTapper
                         this.ScreenHeight = tempArea.Height;
                     }
                 }
-                AnyBitmap tempMap = CaptureScreen.Snip(ScreenX, ScreenY, ScreenWidth, ScreenHeight);
+                Bitmap tempMap = CaptureScreen.Snip(ScreenX, ScreenY, ScreenWidth, ScreenHeight);
 
                 OBJ = new ObjectDetection();
                 OBJ.loadLists(selectedAlchemyStone, selectedMaterial);
