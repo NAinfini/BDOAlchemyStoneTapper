@@ -157,6 +157,7 @@ namespace GameZBDAlchemyStoneTapper
             }
             //move stone back to inventory
             RightClickRectangle(PolishPosition);
+            positionList = new Dictionary<string, RectangleF>();
             positionList.Add("PolishPosition", PolishPosition);
             positionList.Add("GrowthPosition", new RectangleF(PolishPosition.X, PolishPosition.X, PolishPosition.X, PolishPosition.X));
             positionList.Add("LowerPolishButton", new RectangleF(PolishPosition.X, PolishPosition.X, PolishPosition.X, PolishPosition.X));
@@ -213,6 +214,7 @@ namespace GameZBDAlchemyStoneTapper
 
             //move stone back to inventory
             RightClickRectangle(GrowthPosition);
+            positionList = new Dictionary<string, RectangleF>();
             positionList.Add("GrowthPosition", GrowthPosition);
             positionList.Add("PolishPosition", new RectangleF(GrowthPosition.X, GrowthPosition.X, GrowthPosition.X, GrowthPosition.X));
             positionList.Add("LowerPolishButton", new RectangleF(GrowthPosition.X, GrowthPosition.X, GrowthPosition.X, GrowthPosition.X));
