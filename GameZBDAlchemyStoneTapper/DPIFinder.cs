@@ -104,8 +104,8 @@ namespace GameZBDAlchemyStoneTapper
         public static Rectangle PhysicalToScaled(Rectangle rec)
         {
             double DPI = DPIFinder.FindDPIScaleOnPoint(new Point(rec.X, rec.Y));
-            int X = Convert.ToInt32(rec.X * DPI);
-            int Y = Convert.ToInt32(rec.Y * DPI);
+            int X = Convert.ToInt32(rec.X / DPI);
+            int Y = Convert.ToInt32(rec.Y / DPI);
             int width = Convert.ToInt32(rec.Width / DPI);
             int height = Convert.ToInt32(rec.Height / DPI);
             return new Rectangle(X, Y, width, height);
