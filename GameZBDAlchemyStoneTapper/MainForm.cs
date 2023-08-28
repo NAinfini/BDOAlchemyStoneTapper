@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Text.Json;
 
 using System.IO;
+using System.Windows.Input;
 
 namespace GameZBDAlchemyStoneTapper
 {
@@ -15,10 +16,12 @@ namespace GameZBDAlchemyStoneTapper
         {
             InitializeComponent();
             loadJson();
+            HotkeysManager.SetupSystemHook();
+            Closing += MainWindow_Closing;
         }
 
         private void loadJson()
-        {
+        {/*
             try
             {
                 string tem = Directory.GetCurrentDirectory();
@@ -35,7 +38,7 @@ namespace GameZBDAlchemyStoneTapper
             catch (Exception E)
             {
                 MessageBox.Show(E.ToString());
-            }
+            }*/
         }
 
         private void SODMainPanelBtn_Click(object sender, EventArgs e)
@@ -98,9 +101,11 @@ namespace GameZBDAlchemyStoneTapper
             SOLMainPanelBtn.BackColor = Color.FromArgb(24, 30, 54);
         }
 
-        private void MainFormExitBtn_Click(object sender, EventArgs e)
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Close();
+            // Need to shutdown the hook. idk what happens if
+            // you dont, but it might cause a memory leak.
+            HotkeysManager.ShutdownSystemHook();
         }
 
         private void fileSystemWatcher1_Changed(object sender, FileSystemEventArgs e)

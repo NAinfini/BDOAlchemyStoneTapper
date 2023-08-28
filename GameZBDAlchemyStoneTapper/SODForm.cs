@@ -2,26 +2,26 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Windows.Input;
 using Yolov7net;
 
 namespace GameZBDAlchemyStoneTapper
 {
     public partial class SODForm : Form
     {
-        private int ScreenX;
-        private int ScreenY;
-        private int ScreenWidth;
-        private int ScreenHeight;
+        private Rectangle snipLocation;
         private List<string> selectedAlchemyStone = new List<string>();
         private List<string> selectedMaterial = new List<string>();
         private Bitmap toDisplay;
         private bool isRunning = false;
         private ObjectDetection OBJ;
         private Thread thread;
+        private Detection dec;
 
         public SODForm()
         {
             InitializeComponent();
+            HotkeysManager.AddHotkey(new GlobalHotkey(System.Windows.Input.ModifierKeys.Control, Key.C, () => { stopRunning(); }));
         }
 
         #region selection area
@@ -135,40 +135,25 @@ namespace GameZBDAlchemyStoneTapper
                 {
                     if (tempArea.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
-                        this.ScreenX = tempArea.Location.X;
-                        this.ScreenY = tempArea.Location.Y;
-                        this.ScreenWidth = tempArea.Width;
-                        this.ScreenHeight = tempArea.Height;
+                        snipLocation = new Rectangle(tempArea.Location.X, tempArea.Location.Y, tempArea.Width, tempArea.Height);
                     }
                 }
-                Bitmap tempMap = CaptureScreen.Snip(ScreenX, ScreenY, ScreenWidth, ScreenHeight);
 
-                OBJ = new ObjectDetection();
-                OBJ.loadLists(selectedAlchemyStone, selectedMaterial);
-
-                thread = new Thread(new ThreadStart(detectStones));
-                thread.Start();
-                ((Button)sender).Text = "Stop";
+                dec = new Detection(snipLocation, selectedAlchemyStone, selectedMaterial);
+                dec.Show();
+                startBtn.Text = "stop";
             }
             else
             {
-                isRunning = false;
-                thread.Join();
-                while (thread.IsAlive) { }
-                ((Button)sender).Text = "Start";
+                stopRunning();
             }
         }
 
-        private void detectStones()
+        private void stopRunning()
         {
-            do
-            {
-                toDisplay = CaptureScreen.Snip(ScreenX, ScreenY, ScreenWidth, ScreenHeight);
-                List<YoloPrediction> perdictions = OBJ.getPerdictions(toDisplay);
-                OBJ.getPositions(perdictions);
-                ScreenShotBox.Image = OBJ.drawRectangles(toDisplay, perdictions);
-                Thread.Sleep(50);
-            } while (isRunning);
+            isRunning = false;
+            startBtn.Text = "start";
+            dec.Close();
         }
     }
 }

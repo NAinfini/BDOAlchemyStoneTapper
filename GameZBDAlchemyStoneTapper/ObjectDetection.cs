@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Navigation;
 using Yolov7net;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace GameZBDAlchemyStoneTapper
 {
@@ -31,7 +32,7 @@ namespace GameZBDAlchemyStoneTapper
             // setup labels of onnx model
             string[] labels = new string[46]
             {
-                    "0:Acacia","Arrow","Ash","Birch","Cedar","Cloud","Copper","Ghost","Gold","Grape","ImperfectD","ImperfectL","ImperfectP",
+                    "Acacia","Arrow","Ash","Birch","Cedar","Cloud","Copper","Ghost","Gold","Grape","ImperfectD","ImperfectL","ImperfectP",
                     "Iron","Lead","Maple","Palm","Pine","PolishedD","PolishedL","PolishedP","Purple", "ResplendentD", "ResplendentL",
                     "ResplendentP","RoughD","RoughL","RoughP","SharpD","SharpL", "SharpP", "ShiningD", "ShiningL", "ShiningP","SplendidD",
                     "SplendidL","SplendidP","StrawBerry","SturdyD", "SturdyL", "SturdyP", "Sunflower",  "Tin","Titanium", "Vanadium", "Zinc"
@@ -52,10 +53,27 @@ namespace GameZBDAlchemyStoneTapper
                 foreach (var prediction in predictions) // iterate predictions to draw results
                 {
                     double score = Math.Round(prediction.Score, 2);
-                    graphics.DrawRectangles(new Pen(System.Drawing.Color.Red, 1), new[] { prediction.Rectangle });
+
+                    graphics.DrawRectangles(new Pen(prediction.Label.Color, 1), new[] { prediction.Rectangle });
                     var (x, y) = (prediction.Rectangle.X - 3, prediction.Rectangle.Y - 23);
                     graphics.DrawString($"{prediction.Label.Name}  {score}",
-                                    new System.Drawing.Font("Consolas", 10, GraphicsUnit.Pixel), new SolidBrush(System.Drawing.Color.Red),
+                                    new System.Drawing.Font("Consolas", 15, GraphicsUnit.Pixel), new SolidBrush(prediction.Label.Color),
+                                    new System.Drawing.PointF(x, y));
+                }
+            }
+            return image;
+        }
+
+        public Bitmap drawRectangles(Bitmap image, Dictionary<string, RectangleF> recs)
+        {
+            using (Graphics graphics = Graphics.FromImage(image))
+            {
+                foreach (var prediction in recs) // iterate predictions to draw results
+                {
+                    graphics.DrawRectangles(new Pen(Color.Red, 1), new[] { prediction.Value });
+                    var (x, y) = (prediction.Value.X - 3, prediction.Value.Y - 23);
+                    graphics.DrawString(prediction.Key,
+                                    new System.Drawing.Font("Consolas", 15, GraphicsUnit.Pixel), new SolidBrush(Color.Red),
                                     new System.Drawing.PointF(x, y));
                 }
             }

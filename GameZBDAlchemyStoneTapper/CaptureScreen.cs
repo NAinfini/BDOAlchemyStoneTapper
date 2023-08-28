@@ -35,14 +35,9 @@ namespace GameZBDAlchemyStoneTapper
             return captureBitmap;
         }
 
-        public static Bitmap Snip(int Xi, int Yi, int widthi, int heighti)
+        public static Bitmap Snip(Rectangle rec)
         {
-            double DPI = DPIFinder.FindDPIOnPoint(new Point(Xi, Yi));
-            int X = Convert.ToInt32(Xi * DPI);
-            int Y = Convert.ToInt32(Yi * DPI);
-            int width = Convert.ToInt32(widthi * DPI);
-            int height = Convert.ToInt32(heighti * DPI);
-            Rectangle captureRectangle = new Rectangle(X, Y, width, height);
+            Rectangle captureRectangle = DPIFinder.PhysicalToScaled(rec);
             Bitmap captureBitmap = new Bitmap(captureRectangle.Width, captureRectangle.Height, PixelFormat.Format32bppArgb);
             Graphics captureGraphics = Graphics.FromImage(captureBitmap);
             captureGraphics.CopyFromScreen(captureRectangle.Left, captureRectangle.Top, 0, 0, captureRectangle.Size);
@@ -50,14 +45,9 @@ namespace GameZBDAlchemyStoneTapper
             return captureBitmap;
         }
 
-        public static void SnipToFIle(int Xi, int Yi, int widthi, int heighti, string fileName)
+        public static void SnipToFIle(Rectangle rec, string fileName)
         {
-            double DPI = DPIFinder.FindDPIOnPoint(new Point(Xi, Yi));
-            int X = Convert.ToInt32(Xi * DPI);
-            int Y = Convert.ToInt32(Yi * DPI);
-            int width = Convert.ToInt32(widthi * DPI);
-            int height = Convert.ToInt32(heighti * DPI);
-            Rectangle captureRectangle = new Rectangle(X, Y, width, height);
+            Rectangle captureRectangle = DPIFinder.PhysicalToScaled(rec);
             Bitmap captureBitmap = new Bitmap(captureRectangle.Width, captureRectangle.Height, PixelFormat.Format32bppArgb);
             Graphics captureGraphics = Graphics.FromImage(captureBitmap);
             captureGraphics.CopyFromScreen(captureRectangle.Left, captureRectangle.Top, 0, 0, captureRectangle.Size);

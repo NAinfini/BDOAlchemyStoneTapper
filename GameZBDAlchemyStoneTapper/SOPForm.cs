@@ -13,10 +13,7 @@ namespace GameZBDAlchemyStoneTapper
 {
     public partial class SOPForm : Form
     {
-        private int ScreenX;
-        private int ScreenY;
-        private int ScreenWidth;
-        private int ScreenHeight;
+        private Rectangle snipLocation;
         private List<string> selectedAlchemyStone = new List<string>();
         private List<string> selectedMaterial = new List<string>();
         private Bitmap toDisplay;
@@ -133,47 +130,6 @@ namespace GameZBDAlchemyStoneTapper
 
         private void startBtn_Click(object sender, EventArgs e)
         {
-            if (!isRunning)
-            {
-                isRunning = true;
-                using (SelectArea tempArea = new SelectArea())
-                {
-                    if (tempArea.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                    {
-                        this.ScreenX = tempArea.Location.X;
-                        this.ScreenY = tempArea.Location.Y;
-                        this.ScreenWidth = tempArea.Width;
-                        this.ScreenHeight = tempArea.Height;
-                    }
-                }
-                Bitmap tempMap = CaptureScreen.Snip(ScreenX, ScreenY, ScreenWidth, ScreenHeight);
-
-                OBJ = new ObjectDetection();
-                OBJ.loadLists(selectedAlchemyStone, selectedMaterial);
-
-                thread = new Thread(new ThreadStart(detectStones));
-                thread.Start();
-                ((Button)sender).Text = "Stop";
-            }
-            else
-            {
-                isRunning = false;
-                thread.Join();
-                while (thread.IsAlive) { }
-                ((Button)sender).Text = "Start";
-            }
-        }
-
-        private void detectStones()
-        {
-            do
-            {
-                toDisplay = CaptureScreen.Snip(ScreenX, ScreenY, ScreenWidth, ScreenHeight);
-                List<YoloPrediction> perdictions = OBJ.getPerdictions(toDisplay);
-                OBJ.getPositions(perdictions);
-                ScreenShotBox.Image = OBJ.drawRectangles(toDisplay, perdictions);
-                Thread.Sleep(50);
-            } while (isRunning);
         }
     }
 }
