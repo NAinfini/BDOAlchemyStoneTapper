@@ -141,12 +141,19 @@ namespace GameZBDAlchemyStoneTapper
 
                 dec = new Detection(snipLocation, selectedAlchemyStone, selectedMaterial);
                 dec.Show();
+                dec.FormClosed += Dec_FormClosed;
                 startBtn.Text = "stop";
             }
             else
             {
                 stopRunning();
             }
+        }
+
+        private void Dec_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            isRunning = false;
+            startBtn.Text = "start";
         }
 
         private void stopRunning()

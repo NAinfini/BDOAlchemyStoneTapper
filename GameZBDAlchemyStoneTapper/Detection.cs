@@ -12,6 +12,7 @@ using System.Windows.Shell;
 using WindowsInput.Native;
 using WindowsInput;
 using Yolov7net;
+using System.Xml.Linq;
 
 namespace GameZBDAlchemyStoneTapper
 {
@@ -25,10 +26,10 @@ namespace GameZBDAlchemyStoneTapper
         private Bitmap toDisplay;
         private Thread thread;
         private bool isRunning = true;
-        private List<List<RectangleF>> materialPositions = new List<List<RectangleF>>();
+        private Stack<RectangleF> materialPositions = new Stack<RectangleF>();
+        private Stack<string> materialNames = new Stack<string>();
         private Dictionary<string, RectangleF> positionList;
         private RectangleF BlackStonePosition;
-        private bool ButtonPositionsFound = false;
 
         public Detection(Rectangle rec, List<string> stoneList, List<string> matList)
         {
@@ -62,22 +63,42 @@ namespace GameZBDAlchemyStoneTapper
             List<YoloPrediction> perdictions = OBJ.getPerdictions(toDisplay);
             Dictionary<string, List<RectangleF>> positions = OBJ.getPositions(perdictions);
             //now start polishing stones
+            RectangleF CurrentMaterial = materialPositions.Pop();
             foreach (string tempStr in selectedAlchemyStone)
             {
                 if (positions.TryGetValue(tempStr, out List<RectangleF> tempList))
                 {
                     foreach (RectangleF tempRect in tempList)
                     {
-                        RightClickRectangle(tempRect);
-                        //temp code, grabs whatever material is first in the list
-                        RightClickRectangle(materialPositions[0][0]);
-                        //press space to max material
-                        InputSimulator sim = new InputSimulator();
-                        sim.Keyboard.KeyPress(VirtualKeyCode.SPACE);
-                        //left click polishing button
-                        LeftClickRectangle(positionList["LowerPolishButton"]);
-                        //send item back to inventory
-                        RightClickRectangle(positionList["PolishPosition"]);
+                        bool StoneTapped = false;
+                        do
+                        {
+                            StoneTapped = true;
+                            RightClickRectangle(tempRect);
+                            //temp code, grabs whatever material is first in the list
+                            RightClickRectangle(CurrentMaterial);
+                            //press space to max material
+                            InputSimulator sim = new InputSimulator();
+                            sim.Keyboard.KeyPress(VirtualKeyCode.SPACE);
+                            //left click polishing button
+                            LeftClickRectangle(positionList["LowerPolishButton"]);
+                            //send item back to inventory
+                            RightClickRectangle(positionList["PolishPosition"]);
+                            if (!MaterialExists(materialNames.Peek()))
+                            {
+                                StoneTapped = false;
+                                if (materialPositions.TryPop(out RectangleF tempRect2))
+                                {
+                                    CurrentMaterial = tempRect2;
+                                    materialNames.Pop();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Out of Materials");
+                                    return;
+                                }
+                            }
+                        } while (StoneTapped == false);
                     }
                 }
             }
@@ -107,6 +128,11 @@ namespace GameZBDAlchemyStoneTapper
                         sim.Keyboard.KeyPress(VirtualKeyCode.SPACE);
                         //left click Growth button
                         LeftClickRectangle(positionList["LowerGrowthButton"]);
+                        if (!BlackStoneExists())
+                        {
+                            MessageBox.Show("Out of Black Stones");
+                            return;
+                        }
                     }
                 }
             }
@@ -129,9 +155,11 @@ namespace GameZBDAlchemyStoneTapper
             {
                 if (positions.TryGetValue(tempStr, out List<RectangleF> tempList))
                 {
-                    materialPositions.Add(tempList);
+                    materialPositions.Push(tempList.FirstOrDefault());
+                    materialNames.Push(tempStr);
                 }
             }
+
             //right click on stone to move it to polish slot
             foreach (string tempStr in selectedAlchemyStone)
             {
@@ -141,6 +169,9 @@ namespace GameZBDAlchemyStoneTapper
                     break;
                 }
             }
+            toDisplay = CaptureScreen.Snip(sniplocation);
+            perdictions = OBJ.getPerdictions(toDisplay);
+            positions = OBJ.getPositions(perdictions);
             RectangleF PolishPosition = new RectangleF(9999999, 0, 0, 0);
             foreach (string tempStr in selectedAlchemyStone)
             {
@@ -157,15 +188,36 @@ namespace GameZBDAlchemyStoneTapper
             }
             //move stone back to inventory
             RightClickRectangle(PolishPosition);
-            positionList = new Dictionary<string, RectangleF>();
-            positionList.Add("PolishPosition", PolishPosition);
-            positionList.Add("GrowthPosition", new RectangleF(PolishPosition.X, PolishPosition.X, PolishPosition.X, PolishPosition.X));
-            positionList.Add("LowerPolishButton", new RectangleF(PolishPosition.X, PolishPosition.X, PolishPosition.X, PolishPosition.X));
-            positionList.Add("LowerGrowthButton", new RectangleF(PolishPosition.X, PolishPosition.X, PolishPosition.X, PolishPosition.X));
-            positionList.Add("UpperPolishButton", new RectangleF(PolishPosition.X, PolishPosition.X, PolishPosition.X, PolishPosition.X));
-            positionList.Add("UpperGrowthButton", new RectangleF(PolishPosition.X, PolishPosition.X, PolishPosition.X, PolishPosition.X));
+            positionList = new Dictionary<string, RectangleF>
+            {
+                { "PolishPosition", PolishPosition },
+                {
+                    "GrowthPosition",
+                    new RectangleF(PolishPosition.X-0.1876F*sniplocation.Width, PolishPosition.Y-0.0596F *sniplocation.Height,
+                0.0444F * sniplocation.Width, 0.0444F * sniplocation.Height)
+                },
+                {
+                    "LowerPolishButton",
+                    new RectangleF(PolishPosition.X - (0.2299F * sniplocation.Width),
+                PolishPosition.Y + 0.1761F * sniplocation.Height, 0.2924F * sniplocation.Width, 0.0416F * sniplocation.Height)
+                },
+                {
+                    "LowerGrowthButton",
+                    new RectangleF(PolishPosition.X - (0.2299F * sniplocation.Width),
+                PolishPosition.Y + 0.1761F * sniplocation.Height, 0.2924F * sniplocation.Width, 0.0416F * sniplocation.Height)
+                },
+                {
+                    "UpperPolishButton",
+                    new RectangleF(PolishPosition.X-0.14F *sniplocation.Width,
+                    PolishPosition.Y-0.2288F*sniplocation.Height, 0.0602F * sniplocation.Width, 0.025F * sniplocation.Height)
+                },
+                {
+                    "UpperGrowthButton",
+                    new RectangleF(PolishPosition.X-0.08F *sniplocation.Width,
+                    PolishPosition.Y-0.2288F*sniplocation.Height, 0.0602F * sniplocation.Width, 0.025F * sniplocation.Height)
+                }
+            };
             CaptureZonePictureBox.Image = OBJ.drawRectangles(toDisplay, positionList);
-            ButtonPositionsFound = true;
             return true;
         }
 
@@ -182,7 +234,7 @@ namespace GameZBDAlchemyStoneTapper
             else
             {
                 MessageBox.Show("Black Stone not found");
-                return false;
+                //return false;
             }
             //right click on stone to move it to polish slot
             foreach (string tempStr in selectedAlchemyStone)
@@ -190,7 +242,7 @@ namespace GameZBDAlchemyStoneTapper
                 if (positions.TryGetValue(tempStr, out List<RectangleF> tempList))
                 {
                     RightClickRectangle(tempList.FirstOrDefault());
-                    return false;
+                    break;
                 }
             }
             //find position for Growth slot
@@ -214,15 +266,36 @@ namespace GameZBDAlchemyStoneTapper
 
             //move stone back to inventory
             RightClickRectangle(GrowthPosition);
-            positionList = new Dictionary<string, RectangleF>();
-            positionList.Add("GrowthPosition", GrowthPosition);
-            positionList.Add("PolishPosition", new RectangleF(GrowthPosition.X, GrowthPosition.X, GrowthPosition.X, GrowthPosition.X));
-            positionList.Add("LowerPolishButton", new RectangleF(GrowthPosition.X, GrowthPosition.X, GrowthPosition.X, GrowthPosition.X));
-            positionList.Add("LowerGrowthButton", new RectangleF(GrowthPosition.X, GrowthPosition.X, GrowthPosition.X, GrowthPosition.X));
-            positionList.Add("UpperPolishButton", new RectangleF(GrowthPosition.X, GrowthPosition.X, GrowthPosition.X, GrowthPosition.X));
-            positionList.Add("UpperGrowthButton", new RectangleF(GrowthPosition.X, GrowthPosition.X, GrowthPosition.X, GrowthPosition.X));
+            positionList = new Dictionary<string, RectangleF>
+            {
+                { "GrowthPosition", GrowthPosition },
+                {
+                    "PolishPosition",
+                    new RectangleF(GrowthPosition.X+0.01876F*sniplocation.Width, GrowthPosition.Y+0.0596F *sniplocation.Height,
+                0.0444F * sniplocation.Width, 0.0444F * sniplocation.Height)
+                },
+                {
+                    "LowerPolishButton",
+                    new RectangleF(GrowthPosition.X - 0.0422F * sniplocation.Width,
+                GrowthPosition.Y + 0.2774F * sniplocation.Height, 0.2924F * sniplocation.Width, 0.0416F * sniplocation.Height)
+                },
+                {
+                    "LowerGrowthButton",
+                    new RectangleF(GrowthPosition.X - 0.0422F * sniplocation.Width,
+                GrowthPosition.Y + 0.2774F * sniplocation.Height, 0.2924F * sniplocation.Width, 0.0416F * sniplocation.Height)
+                },
+                {
+                    "UpperPolishButton",
+                    new RectangleF(GrowthPosition.X+0.0422F *sniplocation.Width,
+                    GrowthPosition.Y-0.1692F*sniplocation.Height, 0.0602F * sniplocation.Width, 0.025F * sniplocation.Height)
+                },
+                {
+                    "UpperGrowthButton",
+                    new RectangleF(GrowthPosition.X+0.1024F *sniplocation.Width,
+                    GrowthPosition.Y-0.1692F*sniplocation.Height, 0.0602F * sniplocation.Width, 0.025F * sniplocation.Height)
+                }
+            };
             CaptureZonePictureBox.Image = OBJ.drawRectangles(toDisplay, positionList);
-            ButtonPositionsFound = true;
             return true;
         }
 
@@ -234,6 +307,30 @@ namespace GameZBDAlchemyStoneTapper
         private void GrowStonesOnceBtn_Click(object sender, EventArgs e)
         {
             GrowStonesOnce();
+        }
+
+        private bool MaterialExists(string name)
+        {
+            toDisplay = CaptureScreen.Snip(sniplocation);
+            List<YoloPrediction> perdictions = OBJ.getPerdictions(toDisplay);
+            Dictionary<string, List<RectangleF>> positions = OBJ.getPositions(perdictions);
+            if (positions.TryGetValue(name, out List<RectangleF> tempList))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private bool BlackStoneExists()
+        {
+            toDisplay = CaptureScreen.Snip(sniplocation);
+            List<YoloPrediction> perdictions = OBJ.getPerdictions(toDisplay);
+            Dictionary<string, List<RectangleF>> positions = OBJ.getPositions(perdictions);
+            if (positions.TryGetValue("BlackStone", out List<RectangleF> tempList))
+            {
+                return true;
+            }
+            return false;
         }
 
         private void RightClickRectangle(RectangleF tempRect)
