@@ -193,28 +193,23 @@ namespace GameZBDAlchemyStoneTapper
                 { "PolishPosition", PolishPosition },
                 {
                     "GrowthPosition",
-                    new RectangleF(PolishPosition.X-0.1876F*sniplocation.Width, PolishPosition.Y-0.0596F *sniplocation.Height,
-                0.0444F * sniplocation.Width, 0.0444F * sniplocation.Height)
+                    new RectangleF(PolishPosition.X-360, PolishPosition.Y-70,50 , 50)
                 },
                 {
                     "LowerPolishButton",
-                    new RectangleF(PolishPosition.X - (0.2299F * sniplocation.Width),
-                PolishPosition.Y + 0.1761F * sniplocation.Height, 0.2924F * sniplocation.Width, 0.0416F * sniplocation.Height)
+                    new RectangleF(PolishPosition.X - 440, PolishPosition.Y +230 ,570 ,50 )
                 },
                 {
                     "LowerGrowthButton",
-                    new RectangleF(PolishPosition.X - (0.2299F * sniplocation.Width),
-                PolishPosition.Y + 0.1761F * sniplocation.Height, 0.2924F * sniplocation.Width, 0.0416F * sniplocation.Height)
+                    new RectangleF(PolishPosition.X - 440, PolishPosition.Y + 230,570 ,50 )
                 },
                 {
                     "UpperPolishButton",
-                    new RectangleF(PolishPosition.X-0.14F *sniplocation.Width,
-                    PolishPosition.Y-0.2288F*sniplocation.Height, 0.0602F * sniplocation.Width, 0.025F * sniplocation.Height)
+                    new RectangleF(PolishPosition.X-260,PolishPosition.Y -240, 70,20)
                 },
                 {
                     "UpperGrowthButton",
-                    new RectangleF(PolishPosition.X-0.08F *sniplocation.Width,
-                    PolishPosition.Y-0.2288F*sniplocation.Height, 0.0602F * sniplocation.Width, 0.025F * sniplocation.Height)
+                    new RectangleF(PolishPosition.X-110,  PolishPosition.Y -240, 70,20)
                 }
             };
             CaptureZonePictureBox.Image = OBJ.drawRectangles(toDisplay, positionList);
@@ -271,28 +266,23 @@ namespace GameZBDAlchemyStoneTapper
                 { "GrowthPosition", GrowthPosition },
                 {
                     "PolishPosition",
-                    new RectangleF(GrowthPosition.X+0.01876F*sniplocation.Width, GrowthPosition.Y+0.0596F *sniplocation.Height,
-                0.0444F * sniplocation.Width, 0.0444F * sniplocation.Height)
+                    new RectangleF(GrowthPosition.X+360, GrowthPosition.Y+70,50,50)
                 },
                 {
                     "LowerPolishButton",
-                    new RectangleF(GrowthPosition.X - 0.0422F * sniplocation.Width,
-                GrowthPosition.Y + 0.2774F * sniplocation.Height, 0.2924F * sniplocation.Width, 0.0416F * sniplocation.Height)
+                    new RectangleF(GrowthPosition.X-80,GrowthPosition.Y+300,570,50)
                 },
                 {
                     "LowerGrowthButton",
-                    new RectangleF(GrowthPosition.X - 0.0422F * sniplocation.Width,
-                GrowthPosition.Y + 0.2774F * sniplocation.Height, 0.2924F * sniplocation.Width, 0.0416F * sniplocation.Height)
+                    new RectangleF(GrowthPosition.X-80,GrowthPosition.Y+300,570,50)
                 },
                 {
                     "UpperPolishButton",
-                    new RectangleF(GrowthPosition.X+0.0422F *sniplocation.Width,
-                    GrowthPosition.Y-0.1692F*sniplocation.Height, 0.0602F * sniplocation.Width, 0.025F * sniplocation.Height)
+                    new RectangleF(GrowthPosition.X+100,GrowthPosition.Y-170,70,20)
                 },
                 {
                     "UpperGrowthButton",
-                    new RectangleF(GrowthPosition.X+0.1024F *sniplocation.Width,
-                    GrowthPosition.Y-0.1692F*sniplocation.Height, 0.0602F * sniplocation.Width, 0.025F * sniplocation.Height)
+                    new RectangleF(GrowthPosition.X+250,GrowthPosition.Y-170,70,20)
                 }
             };
             CaptureZonePictureBox.Image = OBJ.drawRectangles(toDisplay, positionList);
