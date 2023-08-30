@@ -75,15 +75,20 @@ namespace GameZBDAlchemyStoneTapper
                         {
                             StoneTapped = true;
                             RightClickRectangle(tempRect);
+                            Thread.Sleep(500);
                             //temp code, grabs whatever material is first in the list
                             RightClickRectangle(CurrentMaterial);
+                            Thread.Sleep(500);
                             //press space to max material
                             InputSimulator sim = new InputSimulator();
                             sim.Keyboard.KeyPress(VirtualKeyCode.SPACE);
+                            Thread.Sleep(500);
                             //left click polishing button
                             LeftClickRectangle(positionList["LowerPolishButton"]);
+                            Thread.Sleep(500);
                             //send item back to inventory
                             RightClickRectangle(positionList["PolishPosition"]);
+                            Thread.Sleep(500);
                             if (!MaterialExists(materialNames.Peek()))
                             {
                                 StoneTapped = false;
@@ -121,13 +126,17 @@ namespace GameZBDAlchemyStoneTapper
                     foreach (RectangleF tempRect in tempList)
                     {
                         RightClickRectangle(tempRect);
+                        Thread.Sleep(500);
                         //temp code, grabs whatever material is first in the list
                         RightClickRectangle(BlackStonePosition);
+                        Thread.Sleep(500);
                         //press space to max material
                         InputSimulator sim = new InputSimulator();
                         sim.Keyboard.KeyPress(VirtualKeyCode.SPACE);
+                        Thread.Sleep(500);
                         //left click Growth button
                         LeftClickRectangle(positionList["LowerGrowthButton"]);
+                        Thread.Sleep(500);
                         if (!BlackStoneExists())
                         {
                             MessageBox.Show("Out of Black Stones");

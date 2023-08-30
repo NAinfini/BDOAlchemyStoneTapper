@@ -28,14 +28,23 @@ namespace GameZBDAlchemyStoneTapper
 
         public ObjectDetection()
         {
-            yolo = new Yolov7net.Yolov8("./best.onnx", false);
-            // setup labels of onnx model
-            string[] labels = new string[46]
+            try
             {
-                    "Acacia","Arrow","Ash","Birch","Cedar","Cloud","Copper","Ghost","Gold","Grape","ImperfectD","ImperfectL","ImperfectP",
-                    "Iron","Lead","Maple","Palm","Pine","PolishedD","PolishedL","PolishedP","Purple", "ResplendentD", "ResplendentL",
-                    "ResplendentP","RoughD","RoughL","RoughP","SharpD","SharpL", "SharpP", "ShiningD", "ShiningL", "ShiningP","SplendidD",
-                    "SplendidL","SplendidP","StrawBerry","SturdyD", "SturdyL", "SturdyP", "Sunflower",  "Tin","Titanium", "Vanadium", "Zinc"
+                yolo = new Yolov7net.Yolov8("./best.onnx", true);
+            }
+            catch
+            {
+                yolo = new Yolov7net.Yolov8("./best.onnx", false);
+            }
+
+            // setup labels of onnx model
+            string[] labels = new string[47]
+            {
+                   "Acacia", "Arrow", "Ash", "Birch", "BlackStone", "Cedar", "Cloud", "Copper", "Ghost", "Gold",
+                "Grape", "ImperfectD", "ImperfectL", "ImperfectP", "Iron", "Lead", "Maple", "Palm", "Pine", "PolishedD",
+                "PolishedL", "PolishedP", "Purple", "ResplendentD", "ResplendentL", "ResplendentP", "RoughD", "RoughL",
+                "RoughP", "SharpD", "SharpL", "SharpP", "ShiningD", "ShiningL", "ShiningP", "SplendidD", "SplendidL", "SplendidP",
+                "StrawBerry", "SturdyD", "SturdyL", "SturdyP", "Sunflower", "Tin", "Titanium", "Vanadium", "Zinc"
             };
             yolo.SetupLabels(labels);   // use custom trained model should use your labels like: yolo.SetupLabels(string[] labels)
         }

@@ -33,6 +33,7 @@
     <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.15.1" />
     <PackageReference Include="Microsoft.AspNetCore.SystemWebAdapters" Version="1.2.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Microsoft.ML.OnnxRuntime.Gpu" Version="1.15.1" />
     <PackageReference Include="NumSharp" Version="0.30.0" />
     <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
     <PackageReference Include="System.ComponentModel.Composition" Version="7.0.0" />
