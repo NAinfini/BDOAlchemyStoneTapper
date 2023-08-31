@@ -57,36 +57,42 @@ namespace GameZBDAlchemyStoneTapper
 
         public Bitmap drawRectangles(Bitmap image, List<YoloPrediction> predictions)
         {
-            using (Graphics graphics = Graphics.FromImage(image))
+            lock (ThreadLocks.BitMapLock)
             {
-                foreach (var prediction in predictions) // iterate predictions to draw results
+                using (Graphics graphics = Graphics.FromImage(image))
                 {
-                    double score = Math.Round(prediction.Score, 2);
+                    foreach (var prediction in predictions) // iterate predictions to draw results
+                    {
+                        double score = Math.Round(prediction.Score, 2);
 
-                    graphics.DrawRectangles(new Pen(prediction.Label.Color, 1), new[] { prediction.Rectangle });
-                    var (x, y) = (prediction.Rectangle.X - 3, prediction.Rectangle.Y - 23);
-                    graphics.DrawString($"{prediction.Label.Name}  {score}",
-                                    new System.Drawing.Font("Consolas", 15, GraphicsUnit.Pixel), new SolidBrush(prediction.Label.Color),
-                                    new System.Drawing.PointF(x, y));
+                        graphics.DrawRectangles(new Pen(prediction.Label.Color, 1), new[] { prediction.Rectangle });
+                        var (x, y) = (prediction.Rectangle.X - 3, prediction.Rectangle.Y - 23);
+                        graphics.DrawString($"{prediction.Label.Name}  {score}",
+                                        new System.Drawing.Font("Consolas", 15, GraphicsUnit.Pixel), new SolidBrush(prediction.Label.Color),
+                                        new System.Drawing.PointF(x, y));
+                    }
                 }
+                return image;
             }
-            return image;
         }
 
         public Bitmap drawRectangles(Bitmap image, Dictionary<string, RectangleF> recs)
         {
-            using (Graphics graphics = Graphics.FromImage(image))
+            lock (ThreadLocks.BitMapLock)
             {
-                foreach (var prediction in recs) // iterate predictions to draw results
+                using (Graphics graphics = Graphics.FromImage(image))
                 {
-                    graphics.DrawRectangles(new Pen(Color.Red, 1), new[] { prediction.Value });
-                    var (x, y) = (prediction.Value.X - 3, prediction.Value.Y - 23);
-                    graphics.DrawString(prediction.Key,
-                                    new System.Drawing.Font("Consolas", 15, GraphicsUnit.Pixel), new SolidBrush(Color.Red),
-                                    new System.Drawing.PointF(x, y));
+                    foreach (var prediction in recs) // iterate predictions to draw results
+                    {
+                        graphics.DrawRectangles(new Pen(Color.Red, 1), new[] { prediction.Value });
+                        var (x, y) = (prediction.Value.X - 3, prediction.Value.Y - 23);
+                        graphics.DrawString(prediction.Key,
+                                        new System.Drawing.Font("Consolas", 15, GraphicsUnit.Pixel), new SolidBrush(Color.Red),
+                                        new System.Drawing.PointF(x, y));
+                    }
                 }
+                return image;
             }
-            return image;
         }
 
         public Dictionary<string, List<System.Drawing.RectangleF>> getPositions(List<YoloPrediction> predictions)

@@ -19,11 +19,14 @@ namespace GameZBDAlchemyStoneTapper
     public partial class Detection : Form
     {
         private Rectangle sniplocation;
+        private Rectangle PhysicalSnipLocation;
         private Yolov8 yolo;
         private List<string> selectedAlchemyStone = new List<string>();
         private List<string> selectedMaterial = new List<string>();
         private ObjectDetection OBJ;
         private Bitmap toDisplay;
+        private List<YoloPrediction> perdictions;
+        private Dictionary<string, List<RectangleF>> positions;
         private Thread thread;
         private bool isRunning = true;
         private Stack<RectangleF> materialPositions = new Stack<RectangleF>();
@@ -34,6 +37,7 @@ namespace GameZBDAlchemyStoneTapper
         public Detection(Rectangle rec, List<string> stoneList, List<string> matList)
         {
             sniplocation = rec;
+            PhysicalSnipLocation = DPIFinder.ScaledToPhysical(sniplocation);
             selectedAlchemyStone = stoneList;
             selectedMaterial = matList;
             InitializeComponent();
@@ -48,20 +52,19 @@ namespace GameZBDAlchemyStoneTapper
         {
             while (isRunning)
             {
-                toDisplay = CaptureScreen.Snip(sniplocation);
-                List<YoloPrediction> perdictions = OBJ.getPerdictions(toDisplay);
-                OBJ.getPositions(perdictions);
-                CaptureZonePictureBox.Image = OBJ.drawRectangles(toDisplay, perdictions);
-                Thread.Sleep(50);
+                lock (ThreadLocks.BitMapLock)
+                {
+                    updatePerdictionList();
+                    CaptureZonePictureBox.Image = OBJ.drawRectangles(toDisplay, perdictions);
+                    Thread.Sleep(50);
+                }
             }
         }
 
         private void PolishStonesOnce()
         {
             if (!findButtonsPositionsFromPolishSlot()) return;
-            toDisplay = CaptureScreen.Snip(sniplocation);
-            List<YoloPrediction> perdictions = OBJ.getPerdictions(toDisplay);
-            Dictionary<string, List<RectangleF>> positions = OBJ.getPositions(perdictions);
+            updatePerdictionList();
             //now start polishing stones
             RectangleF CurrentMaterial = materialPositions.Pop();
             foreach (string tempStr in selectedAlchemyStone)
@@ -115,9 +118,7 @@ namespace GameZBDAlchemyStoneTapper
         private void GrowStonesOnce()
         {
             if (!findButtonsPositionsFromGrowthSlot()) return;
-            toDisplay = CaptureScreen.Snip(sniplocation);
-            List<YoloPrediction> perdictions = OBJ.getPerdictions(toDisplay);
-            Dictionary<string, List<RectangleF>> positions = OBJ.getPositions(perdictions);
+            updatePerdictionList();
             //now start polishing stones
             foreach (string tempStr in selectedAlchemyStone)
             {
@@ -155,19 +156,8 @@ namespace GameZBDAlchemyStoneTapper
         private bool findButtonsPositionsFromPolishSlot()
         {
             //find position for polish slot
-            toDisplay = CaptureScreen.Snip(sniplocation);
-            List<YoloPrediction> perdictions = OBJ.getPerdictions(toDisplay);
-            Dictionary<string, List<RectangleF>> positions = OBJ.getPositions(perdictions);
+            updatePerdictionList();
             CaptureZonePictureBox.Image = OBJ.drawRectangles(toDisplay, perdictions);
-            //find position for all materials
-            foreach (string tempStr in selectedMaterial)
-            {
-                if (positions.TryGetValue(tempStr, out List<RectangleF> tempList))
-                {
-                    materialPositions.Push(tempList.FirstOrDefault());
-                    materialNames.Push(tempStr);
-                }
-            }
 
             //right click on stone to move it to polish slot
             foreach (string tempStr in selectedAlchemyStone)
@@ -178,9 +168,7 @@ namespace GameZBDAlchemyStoneTapper
                     break;
                 }
             }
-            toDisplay = CaptureScreen.Snip(sniplocation);
-            perdictions = OBJ.getPerdictions(toDisplay);
-            positions = OBJ.getPositions(perdictions);
+            updatePerdictionList();
             RectangleF PolishPosition = new RectangleF(9999999, 0, 0, 0);
             foreach (string tempStr in selectedAlchemyStone)
             {
@@ -194,6 +182,22 @@ namespace GameZBDAlchemyStoneTapper
                         }
                     }
                 }
+            }
+            updatePerdictionList();
+            CaptureZonePictureBox.Image = OBJ.drawRectangles(toDisplay, perdictions);
+            //find position for all materials
+            foreach (string tempStr in selectedMaterial)
+            {
+                if (positions.TryGetValue(tempStr, out List<RectangleF> tempList))
+                {
+                    materialPositions.Push(tempList.FirstOrDefault());
+                    materialNames.Push(tempStr);
+                }
+            }
+            if (materialPositions.Count == 0)
+            {
+                MessageBox.Show("Material Not Found");
+                return false;
             }
             //move stone back to inventory
             RightClickRectangle(PolishPosition);
@@ -227,9 +231,7 @@ namespace GameZBDAlchemyStoneTapper
 
         private bool findButtonsPositionsFromGrowthSlot()
         {
-            toDisplay = CaptureScreen.Snip(sniplocation);
-            List<YoloPrediction> perdictions = OBJ.getPerdictions(toDisplay);
-            Dictionary<string, List<RectangleF>> positions = OBJ.getPositions(perdictions);
+            updatePerdictionList();
             CaptureZonePictureBox.Image = OBJ.drawRectangles(toDisplay, perdictions);
             if (positions.TryGetValue("BlackStone", out List<RectangleF> blackStoneList))
             {
@@ -250,9 +252,7 @@ namespace GameZBDAlchemyStoneTapper
                 }
             }
             //find position for Growth slot
-            toDisplay = CaptureScreen.Snip(sniplocation);
-            perdictions = OBJ.getPerdictions(toDisplay);
-            positions = OBJ.getPositions(perdictions);
+            updatePerdictionList();
             RectangleF GrowthPosition = new RectangleF(9999999, 0, 0, 0);
             foreach (string tempStr in selectedAlchemyStone)
             {
@@ -300,19 +300,21 @@ namespace GameZBDAlchemyStoneTapper
 
         private void tapStonesOnceBtn_Click(object sender, EventArgs e)
         {
+            LeftClickRectangleAbs(PhysicalSnipLocation);
+            Thread.Sleep(500);
             PolishStonesOnce();
         }
 
         private void GrowStonesOnceBtn_Click(object sender, EventArgs e)
         {
+            LeftClickRectangleAbs(PhysicalSnipLocation);
+            Thread.Sleep(500);
             GrowStonesOnce();
         }
 
         private bool MaterialExists(string name)
         {
-            toDisplay = CaptureScreen.Snip(sniplocation);
-            List<YoloPrediction> perdictions = OBJ.getPerdictions(toDisplay);
-            Dictionary<string, List<RectangleF>> positions = OBJ.getPositions(perdictions);
+            updatePerdictionList();
             if (positions.TryGetValue(name, out List<RectangleF> tempList))
             {
                 return true;
@@ -322,9 +324,7 @@ namespace GameZBDAlchemyStoneTapper
 
         private bool BlackStoneExists()
         {
-            toDisplay = CaptureScreen.Snip(sniplocation);
-            List<YoloPrediction> perdictions = OBJ.getPerdictions(toDisplay);
-            Dictionary<string, List<RectangleF>> positions = OBJ.getPositions(perdictions);
+            updatePerdictionList();
             if (positions.TryGetValue("BlackStone", out List<RectangleF> tempList))
             {
                 return true;
@@ -334,22 +334,45 @@ namespace GameZBDAlchemyStoneTapper
 
         private void RightClickRectangle(RectangleF tempRect)
         {
-            Point pt = new Point((int)tempRect.X + sniplocation.X + (int)tempRect.Width / 2, (int)tempRect.Y + sniplocation.Y + (int)tempRect.Height / 2);
+            Point pt = new Point((int)tempRect.X + PhysicalSnipLocation.X + (int)tempRect.Width / 2, (int)tempRect.Y + PhysicalSnipLocation.Y + (int)tempRect.Height / 2);
             MouseClickHelper.RightClick(DPIFinder.PhysicalToScaled(pt));
         }
 
         private void LeftClickRectangle(RectangleF tempRect)
         {
-            Point pt = new Point((int)tempRect.X + sniplocation.X + (int)tempRect.Width / 2, (int)tempRect.Y + sniplocation.Y + (int)tempRect.Height / 2);
+            Point pt = new Point((int)tempRect.X + PhysicalSnipLocation.X + (int)tempRect.Width / 2, (int)tempRect.Y + PhysicalSnipLocation.Y + (int)tempRect.Height / 2);
+            MouseClickHelper.LeftClick(DPIFinder.PhysicalToScaled(pt));
+        }
+
+        private void RightClickRectangleAbs(RectangleF tempRect)
+        {
+            Point pt = new Point((int)tempRect.X + (int)tempRect.Width / 2, (int)tempRect.Y + (int)tempRect.Height / 2);
+            MouseClickHelper.RightClick(DPIFinder.PhysicalToScaled(pt));
+        }
+
+        private void LeftClickRectangleAbs(RectangleF tempRect)
+        {
+            Point pt = new Point((int)tempRect.X + (int)tempRect.Width / 2, (int)tempRect.Y + (int)tempRect.Height / 2);
             MouseClickHelper.LeftClick(DPIFinder.PhysicalToScaled(pt));
         }
 
         private void detectionClose(object sender, FormClosingEventArgs e)
         {
             isRunning = false;
+            toDisplay.Dispose();
             thread.Join();
             while (thread.IsAlive) { }
-            toDisplay.Dispose();
+            
+        }
+
+        private void updatePerdictionList()
+        {
+            lock (ThreadLocks.BitMapLock)
+            {
+                toDisplay = CaptureScreen.Snip(sniplocation);
+                perdictions = OBJ.getPerdictions(toDisplay);
+                positions = OBJ.getPositions(perdictions);
+            }
         }
 
         #endregion helper functions

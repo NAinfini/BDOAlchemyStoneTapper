@@ -75,6 +75,15 @@ namespace GameZBDAlchemyStoneTapper
             return Math.Round((double)dm.dmPelsWidth / screen.Bounds.Width, 2);
         }
 
+        public static double FindDPIScaleOnPoint(PointF pt)
+        {
+            Screen screen = Screen.FromPoint(Point.Round(pt));
+            DEVMODE dm = new DEVMODE();
+            dm.dmSize = (short)Marshal.SizeOf(typeof(DEVMODE));
+            EnumDisplaySettings(screen.DeviceName, -1, ref dm);
+            return Math.Round((double)dm.dmPelsWidth / screen.Bounds.Width, 2);
+        }
+
         public static Point ScaledToPhysical(Point pt)
         {
             double DPI = FindDPIScaleOnPoint(new Point(pt.X, pt.Y));
@@ -109,6 +118,26 @@ namespace GameZBDAlchemyStoneTapper
             int width = Convert.ToInt32(rec.Width / DPI);
             int height = Convert.ToInt32(rec.Height / DPI);
             return new Rectangle(X, Y, width, height);
+        }
+
+        public static RectangleF ScaledToPhysical(RectangleF rec)
+        {
+            double DPI = DPIFinder.FindDPIScaleOnPoint(new PointF(rec.X, rec.Y));
+            int X = Convert.ToInt32(rec.X * DPI);
+            int Y = Convert.ToInt32(rec.Y * DPI);
+            int width = Convert.ToInt32(rec.Width * DPI);
+            int height = Convert.ToInt32(rec.Height * DPI);
+            return new RectangleF(X, Y, width, height);
+        }
+
+        public static RectangleF PhysicalToScaled(RectangleF rec)
+        {
+            double DPI = DPIFinder.FindDPIScaleOnPoint(new PointF(rec.X, rec.Y));
+            int X = Convert.ToInt32(rec.X / DPI);
+            int Y = Convert.ToInt32(rec.Y / DPI);
+            int width = Convert.ToInt32(rec.Width / DPI);
+            int height = Convert.ToInt32(rec.Height / DPI);
+            return new RectangleF(X, Y, width, height);
         }
     }
 }
