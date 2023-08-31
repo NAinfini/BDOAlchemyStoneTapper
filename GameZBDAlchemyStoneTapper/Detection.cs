@@ -33,6 +33,7 @@ namespace GameZBDAlchemyStoneTapper
         private Stack<string> materialNames = new Stack<string>();
         private Dictionary<string, RectangleF> positionList;
         private RectangleF BlackStonePosition;
+        private InputSimulator sim = new InputSimulator();
 
         public Detection(Rectangle rec, List<string> stoneList, List<string> matList)
         {
@@ -83,7 +84,6 @@ namespace GameZBDAlchemyStoneTapper
                             RightClickRectangle(CurrentMaterial);
                             Thread.Sleep(500);
                             //press space to max material
-                            InputSimulator sim = new InputSimulator();
                             sim.Keyboard.KeyPress(VirtualKeyCode.SPACE);
                             Thread.Sleep(500);
                             //left click polishing button
@@ -334,26 +334,30 @@ namespace GameZBDAlchemyStoneTapper
 
         private void RightClickRectangle(RectangleF tempRect)
         {
-            Point pt = new Point((int)tempRect.X + PhysicalSnipLocation.X + (int)tempRect.Width / 2, (int)tempRect.Y + PhysicalSnipLocation.Y + (int)tempRect.Height / 2);
-            MouseClickHelper.RightClick(DPIFinder.PhysicalToScaled(pt));
+            PointF pt = DPIFinder.PhysicalToScaled(new Point((int)tempRect.X + PhysicalSnipLocation.X + (int)tempRect.Width / 2,
+                (int)tempRect.Y + PhysicalSnipLocation.Y + (int)tempRect.Height / 2));
+            sim.Mouse.MoveMouseTo(pt.X, pt.Y);
+            sim.Mouse.RightButtonClick();
         }
 
         private void LeftClickRectangle(RectangleF tempRect)
         {
-            Point pt = new Point((int)tempRect.X + PhysicalSnipLocation.X + (int)tempRect.Width / 2, (int)tempRect.Y + PhysicalSnipLocation.Y + (int)tempRect.Height / 2);
-            MouseClickHelper.LeftClick(DPIFinder.PhysicalToScaled(pt));
-        }
-
-        private void RightClickRectangleAbs(RectangleF tempRect)
-        {
-            Point pt = new Point((int)tempRect.X + (int)tempRect.Width / 2, (int)tempRect.Y + (int)tempRect.Height / 2);
-            MouseClickHelper.RightClick(DPIFinder.PhysicalToScaled(pt));
+            PointF pt = DPIFinder.PhysicalToScaled(new Point((int)tempRect.X + PhysicalSnipLocation.X + (int)tempRect.Width / 2,
+                (int)tempRect.Y + PhysicalSnipLocation.Y + (int)tempRect.Height / 2));
+            sim.Mouse.MoveMouseTo(pt.X, pt.Y);
+            sim.Mouse.LeftButtonClick();
         }
 
         private void LeftClickRectangleAbs(RectangleF tempRect)
         {
-            Point pt = new Point((int)tempRect.X + (int)tempRect.Width / 2, (int)tempRect.Y + (int)tempRect.Height / 2);
-            MouseClickHelper.LeftClick(DPIFinder.PhysicalToScaled(pt));
+            sim.Mouse.MoveMouseTo(tempRect.X + tempRect.Width / 2, tempRect.Y + tempRect.Height / 2);
+            sim.Mouse.LeftButtonClick();
+        }
+
+        private void RightClickRectangleAbs(RectangleF tempRect)
+        {
+            sim.Mouse.MoveMouseTo(tempRect.X + tempRect.Width / 2, tempRect.Y + tempRect.Height / 2);
+            sim.Mouse.RightButtonClick();
         }
 
         private void detectionClose(object sender, FormClosingEventArgs e)
@@ -362,7 +366,6 @@ namespace GameZBDAlchemyStoneTapper
             toDisplay.Dispose();
             thread.Join();
             while (thread.IsAlive) { }
-            
         }
 
         private void updatePerdictionList()
