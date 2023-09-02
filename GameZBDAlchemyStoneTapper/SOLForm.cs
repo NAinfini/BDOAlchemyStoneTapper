@@ -17,10 +17,8 @@ namespace GameZBDAlchemyStoneTapper
         private Rectangle snipLocation;
         private List<string> selectedAlchemyStone = new List<string>();
         private List<string> selectedMaterial = new List<string>();
-        private Bitmap toDisplay;
         private bool isRunning = false;
-        private ObjectDetection OBJ;
-        private Thread thread;
+        private Detection dec;
 
         public SOLForm()
         {
@@ -131,6 +129,39 @@ namespace GameZBDAlchemyStoneTapper
 
         private void startBtn_Click(object sender, EventArgs e)
         {
+            if (!isRunning)
+            {
+                isRunning = true;
+                using (SelectArea tempArea = new SelectArea())
+                {
+                    if (tempArea.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        snipLocation = new Rectangle(tempArea.Location.X, tempArea.Location.Y, tempArea.Width, tempArea.Height);
+                    }
+                }
+
+                dec = new Detection(snipLocation, selectedAlchemyStone, selectedMaterial);
+                dec.Show();
+                dec.FormClosed += Dec_FormClosed;
+                startBtn.Text = "stop";
+            }
+            else
+            {
+                stopRunning();
+            }
+        }
+
+        private void Dec_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            isRunning = false;
+            startBtn.Text = "start";
+        }
+
+        private void stopRunning()
+        {
+            isRunning = false;
+            startBtn.Text = "start";
+            dec.Close();
         }
     }
 }

@@ -12,16 +12,13 @@ namespace GameZBDAlchemyStoneTapper
         private Rectangle snipLocation;
         private List<string> selectedAlchemyStone = new List<string>();
         private List<string> selectedMaterial = new List<string>();
-        private Bitmap toDisplay;
         private bool isRunning = false;
-        private ObjectDetection OBJ;
-        private Thread thread;
         private Detection dec;
 
         public SODForm()
         {
             InitializeComponent();
-            HotkeysManager.AddHotkey(new GlobalHotkey(System.Windows.Input.ModifierKeys.Control, Key.C, () => { stopRunning(); }));
+            HotkeysManager.AddHotkey(new GlobalHotkey(Key.End, () => { stopRunning(); }));
         }
 
         #region selection area

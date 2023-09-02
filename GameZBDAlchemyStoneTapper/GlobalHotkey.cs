@@ -51,5 +51,12 @@ namespace GameZBDAlchemyStoneTapper
             this.Callback = callbackMethod;
             this.CanExecute = canExecute;
         }
+
+        public GlobalHotkey(Key key, Action callbackMethod, bool canExecute = true)
+        {
+            this.Key = key;
+            this.Callback = callbackMethod;
+            this.CanExecute = canExecute;
+        }
     }
 }

@@ -46,7 +46,7 @@ namespace Yolov7net
             SetupLabels(s);
         }
 
-        public List<YoloPrediction> Predict(Image image, float conf_thres = 0, float iou_thres = 0, bool useNumpy = false)
+        public List<YoloPrediction> Predict(Image image, float conf_thres = 0.25F, float iou_thres = 0, bool useNumpy = false)
         {
             if (conf_thres > 0f)
             {

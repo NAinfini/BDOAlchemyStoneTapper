@@ -9,18 +9,16 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Shell;
-using WindowsInput.Native;
-using WindowsInput;
 using Yolov7net;
 using System.Xml.Linq;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace GameZBDAlchemyStoneTapper
 {
     public partial class Detection : Form
     {
         private Rectangle sniplocation;
-        private Rectangle PhysicalSnipLocation;
-        private Yolov8 yolo;
         private List<string> selectedAlchemyStone = new List<string>();
         private List<string> selectedMaterial = new List<string>();
         private ObjectDetection OBJ;
@@ -33,17 +31,18 @@ namespace GameZBDAlchemyStoneTapper
         private Stack<string> materialNames = new Stack<string>();
         private Dictionary<string, RectangleF> positionList;
         private RectangleF BlackStonePosition;
-        private InputSimulator sim = new InputSimulator();
+        private bool boxObtained = false;
+
+        [DllImport("user32.dll")]
+        private static extern bool SetForegroundWindow(IntPtr hWnd);
 
         public Detection(Rectangle rec, List<string> stoneList, List<string> matList)
         {
             sniplocation = rec;
-            PhysicalSnipLocation = DPIFinder.ScaledToPhysical(sniplocation);
             selectedAlchemyStone = stoneList;
             selectedMaterial = matList;
             InitializeComponent();
             OBJ = new ObjectDetection();
-            OBJ.loadLists(selectedAlchemyStone, selectedMaterial);
             thread = new Thread(new ThreadStart(detectStones));
             thread.Start();
             FormClosing += detectionClose;
@@ -51,113 +50,136 @@ namespace GameZBDAlchemyStoneTapper
 
         private void detectStones()
         {
+            ObjectDetection ForPictureBox = new ObjectDetection();
             while (isRunning)
             {
-                lock (ThreadLocks.BitMapLock)
-                {
-                    updatePerdictionList();
-                    CaptureZonePictureBox.Image = OBJ.drawRectangles(toDisplay, perdictions);
-                    Thread.Sleep(50);
-                }
+                Bitmap boxMap = CaptureScreen.Snip(sniplocation);
+                List<YoloPrediction> tempperdictions = ForPictureBox.getPerdictions(boxMap);
+                boxMap = ForPictureBox.drawRectangles(boxMap, tempperdictions);
+                if (boxObtained) { ForPictureBox.drawRectangles(boxMap, positionList); }
+                CaptureZonePictureBox.Image = boxMap;
+                Thread.Sleep(200);
             }
         }
 
         private void PolishStonesOnce()
         {
+            var prc = Process.GetProcessesByName("BlackDesert64");
+            if (prc.Length > 0)
+            {
+                SetForegroundWindow(prc[0].MainWindowHandle);
+            }
+            else
+            {
+                MessageBox.Show("Cant get process");
+                return;
+            }
             if (!findButtonsPositionsFromPolishSlot()) return;
-            updatePerdictionList();
+
             //now start polishing stones
+            if (materialPositions.Count <= 0)
+            {
+                MessageBox.Show("Out of Materials");
+                return;
+            }
             RectangleF CurrentMaterial = materialPositions.Pop();
+            Thread.Sleep(200);
+            updatePerdictionList();
+            Dictionary<string, List<RectangleF>> tempPos = positions;
             foreach (string tempStr in selectedAlchemyStone)
             {
-                if (positions.TryGetValue(tempStr, out List<RectangleF> tempList))
+                if (tempPos.TryGetValue(tempStr, out List<RectangleF> tempList))
                 {
                     foreach (RectangleF tempRect in tempList)
                     {
-                        bool StoneTapped = false;
-                        do
+                        RightClickRectangle(tempRect);
+                        Thread.Sleep(400);
+                        /*if (!MaterialExists(materialNames.Peek()))
                         {
-                            StoneTapped = true;
-                            RightClickRectangle(tempRect);
-                            Thread.Sleep(500);
-                            //temp code, grabs whatever material is first in the list
-                            RightClickRectangle(CurrentMaterial);
-                            Thread.Sleep(500);
-                            //press space to max material
-                            sim.Keyboard.KeyPress(VirtualKeyCode.SPACE);
-                            Thread.Sleep(500);
-                            //left click polishing button
-                            LeftClickRectangle(positionList["LowerPolishButton"]);
-                            Thread.Sleep(500);
-                            //send item back to inventory
-                            RightClickRectangle(positionList["PolishPosition"]);
-                            Thread.Sleep(500);
-                            if (!MaterialExists(materialNames.Peek()))
+                            if (materialPositions.TryPop(out RectangleF tempRect2))
                             {
-                                StoneTapped = false;
-                                if (materialPositions.TryPop(out RectangleF tempRect2))
-                                {
-                                    CurrentMaterial = tempRect2;
-                                    materialNames.Pop();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Out of Materials");
-                                    return;
-                                }
+                                CurrentMaterial = tempRect2;
+                                materialNames.Pop();
                             }
-                        } while (StoneTapped == false);
+                            else
+                            {
+                                MessageBox.Show("Out of Materials");
+                                return;
+                            }
+                        }*/
+                        //temp code, grabs whatever material is first in the list
+                        RightClickRectangle(CurrentMaterial);
+                        Thread.Sleep(400);
+                        //press space to max material
+                        MouseClickHelper.PressSpace();
+                        Thread.Sleep(400);
+                        //left click polishing button
+                        LeftClickRectangle(positionList["LowerPolishButton"]);
+                        Thread.Sleep(400);
+                        //send item back to inventory
+                        RightClickRectangle(positionList["PolishPosition"]);
+                        Thread.Sleep(400);
                     }
                 }
             }
 
-            CaptureZonePictureBox.Image = OBJ.drawRectangles(OBJ.drawRectangles(toDisplay, perdictions), positionList);
             Thread.Sleep(50);
         }
 
         private void GrowStonesOnce()
         {
+            var prc = Process.GetProcessesByName("BlackDesert64");
+            if (prc.Length > 0)
+            {
+                SetForegroundWindow(prc[0].MainWindowHandle);
+            }
+            else
+            {
+                MessageBox.Show("Cant get process");
+                return;
+            }
             if (!findButtonsPositionsFromGrowthSlot()) return;
+            Thread.Sleep(200);
             updatePerdictionList();
+            Dictionary<string, List<RectangleF>> tempPos = positions;
             //now start polishing stones
             foreach (string tempStr in selectedAlchemyStone)
             {
-                if (positions.TryGetValue(tempStr, out List<RectangleF> tempList))
+                if (tempPos.TryGetValue(tempStr, out List<RectangleF> tempList))
                 {
                     foreach (RectangleF tempRect in tempList)
                     {
                         RightClickRectangle(tempRect);
-                        Thread.Sleep(500);
-                        //temp code, grabs whatever material is first in the list
-                        RightClickRectangle(BlackStonePosition);
-                        Thread.Sleep(500);
-                        //press space to max material
-                        InputSimulator sim = new InputSimulator();
-                        sim.Keyboard.KeyPress(VirtualKeyCode.SPACE);
-                        Thread.Sleep(500);
-                        //left click Growth button
-                        LeftClickRectangle(positionList["LowerGrowthButton"]);
-                        Thread.Sleep(500);
-                        if (!BlackStoneExists())
+                        Thread.Sleep(400);
+                        /*if (!BlackStoneExists())
                         {
                             MessageBox.Show("Out of Black Stones");
                             return;
-                        }
+                        }*/
+                        //temp code, grabs whatever material is first in the list
+                        RightClickRectangle(BlackStonePosition);
+                        Thread.Sleep(400);
+                        //press space to max material
+                        MouseClickHelper.PressSpace();
+                        Thread.Sleep(400);
+                        //left click Growth button
+                        LeftClickRectangle(positionList["LowerGrowthButton"]);
+                        Thread.Sleep(500);
+                        //Press enter
+                        MouseClickHelper.PressSpace();
+                        Thread.Sleep(400);
                     }
                 }
             }
-
-            CaptureZonePictureBox.Image = OBJ.drawRectangles(OBJ.drawRectangles(toDisplay, perdictions), positionList);
-            Thread.Sleep(50);
         }
 
         #region helper functions
 
         private bool findButtonsPositionsFromPolishSlot()
         {
+            bool stoneFound = false;
             //find position for polish slot
             updatePerdictionList();
-            CaptureZonePictureBox.Image = OBJ.drawRectangles(toDisplay, perdictions);
 
             //right click on stone to move it to polish slot
             foreach (string tempStr in selectedAlchemyStone)
@@ -165,27 +187,17 @@ namespace GameZBDAlchemyStoneTapper
                 if (positions.TryGetValue(tempStr, out List<RectangleF> tempList))
                 {
                     RightClickRectangle(tempList.FirstOrDefault());
+                    stoneFound = true;
                     break;
                 }
             }
-            updatePerdictionList();
-            RectangleF PolishPosition = new RectangleF(9999999, 0, 0, 0);
-            foreach (string tempStr in selectedAlchemyStone)
+            if (!stoneFound)
             {
-                if (positions.TryGetValue(tempStr, out List<RectangleF> tempList))
-                {
-                    foreach (RectangleF tempRect in tempList)
-                    {
-                        if (tempRect.X < PolishPosition.X)
-                        {
-                            PolishPosition = tempRect;
-                        }
-                    }
-                }
+                MessageBox.Show("No stone found");
+                return false;
             }
+            Thread.Sleep(100);
             updatePerdictionList();
-            CaptureZonePictureBox.Image = OBJ.drawRectangles(toDisplay, perdictions);
-            //find position for all materials
             foreach (string tempStr in selectedMaterial)
             {
                 if (positions.TryGetValue(tempStr, out List<RectangleF> tempList))
@@ -194,11 +206,21 @@ namespace GameZBDAlchemyStoneTapper
                     materialNames.Push(tempStr);
                 }
             }
-            if (materialPositions.Count == 0)
+            if (materialPositions.Count <= 0)
             {
                 MessageBox.Show("Material Not Found");
                 return false;
             }
+
+            RectangleF PolishPosition = new RectangleF(9999999, 0, 0, 0);
+            foreach (string tempStr in selectedAlchemyStone)
+            {
+                if (positions.TryGetValue(tempStr, out List<RectangleF> tempList))
+                {
+                    PolishPosition = tempList.FirstOrDefault();
+                }
+            }
+
             //move stone back to inventory
             RightClickRectangle(PolishPosition);
             positionList = new Dictionary<string, RectangleF>
@@ -206,33 +228,52 @@ namespace GameZBDAlchemyStoneTapper
                 { "PolishPosition", PolishPosition },
                 {
                     "GrowthPosition",
-                    new RectangleF(PolishPosition.X-360, PolishPosition.Y-70,50 , 50)
+                    new RectangleF(PolishPosition.X-370, PolishPosition.Y-75,50 , 50)
                 },
                 {
                     "LowerPolishButton",
-                    new RectangleF(PolishPosition.X - 440, PolishPosition.Y +230 ,570 ,50 )
+                    new RectangleF(PolishPosition.X - 450, PolishPosition.Y +235,570 ,50 )
                 },
                 {
                     "LowerGrowthButton",
-                    new RectangleF(PolishPosition.X - 440, PolishPosition.Y + 230,570 ,50 )
+                    new RectangleF(PolishPosition.X - 450, PolishPosition.Y + 235,570 ,50 )
                 },
                 {
                     "UpperPolishButton",
-                    new RectangleF(PolishPosition.X-260,PolishPosition.Y -240, 70,20)
+                    new RectangleF(PolishPosition.X-270,PolishPosition.Y -248, 75,22)
                 },
                 {
                     "UpperGrowthButton",
-                    new RectangleF(PolishPosition.X-110,  PolishPosition.Y -240, 70,20)
+                    new RectangleF(PolishPosition.X-123,  PolishPosition.Y -246, 70,22)
                 }
             };
-            CaptureZonePictureBox.Image = OBJ.drawRectangles(toDisplay, positionList);
+            boxObtained = true;
             return true;
         }
 
         private bool findButtonsPositionsFromGrowthSlot()
         {
             updatePerdictionList();
-            CaptureZonePictureBox.Image = OBJ.drawRectangles(toDisplay, perdictions);
+            bool stoneFound = false;
+
+            //right click on stone to move it to polish slot
+            foreach (string tempStr in selectedAlchemyStone)
+            {
+                if (positions.TryGetValue(tempStr, out List<RectangleF> tempList))
+                {
+                    RightClickRectangle(tempList.FirstOrDefault());
+                    stoneFound = true;
+                    break;
+                }
+            }
+
+            if (!stoneFound)
+            {
+                MessageBox.Show("No stone found");
+                return false;
+            }
+            Thread.Sleep(200);
+            updatePerdictionList();
             if (positions.TryGetValue("BlackStone", out List<RectangleF> blackStoneList))
             {
                 BlackStonePosition = blackStoneList.FirstOrDefault();
@@ -240,18 +281,10 @@ namespace GameZBDAlchemyStoneTapper
             else
             {
                 MessageBox.Show("Black Stone not found");
-                //return false;
-            }
-            //right click on stone to move it to polish slot
-            foreach (string tempStr in selectedAlchemyStone)
-            {
-                if (positions.TryGetValue(tempStr, out List<RectangleF> tempList))
-                {
-                    RightClickRectangle(tempList.FirstOrDefault());
-                    break;
-                }
+                return false;
             }
             //find position for Growth slot
+            Thread.Sleep(200);
             updatePerdictionList();
             RectangleF GrowthPosition = new RectangleF(9999999, 0, 0, 0);
             foreach (string tempStr in selectedAlchemyStone)
@@ -275,7 +308,7 @@ namespace GameZBDAlchemyStoneTapper
                 { "GrowthPosition", GrowthPosition },
                 {
                     "PolishPosition",
-                    new RectangleF(GrowthPosition.X+360, GrowthPosition.Y+70,50,50)
+                    new RectangleF(GrowthPosition.X+358, GrowthPosition.Y+65,50,50)
                 },
                 {
                     "LowerPolishButton",
@@ -287,29 +320,37 @@ namespace GameZBDAlchemyStoneTapper
                 },
                 {
                     "UpperPolishButton",
-                    new RectangleF(GrowthPosition.X+100,GrowthPosition.Y-170,70,20)
+                    new RectangleF(GrowthPosition.X+93,GrowthPosition.Y-177,80,22)
                 },
                 {
                     "UpperGrowthButton",
-                    new RectangleF(GrowthPosition.X+250,GrowthPosition.Y-170,70,20)
+                    new RectangleF(GrowthPosition.X+248,GrowthPosition.Y-178,68,22)
                 }
             };
-            CaptureZonePictureBox.Image = OBJ.drawRectangles(toDisplay, positionList);
+            boxObtained = true;
             return true;
         }
 
         private void tapStonesOnceBtn_Click(object sender, EventArgs e)
         {
-            LeftClickRectangleAbs(PhysicalSnipLocation);
-            Thread.Sleep(500);
-            PolishStonesOnce();
+            PolishStonesOnceBtn.Enabled = false;
+            GrowStonesOnceBtn.Enabled = false;
+            Thread thread = new Thread(PolishStonesOnce);
+            thread.Start();
+            while (thread.IsAlive) { }
+            PolishStonesOnceBtn.Enabled = true;
+            GrowStonesOnceBtn.Enabled = true;
         }
 
         private void GrowStonesOnceBtn_Click(object sender, EventArgs e)
         {
-            LeftClickRectangleAbs(PhysicalSnipLocation);
-            Thread.Sleep(500);
-            GrowStonesOnce();
+            PolishStonesOnceBtn.Enabled = false;
+            GrowStonesOnceBtn.Enabled = false;
+            Thread thread = new Thread(GrowStonesOnce);
+            thread.Start();
+            while (thread.IsAlive) { }
+            PolishStonesOnceBtn.Enabled = true;
+            GrowStonesOnceBtn.Enabled = true;
         }
 
         private bool MaterialExists(string name)
@@ -334,48 +375,30 @@ namespace GameZBDAlchemyStoneTapper
 
         private void RightClickRectangle(RectangleF tempRect)
         {
-            PointF pt = DPIFinder.PhysicalToScaled(new Point((int)tempRect.X + PhysicalSnipLocation.X + (int)tempRect.Width / 2,
-                (int)tempRect.Y + PhysicalSnipLocation.Y + (int)tempRect.Height / 2));
-            sim.Mouse.MoveMouseTo(pt.X, pt.Y);
-            sim.Mouse.RightButtonClick();
+            var tempTemp = DPIFinder.PhysicalToScaled(tempRect);
+            MouseClickHelper.RightClick((int)tempTemp.X + sniplocation.X + (int)tempTemp.Width / 2, (int)tempTemp.Y + sniplocation.Y + (int)tempTemp.Height / 2);
         }
 
         private void LeftClickRectangle(RectangleF tempRect)
         {
-            PointF pt = DPIFinder.PhysicalToScaled(new Point((int)tempRect.X + PhysicalSnipLocation.X + (int)tempRect.Width / 2,
-                (int)tempRect.Y + PhysicalSnipLocation.Y + (int)tempRect.Height / 2));
-            sim.Mouse.MoveMouseTo(pt.X, pt.Y);
-            sim.Mouse.LeftButtonClick();
-        }
-
-        private void LeftClickRectangleAbs(RectangleF tempRect)
-        {
-            sim.Mouse.MoveMouseTo(tempRect.X + tempRect.Width / 2, tempRect.Y + tempRect.Height / 2);
-            sim.Mouse.LeftButtonClick();
-        }
-
-        private void RightClickRectangleAbs(RectangleF tempRect)
-        {
-            sim.Mouse.MoveMouseTo(tempRect.X + tempRect.Width / 2, tempRect.Y + tempRect.Height / 2);
-            sim.Mouse.RightButtonClick();
+            var tempTemp = DPIFinder.PhysicalToScaled(tempRect);
+            MouseClickHelper.LeftClick((int)tempTemp.X + sniplocation.X + (int)tempTemp.Width / 2, (int)tempTemp.Y + sniplocation.Y + (int)tempTemp.Height / 2);
         }
 
         private void detectionClose(object sender, FormClosingEventArgs e)
         {
             isRunning = false;
-            toDisplay.Dispose();
+            if (toDisplay != null) { toDisplay.Dispose(); }
+
             thread.Join();
             while (thread.IsAlive) { }
         }
 
         private void updatePerdictionList()
         {
-            lock (ThreadLocks.BitMapLock)
-            {
-                toDisplay = CaptureScreen.Snip(sniplocation);
-                perdictions = OBJ.getPerdictions(toDisplay);
-                positions = OBJ.getPositions(perdictions);
-            }
+            toDisplay = CaptureScreen.Snip(sniplocation);
+            perdictions = OBJ.getPerdictions(toDisplay);
+            positions = OBJ.getPositions(perdictions);
         }
 
         #endregion helper functions

@@ -15,8 +15,6 @@ namespace GameZBDAlchemyStoneTapper
         private int width;
         private int height;
         private Yolov8 yolo;
-        private List<string> selectedAlchemyStone = new List<string>();
-        private List<string> selectedMaterial = new List<string>();
 
         public ObjectDetection(int x, int y, int width, int height)
         {
@@ -28,14 +26,7 @@ namespace GameZBDAlchemyStoneTapper
 
         public ObjectDetection()
         {
-            try
-            {
-                yolo = new Yolov7net.Yolov8("./best.onnx", true);
-            }
-            catch
-            {
-                yolo = new Yolov7net.Yolov8("./best.onnx", false);
-            }
+            yolo = new Yolov7net.Yolov8("./best.onnx", false);
 
             // setup labels of onnx model
             string[] labels = new string[47]
@@ -47,12 +38,6 @@ namespace GameZBDAlchemyStoneTapper
                 "StrawBerry", "SturdyD", "SturdyL", "SturdyP", "Sunflower", "Tin", "Titanium", "Vanadium", "Zinc"
             };
             yolo.SetupLabels(labels);   // use custom trained model should use your labels like: yolo.SetupLabels(string[] labels)
-        }
-
-        public void loadLists(List<string> stoneList, List<string> matList)
-        {
-            selectedAlchemyStone = stoneList;
-            selectedMaterial = matList;
         }
 
         public Bitmap drawRectangles(Bitmap image, List<YoloPrediction> predictions)
