@@ -94,7 +94,7 @@ namespace GameZBDAlchemyStoneTapper
                     {
                         RightClickRectangle(tempRect);
                         Thread.Sleep(400);
-                        /*if (!MaterialExists(materialNames.Peek()))
+                        if (!MaterialExists(materialNames.Peek()))
                         {
                             if (materialPositions.TryPop(out RectangleF tempRect2))
                             {
@@ -106,7 +106,7 @@ namespace GameZBDAlchemyStoneTapper
                                 MessageBox.Show("Out of Materials");
                                 return;
                             }
-                        }*/
+                        }
                         //temp code, grabs whatever material is first in the list
                         RightClickRectangle(CurrentMaterial);
                         Thread.Sleep(400);
@@ -150,12 +150,12 @@ namespace GameZBDAlchemyStoneTapper
                     foreach (RectangleF tempRect in tempList)
                     {
                         RightClickRectangle(tempRect);
-                        Thread.Sleep(400);
-                        /*if (!BlackStoneExists())
+                        Thread.Sleep(200);
+                        if (!BlackStoneExists())
                         {
                             MessageBox.Show("Out of Black Stones");
                             return;
-                        }*/
+                        }
                         //temp code, grabs whatever material is first in the list
                         RightClickRectangle(BlackStonePosition);
                         Thread.Sleep(400);
