@@ -13,6 +13,7 @@ using Yolov7net;
 using System.Xml.Linq;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Windows.Input;
 
 namespace GameZBDAlchemyStoneTapper
 {
@@ -32,6 +33,7 @@ namespace GameZBDAlchemyStoneTapper
         private Dictionary<string, RectangleF> positionList;
         private RectangleF BlackStonePosition;
         private bool boxObtained = false;
+        private bool polishOrGrow = true;
 
         [DllImport("user32.dll")]
         private static extern bool SetForegroundWindow(IntPtr hWnd);
@@ -46,6 +48,7 @@ namespace GameZBDAlchemyStoneTapper
             thread = new Thread(new ThreadStart(detectStones));
             thread.Start();
             FormClosing += detectionClose;
+            HotkeysManager.AddHotkey(new GlobalHotkey(System.Windows.Input.ModifierKeys.Shift, Key.Q, () => { stopRunning(); }));
         }
 
         private void detectStones()
@@ -58,7 +61,7 @@ namespace GameZBDAlchemyStoneTapper
                 boxMap = ForPictureBox.drawRectangles(boxMap, tempperdictions);
                 if (boxObtained) { ForPictureBox.drawRectangles(boxMap, positionList); }
                 CaptureZonePictureBox.Image = boxMap;
-                Thread.Sleep(200);
+                Thread.Sleep(300);
             }
         }
 
@@ -93,8 +96,9 @@ namespace GameZBDAlchemyStoneTapper
                     foreach (RectangleF tempRect in tempList)
                     {
                         RightClickRectangle(tempRect);
-                        Thread.Sleep(400);
-                        if (!MaterialExists(materialNames.Peek()))
+                        Thread.Sleep(12);
+                        //checking for material will slow down the program significantly.
+                        /*if (!MaterialExists(materialNames.Peek()))
                         {
                             if (materialPositions.TryPop(out RectangleF tempRect2))
                             {
@@ -106,24 +110,23 @@ namespace GameZBDAlchemyStoneTapper
                                 MessageBox.Show("Out of Materials");
                                 return;
                             }
-                        }
+                        }*/
                         //temp code, grabs whatever material is first in the list
                         RightClickRectangle(CurrentMaterial);
-                        Thread.Sleep(400);
+                        Thread.Sleep(7);
                         //press space to max material
                         MouseClickHelper.PressSpace();
-                        Thread.Sleep(400);
+                        Thread.Sleep(27);
                         //left click polishing button
                         LeftClickRectangle(positionList["LowerPolishButton"]);
-                        Thread.Sleep(400);
+                        Thread.Sleep(12);
                         //send item back to inventory
                         RightClickRectangle(positionList["PolishPosition"]);
-                        Thread.Sleep(400);
+                        if (!polishOrGrow) return;
+                        Thread.Sleep(12);
                     }
                 }
             }
-
-            Thread.Sleep(50);
         }
 
         private void GrowStonesOnce()
@@ -150,24 +153,26 @@ namespace GameZBDAlchemyStoneTapper
                     foreach (RectangleF tempRect in tempList)
                     {
                         RightClickRectangle(tempRect);
-                        Thread.Sleep(200);
-                        if (!BlackStoneExists())
+                        Thread.Sleep(17);
+                        //checking for black stone will slow down the program significantly.
+                        /*if (!BlackStoneExists())
                         {
                             MessageBox.Show("Out of Black Stones");
                             return;
-                        }
+                        }*/
                         //temp code, grabs whatever material is first in the list
                         RightClickRectangle(BlackStonePosition);
-                        Thread.Sleep(400);
+                        Thread.Sleep(7);
                         //press space to max material
                         MouseClickHelper.PressSpace();
-                        Thread.Sleep(400);
+                        Thread.Sleep(100);
                         //left click Growth button
                         LeftClickRectangle(positionList["LowerGrowthButton"]);
-                        Thread.Sleep(500);
+                        Thread.Sleep(7);
                         //Press enter
                         MouseClickHelper.PressSpace();
-                        Thread.Sleep(400);
+                        Thread.Sleep(22);
+                        if (!polishOrGrow) return;
                     }
                 }
             }
@@ -333,6 +338,7 @@ namespace GameZBDAlchemyStoneTapper
 
         private void tapStonesOnceBtn_Click(object sender, EventArgs e)
         {
+            isRunning = false;
             PolishStonesOnceBtn.Enabled = false;
             GrowStonesOnceBtn.Enabled = false;
             Thread thread = new Thread(PolishStonesOnce);
@@ -340,10 +346,14 @@ namespace GameZBDAlchemyStoneTapper
             while (thread.IsAlive) { }
             PolishStonesOnceBtn.Enabled = true;
             GrowStonesOnceBtn.Enabled = true;
+            isRunning = true;
+            thread = new Thread(new ThreadStart(detectStones));
+            thread.Start();
         }
 
         private void GrowStonesOnceBtn_Click(object sender, EventArgs e)
         {
+            isRunning = false;
             PolishStonesOnceBtn.Enabled = false;
             GrowStonesOnceBtn.Enabled = false;
             Thread thread = new Thread(GrowStonesOnce);
@@ -351,6 +361,9 @@ namespace GameZBDAlchemyStoneTapper
             while (thread.IsAlive) { }
             PolishStonesOnceBtn.Enabled = true;
             GrowStonesOnceBtn.Enabled = true;
+            isRunning = true;
+            thread = new Thread(new ThreadStart(detectStones));
+            thread.Start();
         }
 
         private bool MaterialExists(string name)
@@ -399,6 +412,11 @@ namespace GameZBDAlchemyStoneTapper
             toDisplay = CaptureScreen.Snip(sniplocation);
             perdictions = OBJ.getPerdictions(toDisplay);
             positions = OBJ.getPositions(perdictions);
+        }
+
+        private void stopRunning()
+        {
+            this.Close();
         }
 
         #endregion helper functions
