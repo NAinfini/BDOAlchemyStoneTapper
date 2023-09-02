@@ -96,7 +96,7 @@ namespace GameZBDAlchemyStoneTapper
                     foreach (RectangleF tempRect in tempList)
                     {
                         RightClickRectangle(tempRect);
-                        Thread.Sleep(12);
+                        Thread.Sleep(15);
                         //checking for material will slow down the program significantly.
                         /*if (!MaterialExists(materialNames.Peek()))
                         {
@@ -113,17 +113,17 @@ namespace GameZBDAlchemyStoneTapper
                         }*/
                         //temp code, grabs whatever material is first in the list
                         RightClickRectangle(CurrentMaterial);
-                        Thread.Sleep(7);
+                        Thread.Sleep(10);
                         //press space to max material
                         MouseClickHelper.PressSpace();
-                        Thread.Sleep(27);
+                        Thread.Sleep(20);
                         //left click polishing button
                         LeftClickRectangle(positionList["LowerPolishButton"]);
-                        Thread.Sleep(12);
+                        Thread.Sleep(10);
                         //send item back to inventory
                         RightClickRectangle(positionList["PolishPosition"]);
                         if (!polishOrGrow) return;
-                        Thread.Sleep(12);
+                        Thread.Sleep(15);
                     }
                 }
             }
@@ -153,7 +153,7 @@ namespace GameZBDAlchemyStoneTapper
                     foreach (RectangleF tempRect in tempList)
                     {
                         RightClickRectangle(tempRect);
-                        Thread.Sleep(17);
+                        Thread.Sleep(20);
                         //checking for black stone will slow down the program significantly.
                         /*if (!BlackStoneExists())
                         {
@@ -162,16 +162,18 @@ namespace GameZBDAlchemyStoneTapper
                         }*/
                         //temp code, grabs whatever material is first in the list
                         RightClickRectangle(BlackStonePosition);
-                        Thread.Sleep(7);
+                        Thread.Sleep(10);
                         //press space to max material
                         MouseClickHelper.PressSpace();
-                        Thread.Sleep(100);
+                        Thread.Sleep(130);
                         //left click Growth button
                         LeftClickRectangle(positionList["LowerGrowthButton"]);
-                        Thread.Sleep(7);
+                        Thread.Sleep(10);
                         //Press enter
                         MouseClickHelper.PressSpace();
-                        Thread.Sleep(22);
+                        Thread.Sleep(10);
+                        RightClickRectangle(positionList["GrowthPosition"]);
+                        Thread.Sleep(10);
                         if (!polishOrGrow) return;
                     }
                 }
