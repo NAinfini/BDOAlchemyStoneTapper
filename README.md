@@ -1,4 +1,4 @@
-# GameZBDAlchemyStoneTapper
+# BDOAlchemyStoneTapper
  [中文版](/README_CN.md)
 
 This project can help you with BDO alchemy Stone tapping, with the help of yolov8 visual object 
@@ -49,14 +49,14 @@ This is a hobby project so don't expect too much.
 - [ ] Manually set Material/BlackStone locations
 ## What's included
 
-[Grab compiled package here](https://github.com/NAinfini/GameZBDAlchemyStoneTapper/releases)
+[Grab compiled package here](https://github.com/NAinfini/BDOAlchemyStoneTapper/releases)
 
 ```text
-GameZBDAlchemyStoneTapper
+BDOAlchemyStoneTapper
     ├──Destruction.onnx                 Model for Destruction stones
     ├──Protection.onnx                  Model for Protection stones
     ├──Life.onnx                        Model for Life stones
-    ├──GameZBDAlchemyStoneTapper.exe    Executable
+    ├──BDOAlchemyStoneTapper.exe    Executable
     ├──DefaultLanguage.json             English language
     ├──DefaultLanguage_cn.json          Chinese language
     └──RunTime files                    Required runtime files

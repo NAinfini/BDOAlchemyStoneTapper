@@ -45,14 +45,14 @@ Heads up:
 - [ ] 手动选择材料黑石位置
 ## What's included
 
-[Grab compiled package here](https://github.com/NAinfini/GameZBDAlchemyStoneTapper/releases)
+[Grab compiled package here](https://github.com/NAinfini/BDOAlchemyStoneTapper/releases)
 
 ```text
-GameZBDAlchemyStoneTapper
+BDOAlchemyStoneTapper
     ├──Destruction.onnx                 破坏炼金石相关模型
     ├──Protection.onnx                  保护炼金石相关模型
     ├──Life.onnx                        生命炼金石相关模型
-    ├──GameZBDAlchemyStoneTapper.exe    程序
+    ├──BDOAlchemyStoneTapper.exe        程序
     ├──DefaultLanguage.json             英语文件
     ├──DefaultLanguage_cn.json          中文文件-更改名称启用
     └──RunTime files                    所需文件
