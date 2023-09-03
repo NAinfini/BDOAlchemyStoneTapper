@@ -1,4 +1,4 @@
-# GameZBDAlchemyStoneTapper
+# 黑沙炼金石自动连点器
  [English Version](/README.md)
 
 这是个基于yolov8 和模拟输入的用于黑沙自动升级炼金石的项目
