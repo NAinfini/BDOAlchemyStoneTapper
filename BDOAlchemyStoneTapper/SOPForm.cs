@@ -5,26 +5,25 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
 using Yolov7net;
 
-namespace GameZBDAlchemyStoneTapper
+namespace BDOAlchemyStoneTapper
 {
-    public partial class SOLForm : Form
+    public partial class SOPForm : Form
     {
         private Rectangle snipLocation;
         private List<string> selectedAlchemyStone = new List<string>();
         private bool isRunning = false;
         private Detection dec;
 
-        public SOLForm()
+        public SOPForm()
         {
             InitializeComponent();
-            SOLTopTextLbl.Text = language.Instance.UpgreadeFollowing;
-            SOLText2Lbl.Text = language.Instance.WithFollowingMaterials;
+            SOPTopTextLbl.Text = language.Instance.UpgreadeFollowing;
+            SOPText2Lbl.Text = language.Instance.WithFollowingMaterials;
             startBtn.Text = language.Instance.Start;
         }
 
@@ -94,7 +93,7 @@ namespace GameZBDAlchemyStoneTapper
                     }
                 }
 
-                dec = new Detection(snipLocation, selectedAlchemyStone, "Life");
+                dec = new Detection(snipLocation, selectedAlchemyStone, "Protection");
                 dec.Show();
                 dec.FormClosed += Dec_FormClosed;
                 startBtn.Text = language.Instance.Stop;

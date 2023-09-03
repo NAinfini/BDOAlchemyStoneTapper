@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace GameZBDAlchemyStoneTapper
+namespace BDOAlchemyStoneTapper
 {
     public partial class SelectArea : Form
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace GameZBDAlchemyStoneTapper
+namespace BDOAlchemyStoneTapper
 {
     public class InputSender
     {

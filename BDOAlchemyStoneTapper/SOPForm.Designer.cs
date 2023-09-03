@@ -1,7 +1,7 @@
 ﻿
-namespace GameZBDAlchemyStoneTapper
+namespace BDOAlchemyStoneTapper
 {
-    partial class SOLForm
+    partial class SOPForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,12 +29,17 @@ namespace GameZBDAlchemyStoneTapper
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SOLForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SOPForm));
             SODMaterialPanel = new System.Windows.Forms.Panel();
-            Purple = new System.Windows.Forms.PictureBox();
-            Strawberry = new System.Windows.Forms.PictureBox();
-            SOLText2Lbl = new System.Windows.Forms.Label();
-            SOLTopTextLbl = new System.Windows.Forms.Label();
+            Pine = new System.Windows.Forms.PictureBox();
+            Palm = new System.Windows.Forms.PictureBox();
+            Maple = new System.Windows.Forms.PictureBox();
+            Cedar = new System.Windows.Forms.PictureBox();
+            Birch = new System.Windows.Forms.PictureBox();
+            Ash = new System.Windows.Forms.PictureBox();
+            Acacia = new System.Windows.Forms.PictureBox();
+            SOPText2Lbl = new System.Windows.Forms.Label();
+            SOPTopTextLbl = new System.Windows.Forms.Label();
             SODPanelStone = new System.Windows.Forms.Panel();
             Splendid = new System.Windows.Forms.PictureBox();
             Resplendent = new System.Windows.Forms.PictureBox();
@@ -45,8 +50,13 @@ namespace GameZBDAlchemyStoneTapper
             Imperfect = new System.Windows.Forms.PictureBox();
             startBtn = new System.Windows.Forms.Button();
             SODMaterialPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)Purple).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)Strawberry).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Pine).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Palm).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Maple).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Cedar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Birch).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Ash).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Acacia).BeginInit();
             SODPanelStone.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Splendid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Resplendent).BeginInit();
@@ -59,61 +69,126 @@ namespace GameZBDAlchemyStoneTapper
             // 
             // SODMaterialPanel
             // 
-            SODMaterialPanel.Controls.Add(Purple);
-            SODMaterialPanel.Controls.Add(Strawberry);
-            SODMaterialPanel.Location = new System.Drawing.Point(11, 282);
+            SODMaterialPanel.Controls.Add(Pine);
+            SODMaterialPanel.Controls.Add(Palm);
+            SODMaterialPanel.Controls.Add(Maple);
+            SODMaterialPanel.Controls.Add(Cedar);
+            SODMaterialPanel.Controls.Add(Birch);
+            SODMaterialPanel.Controls.Add(Ash);
+            SODMaterialPanel.Controls.Add(Acacia);
+            SODMaterialPanel.Location = new System.Drawing.Point(11, 270);
             SODMaterialPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             SODMaterialPanel.Name = "SODMaterialPanel";
             SODMaterialPanel.Size = new System.Drawing.Size(586, 98);
-            SODMaterialPanel.TabIndex = 11;
+            SODMaterialPanel.TabIndex = 15;
             // 
-            // Purple
+            // Pine
             // 
-            Purple.Dock = System.Windows.Forms.DockStyle.Left;
-            Purple.Image = (System.Drawing.Image)resources.GetObject("Purple.Image");
-            Purple.Location = new System.Drawing.Point(89, 0);
-            Purple.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            Purple.Name = "Purple";
-            Purple.Size = new System.Drawing.Size(88, 98);
-            Purple.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            Purple.TabIndex = 1;
-            Purple.TabStop = false;
+            Pine.Dock = System.Windows.Forms.DockStyle.Left;
+            Pine.Image = (System.Drawing.Image)resources.GetObject("Pine.Image");
+            Pine.Location = new System.Drawing.Point(502, 0);
+            Pine.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            Pine.Name = "Pine";
+            Pine.Size = new System.Drawing.Size(84, 98);
+            Pine.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            Pine.TabIndex = 6;
+            Pine.TabStop = false;
             // 
-            // Strawberry
+            // Palm
             // 
-            Strawberry.Dock = System.Windows.Forms.DockStyle.Left;
-            Strawberry.Image = (System.Drawing.Image)resources.GetObject("Strawberry.Image");
-            Strawberry.Location = new System.Drawing.Point(0, 0);
-            Strawberry.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            Strawberry.Name = "Strawberry";
-            Strawberry.Size = new System.Drawing.Size(89, 98);
-            Strawberry.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            Strawberry.TabIndex = 0;
-            Strawberry.TabStop = false;
+            Palm.Dock = System.Windows.Forms.DockStyle.Left;
+            Palm.Image = (System.Drawing.Image)resources.GetObject("Palm.Image");
+            Palm.Location = new System.Drawing.Point(418, 0);
+            Palm.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            Palm.Name = "Palm";
+            Palm.Size = new System.Drawing.Size(84, 98);
+            Palm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            Palm.TabIndex = 5;
+            Palm.TabStop = false;
             // 
-            // SOLText2Lbl
+            // Maple
             // 
-            SOLText2Lbl.AutoSize = true;
-            SOLText2Lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            SOLText2Lbl.ForeColor = System.Drawing.Color.White;
-            SOLText2Lbl.Location = new System.Drawing.Point(11, 217);
-            SOLText2Lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            SOLText2Lbl.Name = "SOLText2Lbl";
-            SOLText2Lbl.Size = new System.Drawing.Size(358, 39);
-            SOLText2Lbl.TabIndex = 10;
-            SOLText2Lbl.Text = "With following material";
+            Maple.Dock = System.Windows.Forms.DockStyle.Left;
+            Maple.Image = (System.Drawing.Image)resources.GetObject("Maple.Image");
+            Maple.Location = new System.Drawing.Point(334, 0);
+            Maple.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            Maple.Name = "Maple";
+            Maple.Size = new System.Drawing.Size(84, 98);
+            Maple.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            Maple.TabIndex = 4;
+            Maple.TabStop = false;
             // 
-            // SOLTopTextLbl
+            // Cedar
             // 
-            SOLTopTextLbl.AutoSize = true;
-            SOLTopTextLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            SOLTopTextLbl.ForeColor = System.Drawing.Color.White;
-            SOLTopTextLbl.Location = new System.Drawing.Point(11, 20);
-            SOLTopTextLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            SOLTopTextLbl.Name = "SOLTopTextLbl";
-            SOLTopTextLbl.Size = new System.Drawing.Size(546, 39);
-            SOLTopTextLbl.TabIndex = 9;
-            SOLTopTextLbl.Text = "Upgrade following Alchemy Stones";
+            Cedar.Dock = System.Windows.Forms.DockStyle.Left;
+            Cedar.Image = (System.Drawing.Image)resources.GetObject("Cedar.Image");
+            Cedar.Location = new System.Drawing.Point(254, 0);
+            Cedar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            Cedar.Name = "Cedar";
+            Cedar.Size = new System.Drawing.Size(80, 98);
+            Cedar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            Cedar.TabIndex = 3;
+            Cedar.TabStop = false;
+            // 
+            // Birch
+            // 
+            Birch.Dock = System.Windows.Forms.DockStyle.Left;
+            Birch.Image = (System.Drawing.Image)resources.GetObject("Birch.Image");
+            Birch.Location = new System.Drawing.Point(177, 0);
+            Birch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            Birch.Name = "Birch";
+            Birch.Size = new System.Drawing.Size(77, 98);
+            Birch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            Birch.TabIndex = 2;
+            Birch.TabStop = false;
+            // 
+            // Ash
+            // 
+            Ash.Dock = System.Windows.Forms.DockStyle.Left;
+            Ash.Image = (System.Drawing.Image)resources.GetObject("Ash.Image");
+            Ash.Location = new System.Drawing.Point(89, 0);
+            Ash.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            Ash.Name = "Ash";
+            Ash.Size = new System.Drawing.Size(88, 98);
+            Ash.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            Ash.TabIndex = 1;
+            Ash.TabStop = false;
+            // 
+            // Acacia
+            // 
+            Acacia.Dock = System.Windows.Forms.DockStyle.Left;
+            Acacia.Image = (System.Drawing.Image)resources.GetObject("Acacia.Image");
+            Acacia.Location = new System.Drawing.Point(0, 0);
+            Acacia.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            Acacia.Name = "Acacia";
+            Acacia.Size = new System.Drawing.Size(89, 98);
+            Acacia.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            Acacia.TabIndex = 0;
+            Acacia.TabStop = false;
+            // 
+            // SOPText2Lbl
+            // 
+            SOPText2Lbl.AutoSize = true;
+            SOPText2Lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            SOPText2Lbl.ForeColor = System.Drawing.Color.White;
+            SOPText2Lbl.Location = new System.Drawing.Point(11, 204);
+            SOPText2Lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            SOPText2Lbl.Name = "SOPText2Lbl";
+            SOPText2Lbl.Size = new System.Drawing.Size(358, 39);
+            SOPText2Lbl.TabIndex = 14;
+            SOPText2Lbl.Text = "With following material";
+            // 
+            // SOPTopTextLbl
+            // 
+            SOPTopTextLbl.AutoSize = true;
+            SOPTopTextLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            SOPTopTextLbl.ForeColor = System.Drawing.Color.White;
+            SOPTopTextLbl.Location = new System.Drawing.Point(11, 8);
+            SOPTopTextLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            SOPTopTextLbl.Name = "SOPTopTextLbl";
+            SOPTopTextLbl.Size = new System.Drawing.Size(546, 39);
+            SOPTopTextLbl.TabIndex = 13;
+            SOPTopTextLbl.Text = "Upgrade following Alchemy Stones";
             // 
             // SODPanelStone
             // 
@@ -124,11 +199,11 @@ namespace GameZBDAlchemyStoneTapper
             SODPanelStone.Controls.Add(Polished);
             SODPanelStone.Controls.Add(Rough);
             SODPanelStone.Controls.Add(Imperfect);
-            SODPanelStone.Location = new System.Drawing.Point(11, 88);
+            SODPanelStone.Location = new System.Drawing.Point(11, 75);
             SODPanelStone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             SODPanelStone.Name = "SODPanelStone";
             SODPanelStone.Size = new System.Drawing.Size(586, 98);
-            SODPanelStone.TabIndex = 8;
+            SODPanelStone.TabIndex = 12;
             // 
             // Splendid
             // 
@@ -224,33 +299,38 @@ namespace GameZBDAlchemyStoneTapper
             // startBtn
             // 
             startBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            startBtn.Location = new System.Drawing.Point(491, 391);
+            startBtn.Location = new System.Drawing.Point(488, 380);
             startBtn.Margin = new System.Windows.Forms.Padding(2);
             startBtn.Name = "startBtn";
             startBtn.Size = new System.Drawing.Size(106, 44);
-            startBtn.TabIndex = 12;
+            startBtn.TabIndex = 16;
             startBtn.Text = "Start";
             startBtn.UseVisualStyleBackColor = true;
             startBtn.Click += startBtn_Click;
             // 
-            // SOLForm
+            // SOPForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.FromArgb(41, 53, 73);
-            ClientSize = new System.Drawing.Size(608, 446);
+            ClientSize = new System.Drawing.Size(605, 435);
             Controls.Add(startBtn);
             Controls.Add(SODMaterialPanel);
-            Controls.Add(SOLText2Lbl);
-            Controls.Add(SOLTopTextLbl);
+            Controls.Add(SOPText2Lbl);
+            Controls.Add(SOPTopTextLbl);
             Controls.Add(SODPanelStone);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             Margin = new System.Windows.Forms.Padding(2);
-            Name = "SOLForm";
-            Text = "SOLForm";
+            Name = "SOPForm";
+            Text = "SOPForm";
             SODMaterialPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)Purple).EndInit();
-            ((System.ComponentModel.ISupportInitialize)Strawberry).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Pine).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Palm).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Maple).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Cedar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Birch).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Ash).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Acacia).EndInit();
             SODPanelStone.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)Splendid).EndInit();
             ((System.ComponentModel.ISupportInitialize)Resplendent).EndInit();
@@ -266,10 +346,15 @@ namespace GameZBDAlchemyStoneTapper
         #endregion
 
         private System.Windows.Forms.Panel SODMaterialPanel;
-        private System.Windows.Forms.PictureBox Purple;
-        private System.Windows.Forms.PictureBox Strawberry;
-        private System.Windows.Forms.Label SOLText2Lbl;
-        private System.Windows.Forms.Label SOLTopTextLbl;
+        private System.Windows.Forms.PictureBox Pine;
+        private System.Windows.Forms.PictureBox Palm;
+        private System.Windows.Forms.PictureBox Maple;
+        private System.Windows.Forms.PictureBox Cedar;
+        private System.Windows.Forms.PictureBox Birch;
+        private System.Windows.Forms.PictureBox Ash;
+        private System.Windows.Forms.PictureBox Acacia;
+        private System.Windows.Forms.Label SOPText2Lbl;
+        private System.Windows.Forms.Label SOPTopTextLbl;
         private System.Windows.Forms.Panel SODPanelStone;
         private System.Windows.Forms.PictureBox Splendid;
         private System.Windows.Forms.PictureBox Resplendent;

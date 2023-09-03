@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static GameZBDAlchemyStoneTapper.InputSender;
+using static BDOAlchemyStoneTapper.InputSender;
 
-namespace GameZBDAlchemyStoneTapper
+namespace BDOAlchemyStoneTapper
 {
     internal class MouseClickHelper
     {

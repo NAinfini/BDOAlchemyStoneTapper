@@ -6,7 +6,7 @@ using System.Text.Json;
 using System.IO;
 using System.Windows.Input;
 
-namespace GameZBDAlchemyStoneTapper
+namespace BDOAlchemyStoneTapper
 {
     public partial class MainForm : Form
     {

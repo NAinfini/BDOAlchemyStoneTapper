@@ -6,7 +6,7 @@ using System.Windows.Navigation;
 using Yolov7net;
 using static System.Formats.Asn1.AsnWriter;
 
-namespace GameZBDAlchemyStoneTapper
+namespace BDOAlchemyStoneTapper
 {
     internal class ObjectDetection
     {

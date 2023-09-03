@@ -1,4 +1,4 @@
-﻿namespace GameZBDAlchemyStoneTapper
+﻿namespace BDOAlchemyStoneTapper
 {
     partial class Detection
     {

@@ -2,12 +2,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameZBDAlchemyStoneTapper", "GameZBDAlchemyStoneTapper\GameZBDAlchemyStoneTapper.csproj", "{7B54F7B9-2653-40D9-AD76-6928FF466FF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BDOAlchemyStoneTapper", "BDOAlchemyStoneTapper\BDOAlchemyStoneTapper.csproj", "{7B54F7B9-2653-40D9-AD76-6928FF466FF9}"
 	ProjectSection(ProjectDependencies) = postProject
 		{3AB215EA-4757-4C60-8681-9B5453AD4738} = {3AB215EA-4757-4C60-8681-9B5453AD4738}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IVilson.AI.Yolov7net", "GameZBDAlchemyStoneTapper\Yolov7net\IVilson.AI.Yolov7net.csproj", "{3AB215EA-4757-4C60-8681-9B5453AD4738}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IVilson.AI.Yolov7net", "BDOAlchemyStoneTapper\Yolov7net\IVilson.AI.Yolov7net.csproj", "{3AB215EA-4757-4C60-8681-9B5453AD4738}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

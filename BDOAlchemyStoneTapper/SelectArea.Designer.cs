@@ -1,5 +1,5 @@
 ﻿
-namespace GameZBDAlchemyStoneTapper
+namespace BDOAlchemyStoneTapper
 {
     partial class SelectArea
     {

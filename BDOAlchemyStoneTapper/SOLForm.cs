@@ -1,60 +1,66 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
 using Yolov7net;
 
-namespace GameZBDAlchemyStoneTapper
+namespace BDOAlchemyStoneTapper
 {
-    public partial class SODForm : Form
+    public partial class SOLForm : Form
     {
         private Rectangle snipLocation;
         private List<string> selectedAlchemyStone = new List<string>();
         private bool isRunning = false;
         private Detection dec;
 
-        public SODForm()
+        public SOLForm()
         {
             InitializeComponent();
-            SODTopTextLbl.Text = language.Instance.UpgreadeFollowing;
-            SODText2Lbl.Text = language.Instance.WithFollowingMaterials;
+            SOLTopTextLbl.Text = language.Instance.UpgreadeFollowing;
+            SOLText2Lbl.Text = language.Instance.WithFollowingMaterials;
             startBtn.Text = language.Instance.Start;
         }
 
-        #region selection area
+        #region select area
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void Imperfect_Click(object sender, EventArgs e)
         {
             updateAlchemyStoneList(sender);
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void Rough_Click(object sender, EventArgs e)
         {
             updateAlchemyStoneList(sender);
         }
 
-        private void pictureBox3_Click(object sender, EventArgs e)
+        private void Polished_Click(object sender, EventArgs e)
         {
             updateAlchemyStoneList(sender);
         }
 
-        private void pictureBox4_Click(object sender, EventArgs e)
+        private void Sturdy_Click(object sender, EventArgs e)
         {
             updateAlchemyStoneList(sender);
         }
 
-        private void pictureBox5_Click(object sender, EventArgs e)
+        private void Sharp_Click(object sender, EventArgs e)
         {
             updateAlchemyStoneList(sender);
         }
 
-        private void pictureBox6_Click(object sender, EventArgs e)
+        private void Resplendent_Click(object sender, EventArgs e)
         {
             updateAlchemyStoneList(sender);
         }
 
-        private void pictureBox7_Click(object sender, EventArgs e)
+        private void Splendid_Click(object sender, EventArgs e)
         {
             updateAlchemyStoneList(sender);
         }
@@ -73,7 +79,7 @@ namespace GameZBDAlchemyStoneTapper
             }
         }
 
-        #endregion selection area
+        #endregion select area
 
         private void startBtn_Click(object sender, EventArgs e)
         {
@@ -88,7 +94,7 @@ namespace GameZBDAlchemyStoneTapper
                     }
                 }
 
-                dec = new Detection(snipLocation, selectedAlchemyStone, "Destruction");
+                dec = new Detection(snipLocation, selectedAlchemyStone, "Life");
                 dec.Show();
                 dec.FormClosed += Dec_FormClosed;
                 startBtn.Text = language.Instance.Stop;

@@ -18,7 +18,7 @@ using System.Windows.Input;
 
 using GlobalHotKey;
 
-namespace GameZBDAlchemyStoneTapper
+namespace BDOAlchemyStoneTapper
 {
     public partial class Detection : Form
     {
