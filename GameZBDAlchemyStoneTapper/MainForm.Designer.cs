@@ -30,167 +30,158 @@ namespace GameZBDAlchemyStoneTapper
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.MainPanelAllSelection = new System.Windows.Forms.Panel();
-            this.SOLMainPanelBtn = new System.Windows.Forms.Button();
-            this.SOPMainPanelBtn = new System.Windows.Forms.Button();
-            this.SODMainPanelBtn = new System.Windows.Forms.Button();
-            this.MainPanelImage = new System.Windows.Forms.Panel();
-            this.Logo = new System.Windows.Forms.PictureBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.NameOfFormLbl = new System.Windows.Forms.Label();
-            this.SubSectionPanel = new System.Windows.Forms.Panel();
-            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
-            this.MainPanelAllSelection.SuspendLayout();
-            this.MainPanelImage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
-            this.SuspendLayout();
+            MainPanelAllSelection = new System.Windows.Forms.Panel();
+            SOLMainPanelBtn = new System.Windows.Forms.Button();
+            SOPMainPanelBtn = new System.Windows.Forms.Button();
+            SODMainPanelBtn = new System.Windows.Forms.Button();
+            MainPanelImage = new System.Windows.Forms.Panel();
+            Logo = new System.Windows.Forms.PictureBox();
+            panel3 = new System.Windows.Forms.Panel();
+            NameOfFormLbl = new System.Windows.Forms.Label();
+            SubSectionPanel = new System.Windows.Forms.Panel();
+            fileSystemWatcher1 = new FileSystemWatcher();
+            MainPanelAllSelection.SuspendLayout();
+            MainPanelImage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Logo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).BeginInit();
+            SuspendLayout();
             // 
             // MainPanelAllSelection
             // 
-            this.MainPanelAllSelection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.MainPanelAllSelection.Controls.Add(this.SOLMainPanelBtn);
-            this.MainPanelAllSelection.Controls.Add(this.SOPMainPanelBtn);
-            this.MainPanelAllSelection.Controls.Add(this.SODMainPanelBtn);
-            this.MainPanelAllSelection.Controls.Add(this.MainPanelImage);
-            this.MainPanelAllSelection.Controls.Add(this.panel3);
-            this.MainPanelAllSelection.Dock = System.Windows.Forms.DockStyle.Left;
-            this.MainPanelAllSelection.Location = new System.Drawing.Point(0, 0);
-            this.MainPanelAllSelection.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.MainPanelAllSelection.Name = "MainPanelAllSelection";
-            this.MainPanelAllSelection.Size = new System.Drawing.Size(176, 546);
-            this.MainPanelAllSelection.TabIndex = 0;
+            MainPanelAllSelection.BackColor = System.Drawing.Color.FromArgb(24, 30, 54);
+            MainPanelAllSelection.Controls.Add(SOLMainPanelBtn);
+            MainPanelAllSelection.Controls.Add(SOPMainPanelBtn);
+            MainPanelAllSelection.Controls.Add(SODMainPanelBtn);
+            MainPanelAllSelection.Controls.Add(MainPanelImage);
+            MainPanelAllSelection.Controls.Add(panel3);
+            MainPanelAllSelection.Dock = System.Windows.Forms.DockStyle.Left;
+            MainPanelAllSelection.Location = new System.Drawing.Point(0, 0);
+            MainPanelAllSelection.Name = "MainPanelAllSelection";
+            MainPanelAllSelection.Size = new System.Drawing.Size(235, 508);
+            MainPanelAllSelection.TabIndex = 0;
             // 
             // SOLMainPanelBtn
             // 
-            this.SOLMainPanelBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.SOLMainPanelBtn.FlatAppearance.BorderSize = 0;
-            this.SOLMainPanelBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(86)))), ((int)(((byte)(135)))));
-            this.SOLMainPanelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SOLMainPanelBtn.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.SOLMainPanelBtn.Image = ((System.Drawing.Image)(resources.GetObject("SOLMainPanelBtn.Image")));
-            this.SOLMainPanelBtn.Location = new System.Drawing.Point(0, 207);
-            this.SOLMainPanelBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.SOLMainPanelBtn.Name = "SOLMainPanelBtn";
-            this.SOLMainPanelBtn.Size = new System.Drawing.Size(176, 56);
-            this.SOLMainPanelBtn.TabIndex = 4;
-            this.SOLMainPanelBtn.Text = "Stone of Life";
-            this.SOLMainPanelBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.SOLMainPanelBtn.UseVisualStyleBackColor = true;
-            this.SOLMainPanelBtn.Click += new System.EventHandler(this.SOLMainPanelBtn_Click);
-            this.SOLMainPanelBtn.Leave += new System.EventHandler(this.SOLMainPanelBtn_Leave);
+            SOLMainPanelBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            SOLMainPanelBtn.FlatAppearance.BorderSize = 0;
+            SOLMainPanelBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(74, 86, 135);
+            SOLMainPanelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            SOLMainPanelBtn.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            SOLMainPanelBtn.Image = (System.Drawing.Image)resources.GetObject("SOLMainPanelBtn.Image");
+            SOLMainPanelBtn.Location = new System.Drawing.Point(0, 319);
+            SOLMainPanelBtn.Name = "SOLMainPanelBtn";
+            SOLMainPanelBtn.Size = new System.Drawing.Size(235, 86);
+            SOLMainPanelBtn.TabIndex = 4;
+            SOLMainPanelBtn.Text = "Stone of Life";
+            SOLMainPanelBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            SOLMainPanelBtn.UseVisualStyleBackColor = true;
+            SOLMainPanelBtn.Click += SOLMainPanelBtn_Click;
+            SOLMainPanelBtn.Leave += SOLMainPanelBtn_Leave;
             // 
             // SOPMainPanelBtn
             // 
-            this.SOPMainPanelBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.SOPMainPanelBtn.FlatAppearance.BorderSize = 0;
-            this.SOPMainPanelBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(86)))), ((int)(((byte)(135)))));
-            this.SOPMainPanelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SOPMainPanelBtn.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.SOPMainPanelBtn.Image = ((System.Drawing.Image)(resources.GetObject("SOPMainPanelBtn.Image")));
-            this.SOPMainPanelBtn.Location = new System.Drawing.Point(0, 152);
-            this.SOPMainPanelBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.SOPMainPanelBtn.Name = "SOPMainPanelBtn";
-            this.SOPMainPanelBtn.Size = new System.Drawing.Size(176, 55);
-            this.SOPMainPanelBtn.TabIndex = 3;
-            this.SOPMainPanelBtn.Text = "Stone of Protection";
-            this.SOPMainPanelBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.SOPMainPanelBtn.UseVisualStyleBackColor = true;
-            this.SOPMainPanelBtn.Click += new System.EventHandler(this.SOPMainPanelBtn_Click);
-            this.SOPMainPanelBtn.Leave += new System.EventHandler(this.SOPMainPanelBtn_Leave);
+            SOPMainPanelBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            SOPMainPanelBtn.FlatAppearance.BorderSize = 0;
+            SOPMainPanelBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(74, 86, 135);
+            SOPMainPanelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            SOPMainPanelBtn.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            SOPMainPanelBtn.Image = (System.Drawing.Image)resources.GetObject("SOPMainPanelBtn.Image");
+            SOPMainPanelBtn.Location = new System.Drawing.Point(0, 234);
+            SOPMainPanelBtn.Name = "SOPMainPanelBtn";
+            SOPMainPanelBtn.Size = new System.Drawing.Size(235, 85);
+            SOPMainPanelBtn.TabIndex = 3;
+            SOPMainPanelBtn.Text = "Stone of Protection";
+            SOPMainPanelBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            SOPMainPanelBtn.UseVisualStyleBackColor = true;
+            SOPMainPanelBtn.Click += SOPMainPanelBtn_Click;
+            SOPMainPanelBtn.Leave += SOPMainPanelBtn_Leave;
             // 
             // SODMainPanelBtn
             // 
-            this.SODMainPanelBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.SODMainPanelBtn.FlatAppearance.BorderSize = 0;
-            this.SODMainPanelBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(86)))), ((int)(((byte)(135)))));
-            this.SODMainPanelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SODMainPanelBtn.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.SODMainPanelBtn.Image = ((System.Drawing.Image)(resources.GetObject("SODMainPanelBtn.Image")));
-            this.SODMainPanelBtn.Location = new System.Drawing.Point(0, 93);
-            this.SODMainPanelBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.SODMainPanelBtn.Name = "SODMainPanelBtn";
-            this.SODMainPanelBtn.Size = new System.Drawing.Size(176, 59);
-            this.SODMainPanelBtn.TabIndex = 1;
-            this.SODMainPanelBtn.Text = "Stone of Destruction";
-            this.SODMainPanelBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.SODMainPanelBtn.UseVisualStyleBackColor = true;
-            this.SODMainPanelBtn.Click += new System.EventHandler(this.SODMainPanelBtn_Click);
-            this.SODMainPanelBtn.Leave += new System.EventHandler(this.SODMainPanelBtn_Leave);
+            SODMainPanelBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            SODMainPanelBtn.FlatAppearance.BorderSize = 0;
+            SODMainPanelBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(74, 86, 135);
+            SODMainPanelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            SODMainPanelBtn.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            SODMainPanelBtn.Image = (System.Drawing.Image)resources.GetObject("SODMainPanelBtn.Image");
+            SODMainPanelBtn.Location = new System.Drawing.Point(0, 143);
+            SODMainPanelBtn.Name = "SODMainPanelBtn";
+            SODMainPanelBtn.Size = new System.Drawing.Size(235, 91);
+            SODMainPanelBtn.TabIndex = 1;
+            SODMainPanelBtn.Text = "Stone of Destruction";
+            SODMainPanelBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            SODMainPanelBtn.UseVisualStyleBackColor = true;
+            SODMainPanelBtn.Click += SODMainPanelBtn_Click;
+            SODMainPanelBtn.Leave += SODMainPanelBtn_Leave;
             // 
             // MainPanelImage
             // 
-            this.MainPanelImage.Controls.Add(this.Logo);
-            this.MainPanelImage.Dock = System.Windows.Forms.DockStyle.Top;
-            this.MainPanelImage.Location = new System.Drawing.Point(0, 0);
-            this.MainPanelImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.MainPanelImage.Name = "MainPanelImage";
-            this.MainPanelImage.Size = new System.Drawing.Size(176, 93);
-            this.MainPanelImage.TabIndex = 2;
+            MainPanelImage.Controls.Add(Logo);
+            MainPanelImage.Dock = System.Windows.Forms.DockStyle.Top;
+            MainPanelImage.Location = new System.Drawing.Point(0, 0);
+            MainPanelImage.Name = "MainPanelImage";
+            MainPanelImage.Size = new System.Drawing.Size(235, 143);
+            MainPanelImage.TabIndex = 2;
             // 
             // Logo
             // 
-            this.Logo.Image = ((System.Drawing.Image)(resources.GetObject("Logo.Image")));
-            this.Logo.Location = new System.Drawing.Point(62, 23);
-            this.Logo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(43, 51);
-            this.Logo.TabIndex = 2;
-            this.Logo.TabStop = false;
+            Logo.Image = (System.Drawing.Image)resources.GetObject("Logo.Image");
+            Logo.Location = new System.Drawing.Point(83, 35);
+            Logo.Name = "Logo";
+            Logo.Size = new System.Drawing.Size(57, 78);
+            Logo.TabIndex = 2;
+            Logo.TabStop = false;
             // 
             // panel3
             // 
-            this.panel3.Location = new System.Drawing.Point(14, 7);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(109, 54);
-            this.panel3.TabIndex = 1;
+            panel3.Location = new System.Drawing.Point(19, 11);
+            panel3.Name = "panel3";
+            panel3.Size = new System.Drawing.Size(145, 83);
+            panel3.TabIndex = 1;
             // 
             // NameOfFormLbl
             // 
-            this.NameOfFormLbl.AutoSize = true;
-            this.NameOfFormLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NameOfFormLbl.ForeColor = System.Drawing.Color.White;
-            this.NameOfFormLbl.Location = new System.Drawing.Point(202, 12);
-            this.NameOfFormLbl.Name = "NameOfFormLbl";
-            this.NameOfFormLbl.Size = new System.Drawing.Size(109, 39);
-            this.NameOfFormLbl.TabIndex = 2;
-            this.NameOfFormLbl.Text = "label1";
+            NameOfFormLbl.AutoSize = true;
+            NameOfFormLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            NameOfFormLbl.ForeColor = System.Drawing.Color.White;
+            NameOfFormLbl.Location = new System.Drawing.Point(269, 18);
+            NameOfFormLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            NameOfFormLbl.Name = "NameOfFormLbl";
+            NameOfFormLbl.Size = new System.Drawing.Size(0, 48);
+            NameOfFormLbl.TabIndex = 2;
             // 
             // SubSectionPanel
             // 
-            this.SubSectionPanel.Location = new System.Drawing.Point(181, 64);
-            this.SubSectionPanel.Name = "SubSectionPanel";
-            this.SubSectionPanel.Size = new System.Drawing.Size(648, 470);
-            this.SubSectionPanel.TabIndex = 3;
+            SubSectionPanel.Location = new System.Drawing.Point(241, 98);
+            SubSectionPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            SubSectionPanel.Name = "SubSectionPanel";
+            SubSectionPanel.Size = new System.Drawing.Size(754, 395);
+            SubSectionPanel.TabIndex = 3;
             // 
             // fileSystemWatcher1
             // 
-            this.fileSystemWatcher1.EnableRaisingEvents = true;
-            this.fileSystemWatcher1.SynchronizingObject = this;
-            this.fileSystemWatcher1.Changed += new System.IO.FileSystemEventHandler(this.fileSystemWatcher1_Changed);
+            fileSystemWatcher1.EnableRaisingEvents = true;
+            fileSystemWatcher1.SynchronizingObject = this;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(841, 546);
-            this.Controls.Add(this.SubSectionPanel);
-            this.Controls.Add(this.NameOfFormLbl);
-            this.Controls.Add(this.MainPanelAllSelection);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "MainForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
-            this.MainPanelAllSelection.ResumeLayout(false);
-            this.MainPanelImage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackColor = System.Drawing.Color.FromArgb(41, 53, 73);
+            ClientSize = new System.Drawing.Size(1003, 508);
+            Controls.Add(SubSectionPanel);
+            Controls.Add(NameOfFormLbl);
+            Controls.Add(MainPanelAllSelection);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            Name = "MainForm";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "StoneTapper";
+            MainPanelAllSelection.ResumeLayout(false);
+            MainPanelImage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)Logo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

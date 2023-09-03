@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 using Yolov7net;
 
 namespace GameZBDAlchemyStoneTapper
@@ -15,13 +16,15 @@ namespace GameZBDAlchemyStoneTapper
     {
         private Rectangle snipLocation;
         private List<string> selectedAlchemyStone = new List<string>();
-        private List<string> selectedMaterial = new List<string>();
         private bool isRunning = false;
         private Detection dec;
 
         public SOPForm()
         {
             InitializeComponent();
+            SOPTopTextLbl.Text = language.Instance.UpgreadeFollowing;
+            SOPText2Lbl.Text = language.Instance.WithFollowingMaterials;
+            startBtn.Text = language.Instance.Start;
         }
 
         #region select area
@@ -75,55 +78,6 @@ namespace GameZBDAlchemyStoneTapper
             }
         }
 
-        private void Acacia_Click(object sender, EventArgs e)
-        {
-            updateMaterialList(sender);
-        }
-
-        private void Ash_Click(object sender, EventArgs e)
-        {
-            updateMaterialList(sender);
-        }
-
-        private void Birch_Click(object sender, EventArgs e)
-        {
-            updateMaterialList(sender);
-        }
-
-        private void Cedar_Click(object sender, EventArgs e)
-        {
-            updateMaterialList(sender);
-        }
-
-        private void Maple_Click(object sender, EventArgs e)
-        {
-            updateMaterialList(sender);
-        }
-
-        private void Palm_Click(object sender, EventArgs e)
-        {
-            updateMaterialList(sender);
-        }
-
-        private void Pine_Click(object sender, EventArgs e)
-        {
-            updateMaterialList(sender);
-        }
-
-        private void updateMaterialList(object sender)
-        {
-            if (selectedMaterial.Contains(((PictureBox)sender).Name))
-            {
-                selectedMaterial.Remove((((PictureBox)sender).Name));
-                ((PictureBox)sender).BorderStyle = BorderStyle.None;
-            }
-            else
-            {
-                selectedMaterial.Add((((PictureBox)sender).Name));
-                ((PictureBox)sender).BorderStyle = BorderStyle.Fixed3D;
-            }
-        }
-
         #endregion select area
 
         private void startBtn_Click(object sender, EventArgs e)
@@ -139,10 +93,10 @@ namespace GameZBDAlchemyStoneTapper
                     }
                 }
 
-                dec = new Detection(snipLocation, selectedAlchemyStone, selectedMaterial);
+                dec = new Detection(snipLocation, selectedAlchemyStone, "Protection");
                 dec.Show();
                 dec.FormClosed += Dec_FormClosed;
-                startBtn.Text = "stop";
+                startBtn.Text = language.Instance.Stop;
             }
             else
             {
@@ -153,13 +107,13 @@ namespace GameZBDAlchemyStoneTapper
         private void Dec_FormClosed(object sender, FormClosedEventArgs e)
         {
             isRunning = false;
-            startBtn.Text = "start";
+            startBtn.Text = language.Instance.Start;
         }
 
         private void stopRunning()
         {
             isRunning = false;
-            startBtn.Text = "start";
+            startBtn.Text = language.Instance.Start;
             dec.Close();
         }
     }

@@ -29,49 +29,49 @@ namespace GameZBDAlchemyStoneTapper
         /// </summary>
         private void InitializeComponent()
         {
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.ApplyBtn = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
-            this.SuspendLayout();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            ApplyBtn = new System.Windows.Forms.Button();
+            panel1 = new System.Windows.Forms.Panel();
+            panel1.SuspendLayout();
+            SuspendLayout();
             // 
             // ApplyBtn
             // 
-            this.ApplyBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ApplyBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.ApplyBtn.Location = new System.Drawing.Point(646, 359);
-            this.ApplyBtn.Name = "ApplyBtn";
-            this.ApplyBtn.Size = new System.Drawing.Size(120, 57);
-            this.ApplyBtn.TabIndex = 0;
-            this.ApplyBtn.Text = "Select";
-            this.ApplyBtn.UseVisualStyleBackColor = true;
+            ApplyBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            ApplyBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
+            ApplyBtn.Location = new System.Drawing.Point(470, 299);
+            ApplyBtn.Margin = new System.Windows.Forms.Padding(2);
+            ApplyBtn.Name = "ApplyBtn";
+            ApplyBtn.Size = new System.Drawing.Size(87, 48);
+            ApplyBtn.TabIndex = 0;
+            ApplyBtn.Text = "Select";
+            ApplyBtn.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.ApplyBtn);
-            this.panel1.Location = new System.Drawing.Point(17, 17);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(771, 421);
-            this.panel1.TabIndex = 1;
-            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SelectArea_MouseDown);
+            panel1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            panel1.Controls.Add(ApplyBtn);
+            panel1.Location = new System.Drawing.Point(12, 14);
+            panel1.Margin = new System.Windows.Forms.Padding(2);
+            panel1.Name = "panel1";
+            panel1.Size = new System.Drawing.Size(561, 351);
+            panel1.TabIndex = 1;
+            panel1.MouseDown += SelectArea_MouseDown;
             // 
             // SelectArea
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "SelectArea";
-            this.Text = "SelectArea";
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SelectArea_MouseDown);
-            this.panel1.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(582, 375);
+            Controls.Add(panel1);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            Margin = new System.Windows.Forms.Padding(2);
+            Name = "SelectArea";
+            Text = "SelectArea";
+            MouseDown += SelectArea_MouseDown;
+            panel1.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion

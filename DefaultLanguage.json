@@ -1,0 +1,20 @@
+{
+  "ProjectName": "炼金石自点器",
+  "SOP": "保护炼金石",
+  "SOD": "破坏炼金石",
+  "SOL": "生命炼金石",
+  "UpgreadeFollowing": "升级以下炼金石:",
+  "WithFollowingMaterials": "所用材料:",
+  "Start": "开始",
+  "Stop": "停止",
+  "Select": "选取",
+  "DetectionName": "物品检测",
+  "PolishOnceBtn": "打磨一次",
+  "GrowOnceBtn": "升级一次",
+  "NoMaterialErr": "未找到材料",
+  "NoBlackStoneErr": "未找到黑石",
+  "NoStonesErr": "未找到炼金石",
+  "breakOutlbl": "ALT + C 强制停止",
+  "PolishGrowBtn": "打磨升级一次",
+  "NoProcessFound": "为找到黑沙程序(程序名已设置为 BlackDesert64), 请递交错误报告以及现有黑沙程序名称"
+}

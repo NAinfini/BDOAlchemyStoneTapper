@@ -24,10 +24,11 @@ namespace GameZBDAlchemyStoneTapper
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
             }
         }
+
         public SelectArea()
         {
             InitializeComponent();
-
+            ApplyBtn.Text = language.Instance.Select;
             this.FormBorderStyle = FormBorderStyle.None; // no borders
             this.Opacity = .7D; // make trasparent
             this.panel1.BorderStyle = BorderStyle.FixedSingle;
@@ -49,20 +50,25 @@ namespace GameZBDAlchemyStoneTapper
 
         private Rectangle Top
         { get { return new Rectangle(0, 0, this.ClientSize.Width, _); } }
+
         private Rectangle Left
         { get { return new Rectangle(0, 0, _, this.ClientSize.Height); } }
 
         private Rectangle Bottom
         { get { return new Rectangle(0, this.ClientSize.Height - _, this.ClientSize.Width, _); } }
+
         private Rectangle Right
         { get { return new Rectangle(this.ClientSize.Width - _, 0, _, this.ClientSize.Height); } }
 
         private Rectangle TopLeft
         { get { return new Rectangle(0, 0, _, _); } }
+
         private Rectangle TopRight
         { get { return new Rectangle(this.ClientSize.Width - _, 0, _, _); } }
+
         private Rectangle BottomLeft
         { get { return new Rectangle(0, this.ClientSize.Height - _, _, _); } }
+
         private Rectangle BottomRight
         { get { return new Rectangle(this.ClientSize.Width - _, this.ClientSize.Height - _, _, _); } }
 
@@ -84,6 +90,7 @@ namespace GameZBDAlchemyStoneTapper
                 else if (Bottom.Contains(cursor)) message.Result = (IntPtr)HTBOTTOM;
             }
         }
+
         private void SelectArea_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -92,6 +99,7 @@ namespace GameZBDAlchemyStoneTapper
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
             }
         }
+
         protected override void OnPaint(PaintEventArgs e) // you can safely omit this method if you want
         {
             e.Graphics.FillRectangle(Brushes.Green, Top);
@@ -100,6 +108,4 @@ namespace GameZBDAlchemyStoneTapper
             e.Graphics.FillRectangle(Brushes.Green, Bottom);
         }
     }
-
-    
 }

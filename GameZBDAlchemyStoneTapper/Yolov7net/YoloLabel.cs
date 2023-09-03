@@ -13,32 +13,18 @@ namespace Yolov7net
             set
             {
                 name = value;
-                if (value.EndsWith('D'))
+                if (value.Equals("Imperfect") || value.Equals("Rough") || value.Equals("Polished") || value.Equals("Sharp") ||
+                    value.Equals("Sturdy") || value.Equals("Resplendent") || value.Equals("Splendid") || value.Equals("Shining"))
                 {
-                    Color = Color.Purple;
+                    Color = Color.Red;
                 }
-                if (value.EndsWith('P'))
+                if (value.Equals("Material") || value.Equals("StrawBerry") || value.Equals("Purple"))
                 {
                     Color = Color.Yellow;
                 }
-                if (value.EndsWith('L'))
-                {
-                    Color = Color.Green;
-                }
-                if (value.Equals("Copper") || value.Equals("Iron") || value.Equals("Lead") || value.Equals("Tin") ||
-                    value.Equals("Titanium") || value.Equals("Vanadium") || value.Equals("Zinc"))
+                if (value.Equals("BlackStone"))
                 {
                     Color = Color.Purple;
-                }
-                if (value.Equals("Acacia") || value.Equals("Ash") || value.Equals("Birch") || value.Equals("Cedar") ||
-                    value.Equals("Maple") || value.Equals("Palm") || value.Equals("Pine"))
-                {
-                    Color = Color.Yellow;
-                }
-                if (value.Equals("Arrow") || value.Equals("Cloud") || value.Equals("Grape") || value.Equals("Purple") ||
-                    value.Equals("StrawBerry") || value.Equals("Ghost") || value.Equals("Sunflower"))
-                {
-                    Color = Color.Green;
                 }
             }
         }

@@ -29,11 +29,9 @@
         private void InitializeComponent()
         {
             CaptureZonePictureBox = new System.Windows.Forms.PictureBox();
-            label1 = new System.Windows.Forms.Label();
-            label2 = new System.Windows.Forms.Label();
-            label3 = new System.Windows.Forms.Label();
             PolishStonesOnceBtn = new System.Windows.Forms.Button();
             GrowStonesOnceBtn = new System.Windows.Forms.Button();
+            PolishGrowBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)CaptureZonePictureBox).BeginInit();
             SuspendLayout();
             // 
@@ -41,54 +39,21 @@
             // 
             CaptureZonePictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             CaptureZonePictureBox.Location = new System.Drawing.Point(0, 0);
-            CaptureZonePictureBox.Margin = new System.Windows.Forms.Padding(2);
+            CaptureZonePictureBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             CaptureZonePictureBox.Name = "CaptureZonePictureBox";
-            CaptureZonePictureBox.Size = new System.Drawing.Size(769, 521);
+            CaptureZonePictureBox.Size = new System.Drawing.Size(879, 695);
             CaptureZonePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             CaptureZonePictureBox.TabIndex = 0;
             CaptureZonePictureBox.TabStop = false;
             // 
-            // label1
-            // 
-            label1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(787, 7);
-            label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(124, 15);
-            label1.TabIndex = 1;
-            label1.Text = "press Ctrl +C to break.";
-            // 
-            // label2
-            // 
-            label2.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(787, 30);
-            label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(38, 15);
-            label2.TabIndex = 3;
-            label2.Text = "label2";
-            // 
-            // label3
-            // 
-            label3.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(787, 53);
-            label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(38, 15);
-            label3.TabIndex = 4;
-            label3.Text = "label3";
-            // 
             // PolishStonesOnceBtn
             // 
             PolishStonesOnceBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            PolishStonesOnceBtn.Location = new System.Drawing.Point(773, 487);
-            PolishStonesOnceBtn.Margin = new System.Windows.Forms.Padding(2);
-            PolishStonesOnceBtn.MaximumSize = new System.Drawing.Size(200, 40);
+            PolishStonesOnceBtn.Location = new System.Drawing.Point(883, 649);
+            PolishStonesOnceBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            PolishStonesOnceBtn.MaximumSize = new System.Drawing.Size(229, 53);
             PolishStonesOnceBtn.Name = "PolishStonesOnceBtn";
-            PolishStonesOnceBtn.Size = new System.Drawing.Size(169, 40);
+            PolishStonesOnceBtn.Size = new System.Drawing.Size(193, 53);
             PolishStonesOnceBtn.TabIndex = 5;
             PolishStonesOnceBtn.Text = "Polish Stones Once";
             PolishStonesOnceBtn.UseVisualStyleBackColor = true;
@@ -97,33 +62,43 @@
             // GrowStonesOnceBtn
             // 
             GrowStonesOnceBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            GrowStonesOnceBtn.Location = new System.Drawing.Point(773, 443);
-            GrowStonesOnceBtn.Margin = new System.Windows.Forms.Padding(2);
-            GrowStonesOnceBtn.MaximumSize = new System.Drawing.Size(200, 40);
+            GrowStonesOnceBtn.Location = new System.Drawing.Point(883, 591);
+            GrowStonesOnceBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            GrowStonesOnceBtn.MaximumSize = new System.Drawing.Size(229, 53);
             GrowStonesOnceBtn.Name = "GrowStonesOnceBtn";
-            GrowStonesOnceBtn.Size = new System.Drawing.Size(169, 40);
+            GrowStonesOnceBtn.Size = new System.Drawing.Size(193, 53);
             GrowStonesOnceBtn.TabIndex = 6;
             GrowStonesOnceBtn.Text = "Grow Stones Once";
             GrowStonesOnceBtn.UseVisualStyleBackColor = true;
             GrowStonesOnceBtn.Click += GrowStonesOnceBtn_Click;
             // 
+            // PolishGrowBtn
+            // 
+            PolishGrowBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            PolishGrowBtn.Location = new System.Drawing.Point(883, 532);
+            PolishGrowBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            PolishGrowBtn.MaximumSize = new System.Drawing.Size(229, 53);
+            PolishGrowBtn.Name = "PolishGrowBtn";
+            PolishGrowBtn.Size = new System.Drawing.Size(193, 53);
+            PolishGrowBtn.TabIndex = 7;
+            PolishGrowBtn.Text = "Polish Grow Once";
+            PolishGrowBtn.UseVisualStyleBackColor = true;
+            PolishGrowBtn.Click += PolishGrowBtn_Click;
+            // 
             // Detection
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(943, 527);
+            ClientSize = new System.Drawing.Size(1078, 703);
+            Controls.Add(PolishGrowBtn);
             Controls.Add(GrowStonesOnceBtn);
             Controls.Add(PolishStonesOnceBtn);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
             Controls.Add(CaptureZonePictureBox);
-            Margin = new System.Windows.Forms.Padding(2);
+            Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             Name = "Detection";
             Text = "Detection";
             ((System.ComponentModel.ISupportInitialize)CaptureZonePictureBox).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -132,8 +107,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button StartBtn;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button PolishStonesOnceBtn;
         private System.Windows.Forms.Button GrowStonesOnceBtn;
+        private System.Windows.Forms.Button PolishGrowBtn;
     }
 }

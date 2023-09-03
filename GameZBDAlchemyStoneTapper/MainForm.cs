@@ -10,26 +10,28 @@ namespace GameZBDAlchemyStoneTapper
 {
     public partial class MainForm : Form
     {
-        private language Lan = new language();
+        public language Lan = new language();
 
         public MainForm()
         {
             InitializeComponent();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             loadJson();
-            HotkeysManager.SetupSystemHook();
             Closing += MainWindow_Closing;
         }
 
         private void loadJson()
-        {/*
+        {
             try
             {
-                string tem = Directory.GetCurrentDirectory();
                 string text = File.ReadAllText(@"./DefaultLanguage.json");
                 Lan = JsonSerializer.Deserialize<language>(text);
-                SODMainPanelBtn.Text = Lan.SOD;
-                SOPMainPanelBtn.Text = Lan.SOP;
-                SOLMainPanelBtn.Text = Lan.SOL;
+                language.CopyToStatic(Lan);
+                this.Text = language.Instance.ProjectName;
+                SODMainPanelBtn.Text = language.Instance.SOD;
+                SOPMainPanelBtn.Text = language.Instance.SOP;
+                SOLMainPanelBtn.Text = language.Instance.SOL;
             }
             catch (FileNotFoundException E)
             {
@@ -38,7 +40,7 @@ namespace GameZBDAlchemyStoneTapper
             catch (Exception E)
             {
                 MessageBox.Show(E.ToString());
-            }*/
+            }
         }
 
         private void SODMainPanelBtn_Click(object sender, EventArgs e)
@@ -48,7 +50,7 @@ namespace GameZBDAlchemyStoneTapper
             MainPanelAllSelection.Left = SODMainPanelBtn.Left;
             SODMainPanelBtn.BackColor = Color.FromArgb(46, 51, 73);
 
-            NameOfFormLbl.Text = Lan.SOD;
+            NameOfFormLbl.Text = language.Instance.SOD;
             this.SubSectionPanel.Controls.Clear();
             SODForm SODFormInstance = new SODForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             SODFormInstance.FormBorderStyle = FormBorderStyle.None;
@@ -63,7 +65,7 @@ namespace GameZBDAlchemyStoneTapper
             MainPanelAllSelection.Left = SODMainPanelBtn.Left;
             SOPMainPanelBtn.BackColor = Color.FromArgb(46, 51, 73);
 
-            NameOfFormLbl.Text = Lan.SOP;
+            NameOfFormLbl.Text = language.Instance.SOP;
             this.SubSectionPanel.Controls.Clear();
             SOPForm SOPFormInstance = new SOPForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             SOPFormInstance.FormBorderStyle = FormBorderStyle.None;
@@ -78,7 +80,7 @@ namespace GameZBDAlchemyStoneTapper
             MainPanelAllSelection.Left = SOLMainPanelBtn.Left;
             SOLMainPanelBtn.BackColor = Color.FromArgb(46, 51, 73);
 
-            NameOfFormLbl.Text = Lan.SOL;
+            NameOfFormLbl.Text = language.Instance.SOL;
             this.SubSectionPanel.Controls.Clear();
             SOLForm SOLFormInstance = new SOLForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             SOLFormInstance.FormBorderStyle = FormBorderStyle.None;
@@ -105,11 +107,6 @@ namespace GameZBDAlchemyStoneTapper
         {
             // Need to shutdown the hook. idk what happens if
             // you dont, but it might cause a memory leak.
-            HotkeysManager.ShutdownSystemHook();
-        }
-
-        private void fileSystemWatcher1_Changed(object sender, FileSystemEventArgs e)
-        {
         }
     }
 }

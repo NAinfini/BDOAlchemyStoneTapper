@@ -1,0 +1,18 @@
+{
+  "ProjectName": "BDOStoneTapper",
+  "SOP": "Stone of protection",
+  "SOD": "Stone of Destruction",
+  "SOL": "Stone of life",
+  "UpgreadeFollowing": "Upgrade Following Alchemy Stones:",
+  "WithFollowingMaterials": "Materials:",
+  "Start": "Start",
+  "Stop": "Stop",
+  "Select": "Select",
+  "DetectionName": "Object Detection",
+  "PolishOnceBtn": "Polish Stones Once",
+  "GrowOnceBtn": "Grow Stones Once",
+  "NoMaterialErr": "Material Not Found",
+  "NoBlackStoneErr": "Black Stone Not Found",
+  "NoStonesErr": "Alchemy Stone Not Found",
+  "NoProcessFound": "BDO Process Not Found(process name set to BlackDesert64), report Error with proper process name"
+}

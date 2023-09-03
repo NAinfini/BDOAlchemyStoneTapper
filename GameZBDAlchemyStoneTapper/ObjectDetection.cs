@@ -24,20 +24,30 @@ namespace GameZBDAlchemyStoneTapper
             this.height = height;
         }
 
-        public ObjectDetection()
+        public ObjectDetection(string typeOfStone)
         {
-            yolo = new Yolov7net.Yolov8("./best.onnx", false);
-
-            // setup labels of onnx model
-            string[] labels = new string[47]
+            yolo = new Yolov7net.Yolov8("./" + typeOfStone + ".onnx", false);
+            string[] DestructionLabels = new string[10]
             {
-                   "Acacia", "Arrow", "Ash", "Birch", "BlackStone", "Cedar", "Cloud", "Copper", "Ghost", "Gold",
-                "Grape", "ImperfectD", "ImperfectL", "ImperfectP", "Iron", "Lead", "Maple", "Palm", "Pine", "PolishedD",
-                "PolishedL", "PolishedP", "Purple", "ResplendentD", "ResplendentL", "ResplendentP", "RoughD", "RoughL",
-                "RoughP", "SharpD", "SharpL", "SharpP", "ShiningD", "ShiningL", "ShiningP", "SplendidD", "SplendidL", "SplendidP",
-                "StrawBerry", "SturdyD", "SturdyL", "SturdyP", "Sunflower", "Tin", "Titanium", "Vanadium", "Zinc"
+                 "BlackStone", "Imperfect", "Material", "Polished", "Resplendent", "Rough", "Sharp", "Shining", "Splendid", "Sturdy"
             };
-            yolo.SetupLabels(labels);   // use custom trained model should use your labels like: yolo.SetupLabels(string[] labels)
+            string[] LifeLabels = new string[11]
+            {
+                  "BlackStone", "Imperfect", "Polished", "Purple", "Resplendent", "Rough", "Sharp", "Shining", "Splendid", "StrawBerry", "Sturdy"
+            };
+            if (typeOfStone.Equals("Destruction") || typeOfStone.Equals("Protection"))
+            {
+                yolo.SetupLabels(DestructionLabels);
+            }
+            else if (typeOfStone.Equals("Life"))
+            {
+                yolo.SetupLabels(LifeLabels);
+            }
+            else
+            {
+                throw new Exception();
+            }
+            // use custom trained model should use your labels like: yolo.SetupLabels(string[] labels)
         }
 
         public Bitmap drawRectangles(Bitmap image, List<YoloPrediction> predictions)
