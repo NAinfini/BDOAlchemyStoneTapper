@@ -52,6 +52,10 @@ namespace BDOAlchemyStoneTapper
             Copper = new System.Windows.Forms.PictureBox();
             startBtn = new System.Windows.Forms.Button();
             SODMaterialImage = new System.Windows.Forms.ImageList(components);
+            textBox1 = new System.Windows.Forms.TextBox();
+            textBox2 = new System.Windows.Forms.TextBox();
+            DelayShortLbl = new System.Windows.Forms.Label();
+            DelayTimeLong = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)Imperfect).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Rough).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Polished).BeginInit();
@@ -315,7 +319,7 @@ namespace BDOAlchemyStoneTapper
             // startBtn
             // 
             startBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            startBtn.Location = new System.Drawing.Point(506, 393);
+            startBtn.Location = new System.Drawing.Point(500, 421);
             startBtn.Margin = new System.Windows.Forms.Padding(2);
             startBtn.Name = "startBtn";
             startBtn.Size = new System.Drawing.Size(106, 44);
@@ -337,12 +341,55 @@ namespace BDOAlchemyStoneTapper
             SODMaterialImage.Images.SetKeyName(5, "Vanadium.png");
             SODMaterialImage.Images.SetKeyName(6, "Zinc.png");
             // 
+            // textBox1
+            // 
+            textBox1.Location = new System.Drawing.Point(106, 393);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new System.Drawing.Size(39, 27);
+            textBox1.TabIndex = 9;
+            textBox1.Text = "20";
+            textBox1.Leave += IntCHeck;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new System.Drawing.Point(311, 393);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new System.Drawing.Size(40, 27);
+            textBox2.TabIndex = 10;
+            textBox2.Text = "120";
+            textBox2.TextChanged += IntCHeck;
+            textBox2.Leave += IntCHeck;
+            // 
+            // DelayShortLbl
+            // 
+            DelayShortLbl.AutoSize = true;
+            DelayShortLbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            DelayShortLbl.Location = new System.Drawing.Point(12, 396);
+            DelayShortLbl.Name = "DelayShortLbl";
+            DelayShortLbl.Size = new System.Drawing.Size(86, 20);
+            DelayShortLbl.TabIndex = 11;
+            DelayShortLbl.Text = "Delay Short";
+            // 
+            // DelayTimeLong
+            // 
+            DelayTimeLong.AutoSize = true;
+            DelayTimeLong.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            DelayTimeLong.Location = new System.Drawing.Point(221, 396);
+            DelayTimeLong.Name = "DelayTimeLong";
+            DelayTimeLong.Size = new System.Drawing.Size(84, 20);
+            DelayTimeLong.TabIndex = 12;
+            DelayTimeLong.Text = "Delay Long";
+            // 
             // SODForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.FromArgb(41, 53, 73);
-            ClientSize = new System.Drawing.Size(623, 448);
+            ClientSize = new System.Drawing.Size(617, 476);
+            Controls.Add(DelayTimeLong);
+            Controls.Add(DelayShortLbl);
+            Controls.Add(textBox2);
+            Controls.Add(textBox1);
             Controls.Add(startBtn);
             Controls.Add(SODMaterialPanel);
             Controls.Add(SODText2Lbl);
@@ -395,5 +442,9 @@ namespace BDOAlchemyStoneTapper
         private System.Windows.Forms.PictureBox Copper;
         private System.Windows.Forms.Button startBtn;
         private System.Windows.Forms.ImageList SODMaterialImage;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label DelayShortLbl;
+        private System.Windows.Forms.Label DelayTimeLong;
     }
 }

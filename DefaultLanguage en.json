@@ -15,5 +15,8 @@
   "NoBlackStoneErr": "Black Stone Not Found",
   "breakOutlbl": "ALT + C To terminate",
   "NoStonesErr": "Alchemy Stone Not Found",
+  "DelayShort": "Short Delay",
+  "DelayLong": "Long Delay",
+  "OnlyNumberErr": "Enter Number only Please",
   "NoProcessFound": "BDO Process Not Found(process name set to BlackDesert64), report Error with proper process name"
 }

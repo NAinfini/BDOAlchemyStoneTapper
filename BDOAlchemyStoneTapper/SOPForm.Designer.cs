@@ -49,6 +49,10 @@ namespace BDOAlchemyStoneTapper
             Rough = new System.Windows.Forms.PictureBox();
             Imperfect = new System.Windows.Forms.PictureBox();
             startBtn = new System.Windows.Forms.Button();
+            DelayTimeLong = new System.Windows.Forms.Label();
+            DelayShortLbl = new System.Windows.Forms.Label();
+            textBox2 = new System.Windows.Forms.TextBox();
+            textBox1 = new System.Windows.Forms.TextBox();
             SODMaterialPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Pine).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Palm).BeginInit();
@@ -299,7 +303,7 @@ namespace BDOAlchemyStoneTapper
             // startBtn
             // 
             startBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            startBtn.Location = new System.Drawing.Point(488, 380);
+            startBtn.Location = new System.Drawing.Point(493, 380);
             startBtn.Margin = new System.Windows.Forms.Padding(2);
             startBtn.Name = "startBtn";
             startBtn.Size = new System.Drawing.Size(106, 44);
@@ -308,12 +312,54 @@ namespace BDOAlchemyStoneTapper
             startBtn.UseVisualStyleBackColor = true;
             startBtn.Click += startBtn_Click;
             // 
+            // DelayTimeLong
+            // 
+            DelayTimeLong.AutoSize = true;
+            DelayTimeLong.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            DelayTimeLong.Location = new System.Drawing.Point(215, 390);
+            DelayTimeLong.Name = "DelayTimeLong";
+            DelayTimeLong.Size = new System.Drawing.Size(84, 20);
+            DelayTimeLong.TabIndex = 20;
+            DelayTimeLong.Text = "Delay Long";
+            // 
+            // DelayShortLbl
+            // 
+            DelayShortLbl.AutoSize = true;
+            DelayShortLbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            DelayShortLbl.Location = new System.Drawing.Point(6, 390);
+            DelayShortLbl.Name = "DelayShortLbl";
+            DelayShortLbl.Size = new System.Drawing.Size(86, 20);
+            DelayShortLbl.TabIndex = 19;
+            DelayShortLbl.Text = "Delay Short";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new System.Drawing.Point(305, 387);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new System.Drawing.Size(40, 27);
+            textBox2.TabIndex = 18;
+            textBox2.Text = "120";
+            textBox2.Leave += IntCHeck;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new System.Drawing.Point(100, 387);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new System.Drawing.Size(39, 27);
+            textBox1.TabIndex = 17;
+            textBox1.Text = "20";
+            textBox1.Leave += IntCHeck;
+            // 
             // SOPForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.FromArgb(41, 53, 73);
-            ClientSize = new System.Drawing.Size(605, 435);
+            ClientSize = new System.Drawing.Size(610, 435);
+            Controls.Add(DelayTimeLong);
+            Controls.Add(DelayShortLbl);
+            Controls.Add(textBox2);
+            Controls.Add(textBox1);
             Controls.Add(startBtn);
             Controls.Add(SODMaterialPanel);
             Controls.Add(SOPText2Lbl);
@@ -364,5 +410,9 @@ namespace BDOAlchemyStoneTapper
         private System.Windows.Forms.PictureBox Rough;
         private System.Windows.Forms.PictureBox Imperfect;
         private System.Windows.Forms.Button startBtn;
+        private System.Windows.Forms.Label DelayTimeLong;
+        private System.Windows.Forms.Label DelayShortLbl;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

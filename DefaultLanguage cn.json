@@ -14,6 +14,9 @@
   "NoMaterialErr": "未找到材料",
   "NoBlackStoneErr": "未找到黑石",
   "NoStonesErr": "未找到炼金石",
+  "OnlyNumberErr": "请输入数字",
+  "DelayShort": "短延迟",
+  "DelayLong": "长延迟",
   "breakOutlbl": "ALT + C 强制停止",
   "PolishGrowBtn": "打磨升级一次",
   "NoProcessFound": "为找到黑沙程序(程序名已设置为 BlackDesert64), 请递交错误报告以及现有黑沙程序名称"

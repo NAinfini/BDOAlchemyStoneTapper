@@ -40,15 +40,20 @@ namespace BDOAlchemyStoneTapper
         private HotKeyManager hotKeyManager = new HotKeyManager();
         private HotKey hotKey;
 
+        private int DelayShort;
+        private int DelayLong;
+
         [DllImport("user32.dll")]
         private static extern bool SetForegroundWindow(IntPtr hWnd);
 
-        public Detection(Rectangle rec, List<string> stoneList, string typeOfStone)
+        public Detection(Rectangle rec, List<string> stoneList, string typeOfStone, int delayShort, int delayLong)
         {
             //saving info
             sniplocation = rec;
             selectedAlchemyStone = stoneList;
             StoneType = typeOfStone;
+            DelayShort = delayShort;
+            DelayLong = delayLong;
             InitializeComponent();
             //setting basic interface texts
             this.Text = language.Instance.DetectionName;
@@ -66,6 +71,8 @@ namespace BDOAlchemyStoneTapper
 
             // Handle hotkey presses.
             hotKeyManager.KeyPressed += HotKeyManagerPressed;
+            DelayShort = delayShort;
+            DelayLong = delayLong;
         }
 
         private void detectStones()
@@ -110,7 +117,7 @@ namespace BDOAlchemyStoneTapper
                     foreach (RectangleF tempRect in tempList)
                     {
                         RightClickRectangle(tempRect);
-                        Thread.Sleep(15);
+                        Thread.Sleep(DelayShort);
                         //checking for material will slow down the program significantly.
                         /*if (!MaterialExists(materialNames.Peek()))
                         {
@@ -127,18 +134,18 @@ namespace BDOAlchemyStoneTapper
                         }*/
                         //temp code, grabs whatever material is first in the list
                         RightClickRectangle(materialPosition);
-                        Thread.Sleep(10);
+                        Thread.Sleep(DelayShort);
                         //press space to max material
                         MouseClickHelper.PressSpace();
-                        Thread.Sleep(20);
+                        Thread.Sleep(DelayShort);
                         //left click polishing button
                         LeftClickRectangle(positionList["LowerPolishButton"]);
-                        Thread.Sleep(10);
+                        Thread.Sleep(DelayShort);
                         //send item back to inventory
                         RightClickRectangle(positionList["PolishPosition"]);
                         if (!polishOrGrow)
                             return false;
-                        Thread.Sleep(15);
+                        Thread.Sleep(DelayShort);
                     }
                 }
             }
@@ -172,7 +179,7 @@ namespace BDOAlchemyStoneTapper
                     foreach (RectangleF tempRect in tempList)
                     {
                         RightClickRectangle(tempRect);
-                        Thread.Sleep(20);
+                        Thread.Sleep(DelayShort);
                         //checking for black stone will slow down the program significantly.
                         /*if (!BlackStoneExists())
                         {
@@ -181,18 +188,18 @@ namespace BDOAlchemyStoneTapper
                         }*/
                         //temp code, grabs whatever material is first in the list
                         RightClickRectangle(BlackStonePosition);
-                        Thread.Sleep(10);
+                        Thread.Sleep(DelayShort);
                         //press space to max material
                         MouseClickHelper.PressSpace();
-                        Thread.Sleep(130);
+                        Thread.Sleep(DelayLong);
                         //left click Growth button
                         LeftClickRectangle(positionList["LowerGrowthButton"]);
-                        Thread.Sleep(10);
+                        Thread.Sleep(DelayShort);
                         //Press enter
                         MouseClickHelper.PressSpace();
-                        Thread.Sleep(10);
+                        Thread.Sleep(DelayShort);
                         RightClickRectangle(positionList["GrowthPosition"]);
-                        Thread.Sleep(10);
+                        Thread.Sleep(DelayShort);
                         if (!polishOrGrow)
                             return false;
                     }

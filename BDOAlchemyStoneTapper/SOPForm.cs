@@ -25,6 +25,8 @@ namespace BDOAlchemyStoneTapper
             SOPTopTextLbl.Text = language.Instance.UpgreadeFollowing;
             SOPText2Lbl.Text = language.Instance.WithFollowingMaterials;
             startBtn.Text = language.Instance.Start;
+            DelayShortLbl.Text = language.Instance.DelayShort;
+            DelayTimeLong.Text = language.Instance.DelayLong;
         }
 
         #region select area
@@ -92,8 +94,8 @@ namespace BDOAlchemyStoneTapper
                         snipLocation = new Rectangle(tempArea.Location.X, tempArea.Location.Y, tempArea.Width, tempArea.Height);
                     }
                 }
-
-                dec = new Detection(snipLocation, selectedAlchemyStone, "Protection");
+                Convert.ToInt32(DelayShortLbl.Text);
+                dec = new Detection(snipLocation, selectedAlchemyStone, "Protection", Convert.ToInt32(DelayShortLbl.Text), Convert.ToInt32(DelayTimeLong.Text));
                 dec.Show();
                 dec.FormClosed += Dec_FormClosed;
                 startBtn.Text = language.Instance.Stop;
@@ -115,6 +117,15 @@ namespace BDOAlchemyStoneTapper
             isRunning = false;
             startBtn.Text = language.Instance.Start;
             dec.Close();
+        }
+
+        private void IntCHeck(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(((TextBox)sender).Text, "[^0-9]"))
+            {
+                MessageBox.Show(language.Instance.OnlyNumberErr);
+                ((TextBox)sender).Text = "150";
+            }
         }
     }
 }

@@ -52,6 +52,9 @@ namespace BDOAlchemyStoneTapper
         public string GrowOnceBtn { get; set; }
         public string PolishGrowBtn { get; set; }
         public string NoMaterialErr { get; set; }
+        public string OnlyNumberErr { get; set; }
+        public string DelayShort { get; set; }
+        public string DelayLong { get; set; }
         public string NoBlackStoneErr { get; set; }
         public string NoStonesErr { get; set; }
         public string NoProcessFound { get; set; }

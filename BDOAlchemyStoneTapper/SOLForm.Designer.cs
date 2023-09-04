@@ -44,6 +44,10 @@ namespace BDOAlchemyStoneTapper
             Rough = new System.Windows.Forms.PictureBox();
             Imperfect = new System.Windows.Forms.PictureBox();
             startBtn = new System.Windows.Forms.Button();
+            DelayTimeLong = new System.Windows.Forms.Label();
+            DelayShortLbl = new System.Windows.Forms.Label();
+            textBox2 = new System.Windows.Forms.TextBox();
+            textBox1 = new System.Windows.Forms.TextBox();
             SODMaterialPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Purple).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Strawberry).BeginInit();
@@ -233,12 +237,54 @@ namespace BDOAlchemyStoneTapper
             startBtn.UseVisualStyleBackColor = true;
             startBtn.Click += startBtn_Click;
             // 
+            // DelayTimeLong
+            // 
+            DelayTimeLong.AutoSize = true;
+            DelayTimeLong.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            DelayTimeLong.Location = new System.Drawing.Point(215, 403);
+            DelayTimeLong.Name = "DelayTimeLong";
+            DelayTimeLong.Size = new System.Drawing.Size(84, 20);
+            DelayTimeLong.TabIndex = 16;
+            DelayTimeLong.Text = "Delay Long";
+            // 
+            // DelayShortLbl
+            // 
+            DelayShortLbl.AutoSize = true;
+            DelayShortLbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            DelayShortLbl.Location = new System.Drawing.Point(6, 403);
+            DelayShortLbl.Name = "DelayShortLbl";
+            DelayShortLbl.Size = new System.Drawing.Size(86, 20);
+            DelayShortLbl.TabIndex = 15;
+            DelayShortLbl.Text = "Delay Short";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new System.Drawing.Point(305, 400);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new System.Drawing.Size(40, 27);
+            textBox2.TabIndex = 14;
+            textBox2.Text = "120";
+            textBox2.Leave += IntCHeck;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new System.Drawing.Point(100, 400);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new System.Drawing.Size(39, 27);
+            textBox1.TabIndex = 13;
+            textBox1.Text = "20";
+            textBox1.Leave += IntCHeck;
+            // 
             // SOLForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.FromArgb(41, 53, 73);
             ClientSize = new System.Drawing.Size(608, 446);
+            Controls.Add(DelayTimeLong);
+            Controls.Add(DelayShortLbl);
+            Controls.Add(textBox2);
+            Controls.Add(textBox1);
             Controls.Add(startBtn);
             Controls.Add(SODMaterialPanel);
             Controls.Add(SOLText2Lbl);
@@ -279,5 +325,9 @@ namespace BDOAlchemyStoneTapper
         private System.Windows.Forms.PictureBox Rough;
         private System.Windows.Forms.PictureBox Imperfect;
         private System.Windows.Forms.Button startBtn;
+        private System.Windows.Forms.Label DelayTimeLong;
+        private System.Windows.Forms.Label DelayShortLbl;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

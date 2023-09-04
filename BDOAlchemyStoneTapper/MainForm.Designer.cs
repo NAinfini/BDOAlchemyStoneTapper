@@ -57,7 +57,7 @@ namespace BDOAlchemyStoneTapper
             MainPanelAllSelection.Dock = System.Windows.Forms.DockStyle.Left;
             MainPanelAllSelection.Location = new System.Drawing.Point(0, 0);
             MainPanelAllSelection.Name = "MainPanelAllSelection";
-            MainPanelAllSelection.Size = new System.Drawing.Size(235, 508);
+            MainPanelAllSelection.Size = new System.Drawing.Size(235, 567);
             MainPanelAllSelection.TabIndex = 0;
             // 
             // SOLMainPanelBtn
@@ -155,7 +155,7 @@ namespace BDOAlchemyStoneTapper
             SubSectionPanel.Location = new System.Drawing.Point(241, 98);
             SubSectionPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             SubSectionPanel.Name = "SubSectionPanel";
-            SubSectionPanel.Size = new System.Drawing.Size(754, 395);
+            SubSectionPanel.Size = new System.Drawing.Size(755, 455);
             SubSectionPanel.TabIndex = 3;
             // 
             // fileSystemWatcher1
@@ -168,7 +168,7 @@ namespace BDOAlchemyStoneTapper
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.FromArgb(41, 53, 73);
-            ClientSize = new System.Drawing.Size(1003, 508);
+            ClientSize = new System.Drawing.Size(1009, 567);
             Controls.Add(SubSectionPanel);
             Controls.Add(NameOfFormLbl);
             Controls.Add(MainPanelAllSelection);

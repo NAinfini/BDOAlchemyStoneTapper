@@ -19,7 +19,8 @@
 1.使用管理者模式进入程序，不然程序无法模拟鼠标点击
 ![1](MarkDownImages/Tutorial1.png)
 
-2.选择想要升级、打磨的炼金石
+2.选择想要升级、打磨的炼金石，然后输入长短延迟，一般为20,120.长延迟为点击生长按钮前
+的延迟，因生长按钮通常需要额外的时间才能进行点击， 短延迟为除此以外一切点击延迟
 ![2](MarkDownImages/Tutorial2.png)
 3.用绿色边框选择工作区域
 ![3](MarkDownImages/Tutorial3.png)
@@ -43,6 +44,7 @@ Heads up:
 - [ ] 加强AI准确率
 - [ ] 本地化
 - [ ] 手动选择材料黑石位置
+- [x] 手动选择延迟
 ## What's included
 
 [Grab compiled package here](https://github.com/NAinfini/BDOAlchemyStoneTapper/releases)
