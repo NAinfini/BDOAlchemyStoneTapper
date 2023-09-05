@@ -27,10 +27,10 @@
 4.在游戏内打开打磨窗口并点击对应按钮
 ![4](MarkDownImages/Tutorial4.png)
 ```
-Heads up:
-     1.开始前选择跳过动画选项， 以及最大数量选项
-     2.确认炼金石以及材料能被正确识别
-     3.确认有足够数量的材料以及黑石
+提示:
+     1.开始点炼金石前选择跳过动画选项， 以及最大数量选项
+     2.确认炼金石以及材料能被正确识别，开始以前移除选中的炼金石。
+     3.确认有足够数量的材料以及黑石，而且能被识别（将炼金石放入打磨框使材料与黑石亮起）
      4.CTRL + alt + DEL 可以用来强行停止程序，但因游戏是基于dirextx开发的，游戏会截停按键信息
 ```
 
@@ -47,7 +47,7 @@ Heads up:
 - [x] 手动选择延迟
 ## What's included
 
-[Grab compiled package here](https://github.com/NAinfini/BDOAlchemyStoneTapper/releases)
+[打包好的程序](https://github.com/NAinfini/BDOAlchemyStoneTapper/releases)
 
 ```text
 BDOAlchemyStoneTapper

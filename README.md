@@ -6,7 +6,7 @@ detection and simulated key strokes.
 
 - V1.1.0 version and onwards supports both polish and grow
 - Any version of BDO works, no matter the language and server.
-- It saves a lot of time tapping stones but it might get you banned so be careful with it.
+- Use at your own risk.
 
 ## Table of contents
 
@@ -19,9 +19,7 @@ detection and simulated key strokes.
 ## Tutorial
 1.Open software in administrator mode
 ![1](MarkDownImages/Tutorial1.png)
-
 This is so the software gains the ability to simulate mouse clicks and keyboard inputs
-
 2.Select Stone type and select the stones to polish/grow, and enter long,short delay, 
 normally 20,120. long delay is the delay before hitting grow button, as it normally
 takes a second for that button to get ready, short delay is every other delay related to clicking

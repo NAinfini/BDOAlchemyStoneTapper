@@ -96,7 +96,7 @@ namespace BDOAlchemyStoneTapper
                     }
                 }
 
-                dec = new Detection(snipLocation, selectedAlchemyStone, "Life", Convert.ToInt32(DelayShortLbl.Text), Convert.ToInt32(DelayTimeLong.Text));
+                dec = new Detection(snipLocation, selectedAlchemyStone, "Life", Convert.ToInt32(DelayShortBox.Text), Convert.ToInt32(DelayLongBox.Text));
                 dec.Show();
                 dec.FormClosed += Dec_FormClosed;
                 startBtn.Text = language.Instance.Stop;

@@ -28,11 +28,11 @@ namespace BDOAlchemyStoneTapper
         private Bitmap toDisplay;
         private List<YoloPrediction> perdictions;
         private Dictionary<string, List<RectangleF>> positions;
-        private RectangleF materialPosition;
         private Thread thread;
         private bool isRunning = true;
 
         private Dictionary<string, RectangleF> positionList;
+        private RectangleF materialPosition;
         private RectangleF BlackStonePosition;
         private bool boxObtained = false;
         private bool polishOrGrow = false;
@@ -84,13 +84,13 @@ namespace BDOAlchemyStoneTapper
                 Bitmap boxMap = CaptureScreen.Snip(sniplocation);
                 List<YoloPrediction> tempperdictions = ForPictureBox.getPerdictions(MakeGrayscale3(boxMap));
                 boxMap = ForPictureBox.drawRectangles(boxMap, tempperdictions);
-                if (boxObtained) { ForPictureBox.drawRectangles(boxMap, positionList); }
+                if (boxObtained) { boxMap = ForPictureBox.drawRectangles(boxMap, positionList); }
                 CaptureZonePictureBox.Image = boxMap;
-                Thread.Sleep(300);
+                Thread.Sleep(1000);
             }
         }
 
-        private bool PolishStonesOnce()
+        private void PolishStonesOnce()
         {
             //Polishing all stones once
             //getting process handle and setting it forward
@@ -102,11 +102,16 @@ namespace BDOAlchemyStoneTapper
             else
             {
                 MessageBox.Show(language.Instance.NoProcessFound);
-                return false;
+                return;
             }
             //try get polish position and all button positions
-            if (!findButtonsPositionsFromPolishSlot()) return false;
-            Thread.Sleep(200);
+            if (!findButtonsPositionsFromPolishSlot())
+            {
+                return;
+            }
+            toDisplay = OBJ.drawRectangles(toDisplay, perdictions);
+            toDisplay = OBJ.drawRectangles(toDisplay, positionList);
+            CaptureZonePictureBox.Image = toDisplay;
             updatePerdictionList();
             //for all stones, do procedures once
             Dictionary<string, List<RectangleF>> tempPos = positions;
@@ -144,15 +149,17 @@ namespace BDOAlchemyStoneTapper
                         //send item back to inventory
                         RightClickRectangle(positionList["PolishPosition"]);
                         if (!polishOrGrow)
-                            return false;
+                        {
+                            return;
+                        }
                         Thread.Sleep(DelayShort);
                     }
                 }
             }
-            return true;
+            return;
         }
 
-        private bool GrowStonesOnce()
+        private void GrowStonesOnce()
         {
             //growing all stones once
             //getting handle and setting it to the front
@@ -164,11 +171,16 @@ namespace BDOAlchemyStoneTapper
             else
             {
                 MessageBox.Show(language.Instance.NoProcessFound);
-                return false;
+                return;
             }
             //trying to get grow location and all button locations
-            if (!findButtonsPositionsFromGrowthSlot()) return false;
-            Thread.Sleep(200);
+            if (!findButtonsPositionsFromGrowthSlot())
+            {
+                return;
+            }
+            toDisplay = OBJ.drawRectangles(toDisplay, perdictions);
+            toDisplay = OBJ.drawRectangles(toDisplay, positionList);
+            CaptureZonePictureBox.Image = toDisplay;
             updatePerdictionList();
             Dictionary<string, List<RectangleF>> tempPos = positions;
             //now start growing stones
@@ -201,11 +213,13 @@ namespace BDOAlchemyStoneTapper
                         RightClickRectangle(positionList["GrowthPosition"]);
                         Thread.Sleep(DelayShort);
                         if (!polishOrGrow)
-                            return false;
+                        {
+                            return;
+                        }
                     }
                 }
             }
-            return true;
+            return;
         }
 
         private bool findButtonsPositionsFromPolishSlot()
@@ -329,7 +343,6 @@ namespace BDOAlchemyStoneTapper
                 MessageBox.Show(language.Instance.NoStonesErr);
                 return false;
             }
-            Thread.Sleep(200);
             updatePerdictionList();
             if (positions.TryGetValue("BlackStone", out List<RectangleF> blackStoneList))
             {
@@ -341,7 +354,7 @@ namespace BDOAlchemyStoneTapper
                 return false;
             }
             //find position for Growth slot left most
-            Thread.Sleep(200);
+
             updatePerdictionList();
             RectangleF GrowthPosition = new RectangleF(9999999, 0, 0, 0);
             foreach (string tempStr in selectedAlchemyStone)
@@ -388,64 +401,40 @@ namespace BDOAlchemyStoneTapper
             return true;
         }
 
+        private void PolishAndGrowOnce()
+        {
+            PolishStonesOnce();
+            LeftClickRectangle(positionList["UpperGrowthButton"]);
+            GrowStonesOnce();
+            LeftClickRectangle(positionList["UpperPolishButton"]);
+        }
+
         #region helper functions
 
         private void PolishGrowBtn_Click(object sender, EventArgs e)
         {
             //update stats of buttons and stop display thread from running
-            isRunning = false;
+            DisableButtons();
             polishOrGrow = true;
-            PolishGrowBtn.Enabled = false;
-            PolishStonesOnceBtn.Enabled = false;
-            GrowStonesOnceBtn.Enabled = false;
-            if (PolishStonesOnce())
-            {
-                LeftClickRectangle(positionList["UpperGrowthButton"]);
-                if (GrowStonesOnce())
-                {
-                    LeftClickRectangle(positionList["UpperPolishButton"]);
-                }
-            }
-
-            PolishGrowBtn.Enabled = true;
-            PolishStonesOnceBtn.Enabled = true;
-            GrowStonesOnceBtn.Enabled = true;
-            isRunning = true;
-            thread = new Thread(new ThreadStart(detectStones));
-            thread.Start();
+            PolishAndGrowOnce();
+            EnableButtons();
         }
 
         private void tapStonesOnceBtn_Click(object sender, EventArgs e)
         {
             //update stats of buttons and stop display thread from running
-            isRunning = false;
+            DisableButtons();
             polishOrGrow = true;
-            PolishStonesOnceBtn.Enabled = false;
-            GrowStonesOnceBtn.Enabled = false;
-            PolishGrowBtn.Enabled = false;
             PolishStonesOnce();
-            PolishGrowBtn.Enabled = true;
-            PolishStonesOnceBtn.Enabled = true;
-            GrowStonesOnceBtn.Enabled = true;
-            isRunning = true;
-            thread = new Thread(new ThreadStart(detectStones));
-            thread.Start();
+            EnableButtons();
         }
 
         private void GrowStonesOnceBtn_Click(object sender, EventArgs e)
         {
-            isRunning = false;
+            DisableButtons();
             polishOrGrow = true;
-            PolishStonesOnceBtn.Enabled = false;
-            GrowStonesOnceBtn.Enabled = false;
-            PolishGrowBtn.Enabled = false;
             GrowStonesOnce();
-            PolishStonesOnceBtn.Enabled = true;
-            GrowStonesOnceBtn.Enabled = true;
-            PolishGrowBtn.Enabled = true;
-            isRunning = true;
-            thread = new Thread(new ThreadStart(detectStones));
-            thread.Start();
+            EnableButtons();
         }
 
         private bool MaterialExists(string name)
@@ -482,6 +471,20 @@ namespace BDOAlchemyStoneTapper
             MouseClickHelper.LeftClick((int)tempTemp.X + sniplocation.X + (int)tempTemp.Width / 2, (int)tempTemp.Y + sniplocation.Y + (int)tempTemp.Height / 2);
         }
 
+        private void DisableButtons()
+        {
+            GrowStonesOnceBtn.Enabled = false;
+            PolishGrowBtn.Enabled = false;
+            PolishStonesOnceBtn.Enabled = false;
+        }
+
+        private void EnableButtons()
+        {
+            GrowStonesOnceBtn.Enabled = true;
+            PolishGrowBtn.Enabled = true;
+            PolishStonesOnceBtn.Enabled = true;
+        }
+
         private void detectionClose(object sender, FormClosingEventArgs e)
         {
             isRunning = false;
@@ -497,14 +500,10 @@ namespace BDOAlchemyStoneTapper
 
         private void updatePerdictionList()
         {
+            Thread.Sleep(100);
             toDisplay = CaptureScreen.Snip(sniplocation);
             perdictions = OBJ.getPerdictions(MakeGrayscale3(toDisplay));
             positions = OBJ.getPositions(perdictions);
-        }
-
-        private void stopRunning()
-        {
-            this.Close();
         }
 
         private void HotKeyManagerPressed(object sender, KeyPressedEventArgs e)
