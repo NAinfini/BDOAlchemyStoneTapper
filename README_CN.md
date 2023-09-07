@@ -9,13 +9,18 @@
 
 ## Table of contents
 
-- [教 程](#Tutorial)
-- [计 划](#To-Do)
+- [教 程](#tutorial)
+- [计 划](#to-Do)
 - [安 装 包](#whats-included)
-- [作者](#creators)
+- [作 者](#creators)
+- [报 错](#errors)
 - [版 权](#copyright-and-license)
 
 ## Tutorial
+[下载整合包 ](https://github.com/NAinfini/BDOAlchemyStoneTapper/releases)
+
+StoneTapper 解压后可直接运行，medium model为加强版AI
+
 1.使用管理者模式进入程序，不然程序无法模拟鼠标点击
 ![1](MarkDownImages/Tutorial1.png)
 
@@ -32,11 +37,13 @@
      2.确认炼金石以及材料能被正确识别，开始以前移除选中的炼金石。
      3.确认有足够数量的材料以及黑石，而且能被识别（将炼金石放入打磨框使材料与黑石亮起）
      4.CTRL + alt + DEL 可以用来强行停止程序，但因游戏是基于dirextx开发的，游戏会截停按键信息
+     5.本程序只支持64位系统。
+     6.如发现AI结果并不准确，可使用体积更大，速度更慢，但结果更精确的AI模型包,需在release中单独下载。
 ```
 
 ## To-Do
 
-目前有以下计划，但不一定开发，毕竟是闲的无聊搞得项目
+目前有以下想法等待开发。
 
 - [ ] 自动填补材料
 - [ ] 打磨时自动检查是否有剩余材料
@@ -47,7 +54,7 @@
 - [x] 手动选择延迟
 ## What's included
 
-[打包好的程序](https://github.com/NAinfini/BDOAlchemyStoneTapper/releases)
+
 
 ```text
 BDOAlchemyStoneTapper
@@ -63,6 +70,14 @@ BDOAlchemyStoneTapper
 ## Creators
 
 [NA_infini](https://github.com/NAinfini)
+
+
+## Errors
+
+如果出现 "ASP .net package not installed error" 报错， 那么你需要到 [Microsoft](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) 
+官网并下载 **桌面端** 运行时文件。需要下载x64。
+![1](MarkDownImages/error1.png)
+
 
 ## Copyright and license
 

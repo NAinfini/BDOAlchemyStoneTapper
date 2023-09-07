@@ -14,9 +14,14 @@ detection and simulated key strokes.
 - [To do](#To-Do)
 - [What's included](#whats-included)
 - [Creators](#creators)
+- [Errors](#Errors)
 - [Copyright and license](#copyright-and-license)
 
 ## Tutorial
+[Download the compiled package here](https://github.com/NAinfini/BDOAlchemyStoneTapper/releases)
+
+StoneTapper is the compiled software, medium model includes enhanced AI models
+
 1.Open software in administrator mode
 ![1](MarkDownImages/Tutorial1.png)
 This is so the software gains the ability to simulate mouse clicks and keyboard inputs
@@ -28,6 +33,7 @@ takes a second for that button to get ready, short delay is every other delay re
 ![3](MarkDownImages/Tutorial3.png)
 4.Open Polish/Grow window and press button to start
 ![4](MarkDownImages/Tutorial4.png)
+
 ```
 Heads up:
      1.select skip animation and select "max number" before starting
@@ -35,6 +41,9 @@ Heads up:
      3.Make sure there is enough material in the inventory.
      4.CTRL + alt + DEL is the only way to break the program as it is using 
      dirextX keyboard input.
+     5.Program only supports x64 systems
+     6.If AI predictions is not accurate enough, consider using the larger,slower but more 
+     accurate Model pack,download separately from release page.
 ```
 
 ## To-Do
@@ -50,7 +59,6 @@ This is a hobby project so don't expect too much.
 - [X] Manually set Delay
 ## What's included
 
-[Grab compiled package here](https://github.com/NAinfini/BDOAlchemyStoneTapper/releases)
 
 ```text
 BDOAlchemyStoneTapper
@@ -62,6 +70,11 @@ BDOAlchemyStoneTapper
     ├──DefaultLanguage_cn.json          Chinese language
     └──RunTime files                    Required runtime files
 ```
+## Errors
+
+If run into "ASP .net package not installed error" go to [Microsoft](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) 
+for the **desktop** runtime package(Get X64 version.)
+![1](MarkDownImages/error1.png)
 
 ## Creators
 
