@@ -1,7 +1,7 @@
 # BDOAlchemyStoneTapper
  [中文版](/README_CN.md)
 
-A project that automates BDO alchemy Stone tapping, with the help of yolov8 visual object 
+A project that automates Black Desert Online alchemy Stone tapping, with the help of yolov8 visual object 
 detection and simulated key strokes.
 
 - V1.1.0 version and onwards supports both polish and grow
