@@ -20,16 +20,17 @@ detection and simulated key strokes.
 ## Tutorial
 [Download the compiled package here](https://github.com/NAinfini/BDOAlchemyStoneTapper/releases)
 
-StoneTapper is the compiled software, medium model includes enhanced AI models
+*StoneTapper* includes the compiled software with default AI models, *medium model* includes enhanced AI models
 
 1.Open software in administrator mode
 ![1](MarkDownImages/Tutorial1.png)
 This is so the software gains the ability to simulate mouse clicks and keyboard inputs
+
 2.Select Stone type and select the stones to polish/grow, and enter long,short delay, 
 normally 20,120. long delay is the delay before hitting grow button, as it normally
 takes a second for that button to get ready, short delay is every other delay related to clicking
 ![2](MarkDownImages/Tutorial2.png)
-3.Select Working are with the Green border
+3.Select Working area with the Green border
 ![3](MarkDownImages/Tutorial3.png)
 4.Open Polish/Grow window and press button to start
 ![4](MarkDownImages/Tutorial4.png)
