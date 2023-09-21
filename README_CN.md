@@ -4,8 +4,9 @@
 这是个基于yolov8 和模拟输入的用于 黑色沙漠 自动升级炼金石的项目
 
 - V1.1.0 及以上版本均支持打磨于升级选项。
-- 任何黑沙版本以及服务器均可使用，此项目基于图片识别，并非文字识别。
+- 任何版本,语言，地域，服务器均可使用。
 - 请酌情使用，被封号概不负责。
+- 想要中文只需要将 DefaultLanguage_cn.json 更名为 Defaultlanguage.json 即可
 
 ## Table of contents
 
@@ -13,16 +14,21 @@
 - [计 划](#to-Do)
 - [安 装 包](#whats-included)
 - [作 者](#creators)
-- [报 错](#errors)
 - [版 权](#copyright-and-license)
 
 ## Tutorial
 [下载整合包 ](https://github.com/NAinfini/BDOAlchemyStoneTapper/releases)
 
-StoneTapper 解压后可直接运行，medium model为加强版AI
+StoneTapper 解压后可直接运行，medium model为加强版AI, 下载替换原本模型即可。
+
+
 
 1.使用管理者模式进入程序，不然程序无法模拟鼠标点击
 ![1](MarkDownImages/Tutorial1.png)
+
+如果出现 "ASP .net package not installed error" 报错， 那么你需要到 [Microsoft](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) 
+官网并下载 **桌面端** 运行时文件。需要下载x64版本的安装包，mac用户需下载ARM64版本。
+![1](MarkDownImages/error1.png)
 
 2.选择想要升级、打磨的炼金石，然后输入长短延迟，一般为20,120.长延迟为点击生长按钮前
 的延迟，因生长按钮通常需要额外的时间才能进行点击， 短延迟为除此以外一切点击延迟
@@ -48,7 +54,7 @@ StoneTapper 解压后可直接运行，medium model为加强版AI
 - [ ] 自动填补材料
 - [ ] 打磨时自动检查是否有剩余材料
 - [ ] 升级时自动检查是否有剩余黑石
-- [ ] 加强AI准确率
+- [x] 加强AI准确率
 - [ ] 本地化
 - [ ] 手动选择材料黑石位置
 - [x] 手动选择延迟
@@ -72,11 +78,7 @@ BDOAlchemyStoneTapper
 [NA_infini](https://github.com/NAinfini)
 
 
-## Errors
 
-如果出现 "ASP .net package not installed error" 报错， 那么你需要到 [Microsoft](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) 
-官网并下载 **桌面端** 运行时文件。需要下载x64。
-![1](MarkDownImages/error1.png)
 
 
 ## Copyright and license
