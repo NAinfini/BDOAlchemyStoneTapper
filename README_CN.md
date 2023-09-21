@@ -27,7 +27,10 @@ StoneTapper 解压后可直接运行，medium model为加强版AI, 下载替换�
 ![1](MarkDownImages/Tutorial1.png)
 
 如果出现 "ASP .net package not installed error" 报错， 那么你需要到 [Microsoft](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) 
-官网并下载 **桌面端** 运行时文件。需要下载x64版本的安装包，mac用户需下载ARM64版本。
+官网并下载 **ASP.NET Core** 运行时文件。需要下载x64版本的安装包（英特尔,AMD 的CPU）。
+![Error2](MarkDownImages/error2.png)
+如果继续看到错误，那么你需要下载 **desktop** 运行时文件。
+
 ![1](MarkDownImages/error1.png)
 
 2.选择想要升级、打磨的炼金石，然后输入长短延迟，一般为20,120.长延迟为点击生长按钮前
