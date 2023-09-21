@@ -27,7 +27,11 @@ This is so the software gains the ability to simulate mouse clicks and keyboard 
 
 
 If run into "ASP .net package not installed error" go to [Microsoft](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) 
-for the **desktop** runtime package(Get X64 version, Mac users get Arm64 version) 
+for the **ASP.NET Core** runtime package(Get X64 version for intel,AMD CPUs)
+![Error2](MarkDownImages/error2.png)
+
+If you still see the error, get the desktop runtime package
+
 ![1](MarkDownImages/error1.png)
 
 2.Select Stone type and select the stones to polish/grow, and enter long,short delay, 
