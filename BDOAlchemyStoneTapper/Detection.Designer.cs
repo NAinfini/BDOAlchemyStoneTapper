@@ -70,7 +70,7 @@
             CaptureZonePictureBox.Location = new System.Drawing.Point(0, 0);
             CaptureZonePictureBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             CaptureZonePictureBox.Name = "CaptureZonePictureBox";
-            CaptureZonePictureBox.Size = new System.Drawing.Size(1318, 1042);
+            CaptureZonePictureBox.Size = new System.Drawing.Size(1082, 736);
             CaptureZonePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             CaptureZonePictureBox.TabIndex = 0;
             CaptureZonePictureBox.TabStop = false;
@@ -78,7 +78,7 @@
             // PolishStonesOnceBtn
             // 
             PolishStonesOnceBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            PolishStonesOnceBtn.Location = new System.Drawing.Point(0, 860);
+            PolishStonesOnceBtn.Location = new System.Drawing.Point(0, 656);
             PolishStonesOnceBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             PolishStonesOnceBtn.MaximumSize = new System.Drawing.Size(345, 80);
             PolishStonesOnceBtn.Name = "PolishStonesOnceBtn";
@@ -91,7 +91,7 @@
             // GrowStonesOnceBtn
             // 
             GrowStonesOnceBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            GrowStonesOnceBtn.Location = new System.Drawing.Point(0, 780);
+            GrowStonesOnceBtn.Location = new System.Drawing.Point(0, 576);
             GrowStonesOnceBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             GrowStonesOnceBtn.MaximumSize = new System.Drawing.Size(345, 80);
             GrowStonesOnceBtn.Name = "GrowStonesOnceBtn";
@@ -104,7 +104,7 @@
             // PolishGrowBtn
             // 
             PolishGrowBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            PolishGrowBtn.Location = new System.Drawing.Point(0, 700);
+            PolishGrowBtn.Location = new System.Drawing.Point(0, 496);
             PolishGrowBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             PolishGrowBtn.MaximumSize = new System.Drawing.Size(345, 80);
             PolishGrowBtn.Name = "PolishGrowBtn";
@@ -117,11 +117,11 @@
             // ImperfectBox
             // 
             ImperfectBox.Dock = System.Windows.Forms.DockStyle.Top;
-            ImperfectBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            ImperfectBox.Font = new System.Drawing.Font("Segoe UI", 14.1428576F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             ImperfectBox.Location = new System.Drawing.Point(0, 0);
             ImperfectBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             ImperfectBox.Name = "ImperfectBox";
-            ImperfectBox.Size = new System.Drawing.Size(226, 45);
+            ImperfectBox.Size = new System.Drawing.Size(226, 51);
             ImperfectBox.TabIndex = 8;
             ImperfectBox.Text = "-1";
             ImperfectBox.KeyPress += ImperfectBox_KeyPress;
@@ -129,11 +129,11 @@
             // RoughBox
             // 
             RoughBox.Dock = System.Windows.Forms.DockStyle.Top;
-            RoughBox.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            RoughBox.Location = new System.Drawing.Point(0, 45);
+            RoughBox.Font = new System.Drawing.Font("Segoe UI", 14.1428576F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            RoughBox.Location = new System.Drawing.Point(0, 51);
             RoughBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             RoughBox.Name = "RoughBox";
-            RoughBox.Size = new System.Drawing.Size(226, 48);
+            RoughBox.Size = new System.Drawing.Size(226, 51);
             RoughBox.TabIndex = 9;
             RoughBox.Text = "-1";
             RoughBox.KeyPress += ImperfectBox_KeyPress;
@@ -141,11 +141,11 @@
             // PolishedBox
             // 
             PolishedBox.Dock = System.Windows.Forms.DockStyle.Top;
-            PolishedBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            PolishedBox.Location = new System.Drawing.Point(0, 93);
+            PolishedBox.Font = new System.Drawing.Font("Segoe UI", 14.1428576F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            PolishedBox.Location = new System.Drawing.Point(0, 102);
             PolishedBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             PolishedBox.Name = "PolishedBox";
-            PolishedBox.Size = new System.Drawing.Size(226, 45);
+            PolishedBox.Size = new System.Drawing.Size(226, 51);
             PolishedBox.TabIndex = 10;
             PolishedBox.Text = "-1";
             PolishedBox.KeyPress += ImperfectBox_KeyPress;
@@ -153,11 +153,11 @@
             // SturdyBox
             // 
             SturdyBox.Dock = System.Windows.Forms.DockStyle.Top;
-            SturdyBox.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            SturdyBox.Location = new System.Drawing.Point(0, 138);
+            SturdyBox.Font = new System.Drawing.Font("Segoe UI", 14.1428576F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            SturdyBox.Location = new System.Drawing.Point(0, 153);
             SturdyBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             SturdyBox.Name = "SturdyBox";
-            SturdyBox.Size = new System.Drawing.Size(226, 48);
+            SturdyBox.Size = new System.Drawing.Size(226, 51);
             SturdyBox.TabIndex = 11;
             SturdyBox.Text = "-1";
             SturdyBox.KeyPress += ImperfectBox_KeyPress;
@@ -165,11 +165,11 @@
             // SharpBox
             // 
             SharpBox.Dock = System.Windows.Forms.DockStyle.Top;
-            SharpBox.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            SharpBox.Location = new System.Drawing.Point(0, 186);
+            SharpBox.Font = new System.Drawing.Font("Segoe UI", 14.1428576F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            SharpBox.Location = new System.Drawing.Point(0, 204);
             SharpBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             SharpBox.Name = "SharpBox";
-            SharpBox.Size = new System.Drawing.Size(226, 48);
+            SharpBox.Size = new System.Drawing.Size(226, 51);
             SharpBox.TabIndex = 12;
             SharpBox.Text = "-1";
             SharpBox.KeyPress += ImperfectBox_KeyPress;
@@ -177,11 +177,11 @@
             // ResplendentBox
             // 
             ResplendentBox.Dock = System.Windows.Forms.DockStyle.Top;
-            ResplendentBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            ResplendentBox.Location = new System.Drawing.Point(0, 234);
+            ResplendentBox.Font = new System.Drawing.Font("Segoe UI", 14.1428576F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            ResplendentBox.Location = new System.Drawing.Point(0, 255);
             ResplendentBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             ResplendentBox.Name = "ResplendentBox";
-            ResplendentBox.Size = new System.Drawing.Size(226, 45);
+            ResplendentBox.Size = new System.Drawing.Size(226, 51);
             ResplendentBox.TabIndex = 14;
             ResplendentBox.Text = "-1";
             ResplendentBox.KeyPress += ImperfectBox_KeyPress;
@@ -189,11 +189,11 @@
             // SplendidBox
             // 
             SplendidBox.Dock = System.Windows.Forms.DockStyle.Top;
-            SplendidBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            SplendidBox.Location = new System.Drawing.Point(0, 279);
+            SplendidBox.Font = new System.Drawing.Font("Segoe UI", 14.1428576F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            SplendidBox.Location = new System.Drawing.Point(0, 306);
             SplendidBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             SplendidBox.Name = "SplendidBox";
-            SplendidBox.Size = new System.Drawing.Size(226, 45);
+            SplendidBox.Size = new System.Drawing.Size(226, 51);
             SplendidBox.TabIndex = 15;
             SplendidBox.Text = "-1";
             SplendidBox.KeyPress += ImperfectBox_KeyPress;
@@ -291,10 +291,10 @@
             panel1.Controls.Add(GrowStonesOnceBtn);
             panel1.Controls.Add(PolishStonesOnceBtn);
             panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            panel1.Location = new System.Drawing.Point(1326, 0);
+            panel1.Location = new System.Drawing.Point(1085, 0);
             panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(291, 940);
+            panel1.Size = new System.Drawing.Size(291, 736);
             panel1.TabIndex = 23;
             // 
             // MaterialCountLabel
@@ -319,7 +319,7 @@
             panel2.Location = new System.Drawing.Point(62, 84);
             panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new System.Drawing.Size(226, 444);
+            panel2.Size = new System.Drawing.Size(226, 399);
             panel2.TabIndex = 24;
             // 
             // panel3
@@ -334,17 +334,18 @@
             panel3.Location = new System.Drawing.Point(3, 84);
             panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             panel3.Name = "panel3";
-            panel3.Size = new System.Drawing.Size(50, 444);
+            panel3.Size = new System.Drawing.Size(50, 399);
             panel3.TabIndex = 25;
             // 
             // Detection
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1617, 940);
+            ClientSize = new System.Drawing.Size(1376, 736);
             Controls.Add(panel1);
             Controls.Add(CaptureZonePictureBox);
             Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            MinimumSize = new System.Drawing.Size(1400, 800);
             Name = "Detection";
             Text = "Detection";
             ((System.ComponentModel.ISupportInitialize)CaptureZonePictureBox).EndInit();
