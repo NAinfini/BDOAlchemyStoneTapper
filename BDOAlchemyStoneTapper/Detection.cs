@@ -95,9 +95,8 @@ namespace BDOAlchemyStoneTapper
         {
             //Polishing all stones once
             //getting process handle and setting it forward
-<<<<<<< HEAD
             var prc = Process.GetProcessesByName(language.Instance.ProcessName);
-=======
+
             Dictionary<string, int> MaterialCount = new Dictionary<string, int>
             {
                 { "Imperfect", int.Parse(ImperfectBox.Text) },
@@ -108,8 +107,6 @@ namespace BDOAlchemyStoneTapper
                 { "Resplendent", int.Parse(ResplendentBox.Text) },
                 { "Splendid", int.Parse(SplendidBox.Text) }
             };
-            var prc = Process.GetProcessesByName("BlackDesert64");
->>>>>>> c44b8e38da8204654d40bb4e0563bd12299911d4
             if (prc.Length > 0)
             {
                 SetForegroundWindow(prc[0].MainWindowHandle);

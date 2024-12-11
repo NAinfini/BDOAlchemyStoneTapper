@@ -20,4 +20,6 @@
   "OnlyNumberErr": "Enter Number only Please",
   "MaterialCountLabel": "Please enter number of material"
   "NoProcessFound": "BDO Process Not Found(process name set to BlackDesert64), report Error with proper process name"
+  "ProcessName": "BlackDesert64",
+  "MaterialCountLabel" : "number of materials to use"
 }

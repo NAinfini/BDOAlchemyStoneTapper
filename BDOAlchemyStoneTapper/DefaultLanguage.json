@@ -15,5 +15,6 @@
   "NoBlackStoneErr": "Black Stone Not Found",
   "NoStonesErr": "Alchemy Stone Not Found",
   "NoProcessFound": "BDO Process Not Found(process name set to BlackDesert64), report Error with proper process name",
-  "ProcessName": "BlackDesert64"
+  "ProcessName": "BlackDesert64",
+  "MaterialCountLabel": "Number of materials"
 }
