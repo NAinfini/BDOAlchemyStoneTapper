@@ -1,70 +1,80 @@
-# ��ɳ����ʯ�Զ�������
+# 黑沙炼金石自动连点器
  [English Version](/README.md)
 
-���Ǹ�����yolov8 ��ģ����������ں�ɳ�Զ���������ʯ����Ŀ
+这是个基于yolov8 和模拟输入的用于 黑色沙漠 自动升级炼金石的项目
 
-- V1.1.0 �����ϰ汾��֧�ִ�ĥ������ѡ�
-- �κκ�ɳ�汾�Լ�����������ʹ�ã�����Ŀ����ͼƬʶ�𣬲�������ʶ��
-- ������ʹ�ã�����ŸŲ�����
+- V1.1.0 及以上版本均支持打磨于升级选项。
+- 任何版本,语言，地域，服务器均可使用。
+- 请酌情使用，被封号概不负责。
+- 想要中文只需要将 DefaultLanguage_cn.json 更名为 Defaultlanguage.json 即可
 
 ## Table of contents
 
-- [�� ��](#tutorial)
-- [�� ��](#to-Do)
-- [�� װ ��](#whats-included)
-- [�� ��](#creators)
-- [�� ��](#errors)
-- [�� Ȩ](#copyright-and-license)
+- [教 程](#tutorial)
+- [计 划](#to-Do)
+- [安 装 包](#whats-included)
+- [作 者](#creators)
+- [版 权](#copyright-and-license)
 
 ## Tutorial
-[�������ϰ� ](https://github.com/NAinfini/BDOAlchemyStoneTapper/releases)
+[下载整合包 ](https://github.com/NAinfini/BDOAlchemyStoneTapper/releases)
 
-StoneTapper ��ѹ���ֱ�����У�medium modelΪ��ǿ��AI
+StoneTapper 解压后可直接运行，medium model为加强版AI, 下载替换原本模型即可。
 
-1.ʹ�ù�����ģʽ������򣬲�Ȼ�����޷�ģ�������
+
+
+1.使用管理者模式进入程序，不然程序无法模拟鼠标点击
 ![1](MarkDownImages/Tutorial1.png)
 
-2.ѡ����Ҫ��������ĥ������ʯ��Ȼ�����볤���ӳ٣�һ��Ϊ20,120.���ӳ�Ϊ���������ťǰ
-���ӳ٣���������ťͨ����Ҫ�����ʱ����ܽ��е���� ���ӳ�Ϊ��������һ�е���ӳ�
+如果出现 "ASP .net package not installed error" 报错， 那么你需要到 [Microsoft](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) 
+官网并下载 **ASP.NET Core** 运行时文件。需要下载x64版本的安装包（英特尔,AMD 的CPU）。
+![Error2](MarkDownImages/error2.png)
+
+如果继续看到错误，那么你需要下载 **desktop** 运行时文件。
+
+![1](MarkDownImages/error1.png)
+
+2.选择想要升级、打磨的炼金石，然后输入长短延迟，一般为20,120.长延迟为点击生长按钮前
+的延迟，因生长按钮通常需要额外的时间才能进行点击， 短延迟为除此以外一切点击延迟
 ![2](MarkDownImages/Tutorial2.png)
-3.����ɫ�߿�ѡ��������
+3.用绿色边框选择工作区域
 ![3](MarkDownImages/Tutorial3.png)
-4.����Ϸ�ڴ򿪴�ĥ���ڲ������Ӧ��ť
+4.在游戏内打开打磨窗口并点击对应按钮
 ![4](MarkDownImages/Tutorial4.png)
 ```
-��ʾ:
-     1.��ʼ������ʯǰѡ����������ѡ� �Լ��������ѡ��
-     2.ȷ������ʯ�Լ������ܱ���ȷʶ�𣬿�ʼ��ǰ�Ƴ�ѡ�е�����ʯ��
-     3.ȷ�����㹻�����Ĳ����Լ���ʯ�������ܱ�ʶ�𣨽�����ʯ�����ĥ��ʹ�������ʯ����
-     4.CTRL + alt + DEL ��������ǿ��ֹͣ���򣬵�����Ϸ�ǻ���dirextx�����ģ���Ϸ���ͣ������Ϣ
-     5.������ֻ֧��64λϵͳ��
-     6.�緢��AI�������׼ȷ����ʹ����������ٶȸ��������������ȷ��AIģ�Ͱ�,����release�е������ء�
+提示:
+     1.开始点炼金石前选择跳过动画选项， 以及最大数量选项
+     2.确认炼金石以及材料能被正确识别，开始以前移除选中的炼金石。
+     3.确认有足够数量的材料以及黑石，而且能被识别（将炼金石放入打磨框使材料与黑石亮起）
+     4.CTRL + alt + DEL 可以用来强行停止程序，但因游戏是基于dirextx开发的，游戏会截停按键信息
+     5.本程序只支持64位系统。
+     6.如发现AI结果并不准确，可使用体积更大，速度更慢，但结果更精确的AI模型包,需在release中单独下载。
 ```
 
 ## To-Do
 
-Ŀǰ�������뷨�ȴ�������
+目前有以下想法等待开发。
 
-- [ ] �Զ������
-- [ ] ��ĥʱ�Զ�����Ƿ���ʣ�����
-- [ ] ����ʱ�Զ�����Ƿ���ʣ���ʯ
-- [ ] ��ǿAI׼ȷ��
-- [ ] ���ػ�
-- [ ] �ֶ�ѡ����Ϻ�ʯλ��
-- [x] �ֶ�ѡ���ӳ�
+- [ ] 自动填补材料
+- [ ] 打磨时自动检查是否有剩余材料
+- [ ] 升级时自动检查是否有剩余黑石
+- [x] 加强AI准确率
+- [ ] 本地化
+- [ ] 手动选择材料黑石位置
+- [x] 手动选择延迟
 ## What's included
 
 
 
 ```text
 BDOAlchemyStoneTapper
-    ������Destruction.onnx                 �ƻ�����ʯ���ģ��
-    ������Protection.onnx                  ��������ʯ���ģ��
-    ������Life.onnx                        ��������ʯ���ģ��
-    ������BDOAlchemyStoneTapper.exe        ����
-    ������DefaultLanguage.json             Ӣ���ļ�
-    ������DefaultLanguage_cn.json          �����ļ�-������������
-    ������RunTime files                    �����ļ�
+    ├──Destruction.onnx                 破坏炼金石相关模型
+    ├──Protection.onnx                  保护炼金石相关模型
+    ├──Life.onnx                        生命炼金石相关模型
+    ├──BDOAlchemyStoneTapper.exe        程序
+    ├──DefaultLanguage.json             英语文件
+    ├──DefaultLanguage_cn.json          中文文件-更改名称启用
+    └──RunTime files                    所需文件
 ```
 
 ## Creators
@@ -72,15 +82,11 @@ BDOAlchemyStoneTapper
 [NA_infini](https://github.com/NAinfini)
 
 
-## Errors
 
-������� "ASP .net package not installed error" ������ ��ô����Ҫ�� [Microsoft](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) 
-���������� **�����** ����ʱ�ļ�����Ҫ����x64��
-![1](MarkDownImages/error1.png)
 
 
 ## Copyright and license
 
-��Ȩ [MIT License](https://reponame/blob/master/LICENSE).
+版权 [MIT License](https://reponame/blob/master/LICENSE).
 
 Enjoy :metal:

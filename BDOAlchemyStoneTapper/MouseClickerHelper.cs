@@ -81,5 +81,63 @@ namespace BDOAlchemyStoneTapper
         {
             Ins.Keyboard.KeyPress(GregsStack.InputSimulatorStandard.Native.VirtualKeyCode.EXECUTE);
         }
+
+        public static void EnterNumber(int num)
+        {
+            if (num <= 0)
+            {
+                return;
+            }
+            foreach (char c in num.ToString())
+            {
+                switch (c)
+                {
+                    case '1':
+                        Ins.Keyboard.KeyPress(GregsStack.InputSimulatorStandard.Native.VirtualKeyCode.VK_1);
+                        break;
+
+                    case '2':
+                        Ins.Keyboard.KeyPress(GregsStack.InputSimulatorStandard.Native.VirtualKeyCode.VK_2);
+                        break;
+
+                    case '3':
+                        Ins.Keyboard.KeyPress(GregsStack.InputSimulatorStandard.Native.VirtualKeyCode.VK_3);
+                        break;
+
+                    case '4':
+                        Ins.Keyboard.KeyPress(GregsStack.InputSimulatorStandard.Native.VirtualKeyCode.VK_4);
+                        break;
+
+                    case '5':
+                        Ins.Keyboard.KeyPress(GregsStack.InputSimulatorStandard.Native.VirtualKeyCode.VK_5);
+                        break;
+
+                    case '6':
+                        Ins.Keyboard.KeyPress(GregsStack.InputSimulatorStandard.Native.VirtualKeyCode.VK_6);
+                        break;
+
+                    case '7':
+                        Ins.Keyboard.KeyPress(GregsStack.InputSimulatorStandard.Native.VirtualKeyCode.VK_7);
+                        break;
+
+                    case '8':
+                        Ins.Keyboard.KeyPress(GregsStack.InputSimulatorStandard.Native.VirtualKeyCode.VK_8);
+                        break;
+
+                    case '9':
+                        Ins.Keyboard.KeyPress(GregsStack.InputSimulatorStandard.Native.VirtualKeyCode.VK_9);
+                        break;
+
+                    case '0':
+                        Ins.Keyboard.KeyPress(GregsStack.InputSimulatorStandard.Native.VirtualKeyCode.VK_0);
+                        break;
+
+                    default:
+                        MessageBox.Show("You Are Not Suppose to see this");
+                        break;
+                }
+                Thread.Sleep(10);
+            }
+        }
     }
 }

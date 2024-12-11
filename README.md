@@ -1,35 +1,44 @@
 # BDOAlchemyStoneTapper
  [中文版](/README_CN.md)
 
-A project that automates BDO alchemy Stone tapping, with the help of yolov8 visual object 
+A project that automates Black Desert Online alchemy Stone tapping, with the help of yolov8 visual object 
 detection and simulated key strokes.
 
 - V1.1.0 version and onwards supports both polish and grow
-- Any version of BDO works, no matter the language and server.
 - Use at your own risk.
-
+- Supports all BDO on all servers, no matter the location/language or type/ower of the server unless the alchemy stone system is completely overhauled.
+- For English, rename DefaultLanguage_en.json to DefaultLanguage.json
 ## Table of contents
 
 - [Tutorial](#Tutorial)
 - [To do](#To-Do)
 - [What's included](#whats-included)
 - [Creators](#creators)
-- [Errors](#Errors)
 - [Copyright and license](#copyright-and-license)
 
 ## Tutorial
 [Download the compiled package here](https://github.com/NAinfini/BDOAlchemyStoneTapper/releases)
 
-StoneTapper is the compiled software, medium model includes enhanced AI models
+*StoneTapper* includes the compiled software with default AI models, *medium model* includes enhanced AI models, download and replace original model to work.
 
 1.Open software in administrator mode
 ![1](MarkDownImages/Tutorial1.png)
 This is so the software gains the ability to simulate mouse clicks and keyboard inputs
+
+
+If run into "ASP .net package not installed error" go to [Microsoft](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) 
+for the **ASP.NET Core** runtime package(Get X64 version for intel,AMD CPUs)
+![Error2](MarkDownImages/error2.png)
+
+If you still see the error, get the desktop runtime package
+
+![1](MarkDownImages/error1.png)
+
 2.Select Stone type and select the stones to polish/grow, and enter long,short delay, 
 normally 20,120. long delay is the delay before hitting grow button, as it normally
 takes a second for that button to get ready, short delay is every other delay related to clicking
 ![2](MarkDownImages/Tutorial2.png)
-3.Select Working are with the Green border
+3.Select Working area with the Green border
 ![3](MarkDownImages/Tutorial3.png)
 4.Open Polish/Grow window and press button to start
 ![4](MarkDownImages/Tutorial4.png)
@@ -53,7 +62,7 @@ This is a hobby project so don't expect too much.
 - [ ] Automated restocking
 - [ ] Material existence check during tapping
 - [ ] Black stone existence check during tapping
-- [ ] Better AI model
+- [x] Better AI model
 - [ ] More localizations
 - [ ] Manually set Material/BlackStone locations
 - [X] Manually set Delay
@@ -70,11 +79,7 @@ BDOAlchemyStoneTapper
     ├──DefaultLanguage_cn.json          Chinese language
     └──RunTime files                    Required runtime files
 ```
-## Errors
 
-If run into "ASP .net package not installed error" go to [Microsoft](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) 
-for the **desktop** runtime package(Get X64 version.)
-![1](MarkDownImages/error1.png)
 
 ## Creators
 

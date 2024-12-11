@@ -60,6 +60,7 @@ namespace BDOAlchemyStoneTapper
             PolishStonesOnceBtn.Text = language.Instance.PolishOnceBtn;
             GrowStonesOnceBtn.Text = language.Instance.GrowOnceBtn;
             PolishGrowBtn.Text = language.Instance.PolishGrowBtn;
+            MaterialCountLabel.Text = language.Instance.MaterialCountLabel;
             //preparing for object detection
             OBJ = new ObjectDetection(typeOfStone);
             thread = new Thread(new ThreadStart(detectStones));
@@ -90,11 +91,25 @@ namespace BDOAlchemyStoneTapper
             }
         }
 
-        private void PolishStonesOnce()
+        private bool PolishStonesOnce()
         {
             //Polishing all stones once
             //getting process handle and setting it forward
+<<<<<<< HEAD
+            var prc = Process.GetProcessesByName(language.Instance.ProcessName);
+=======
+            Dictionary<string, int> MaterialCount = new Dictionary<string, int>
+            {
+                { "Imperfect", int.Parse(ImperfectBox.Text) },
+                { "Rough", int.Parse(RoughBox.Text) },
+                { "Polished", int.Parse(PolishedBox.Text) },
+                { "Sturdy", int.Parse(SturdyBox.Text) },
+                { "Sharp", int.Parse(SharpBox.Text) },
+                { "Resplendent", int.Parse(ResplendentBox.Text) },
+                { "Splendid", int.Parse(SplendidBox.Text) }
+            };
             var prc = Process.GetProcessesByName("BlackDesert64");
+>>>>>>> c44b8e38da8204654d40bb4e0563bd12299911d4
             if (prc.Length > 0)
             {
                 SetForegroundWindow(prc[0].MainWindowHandle);
@@ -102,12 +117,12 @@ namespace BDOAlchemyStoneTapper
             else
             {
                 MessageBox.Show(language.Instance.NoProcessFound);
-                return;
+                return false;
             }
             //try get polish position and all button positions
             if (!findButtonsPositionsFromPolishSlot())
             {
-                return;
+                return false;
             }
             toDisplay = OBJ.drawRectangles(toDisplay, perdictions);
             toDisplay = OBJ.drawRectangles(toDisplay, positionList);
@@ -140,6 +155,8 @@ namespace BDOAlchemyStoneTapper
                         //temp code, grabs whatever material is first in the list
                         RightClickRectangle(materialPosition);
                         Thread.Sleep(DelayShort);
+                        //enter number of materials
+                        MouseClickHelper.EnterNumber(MaterialCount[tempStr]);
                         //press space to max material
                         MouseClickHelper.PressSpace();
                         Thread.Sleep(DelayShort);
@@ -150,20 +167,20 @@ namespace BDOAlchemyStoneTapper
                         RightClickRectangle(positionList["PolishPosition"]);
                         if (!polishOrGrow)
                         {
-                            return;
+                            return false;
                         }
                         Thread.Sleep(DelayShort);
                     }
                 }
             }
-            return;
+            return true;
         }
 
-        private void GrowStonesOnce()
+        private bool GrowStonesOnce()
         {
             //growing all stones once
             //getting handle and setting it to the front
-            var prc = Process.GetProcessesByName("BlackDesert64");
+            var prc = Process.GetProcessesByName(language.Instance.ProcessName);
             if (prc.Length > 0)
             {
                 SetForegroundWindow(prc[0].MainWindowHandle);
@@ -171,12 +188,12 @@ namespace BDOAlchemyStoneTapper
             else
             {
                 MessageBox.Show(language.Instance.NoProcessFound);
-                return;
+                return false;
             }
             //trying to get grow location and all button locations
             if (!findButtonsPositionsFromGrowthSlot())
             {
-                return;
+                return false;
             }
             toDisplay = OBJ.drawRectangles(toDisplay, perdictions);
             toDisplay = OBJ.drawRectangles(toDisplay, positionList);
@@ -214,12 +231,12 @@ namespace BDOAlchemyStoneTapper
                         Thread.Sleep(DelayShort);
                         if (!polishOrGrow)
                         {
-                            return;
+                            return false;
                         }
                     }
                 }
             }
-            return;
+            return true;
         }
 
         private bool findButtonsPositionsFromPolishSlot()
@@ -403,10 +420,16 @@ namespace BDOAlchemyStoneTapper
 
         private void PolishAndGrowOnce()
         {
-            PolishStonesOnce();
-            LeftClickRectangle(positionList["UpperGrowthButton"]);
-            GrowStonesOnce();
-            LeftClickRectangle(positionList["UpperPolishButton"]);
+            DisableButtons();
+            if (PolishStonesOnce())
+            {
+                LeftClickRectangle(positionList["UpperGrowthButton"]);
+                if (GrowStonesOnce())
+                {
+                    LeftClickRectangle(positionList["UpperPolishButton"]);
+                }
+            }
+            EnableButtons();
         }
 
         #region helper functions
@@ -526,11 +549,11 @@ namespace BDOAlchemyStoneTapper
                 ColorMatrix colorMatrix = new ColorMatrix(
                    new float[][]
                    {
-             new float[] {.3f, .3f, .3f, 0, 0},
-             new float[] {.59f, .59f, .59f, 0, 0},
-             new float[] {.11f, .11f, .11f, 0, 0},
-             new float[] {0, 0, 0, 1, 0},
-             new float[] {0, 0, 0, 0, 1}
+                         new float[] {.3f, .3f, .3f, 0, 0},
+                         new float[] {.59f, .59f, .59f, 0, 0},
+                         new float[] {.11f, .11f, .11f, 0, 0},
+                         new float[] {0, 0, 0, 1, 0},
+                         new float[] {0, 0, 0, 0, 1}
                    });
 
                 //create some image attributes
@@ -549,5 +572,13 @@ namespace BDOAlchemyStoneTapper
         }
 
         #endregion helper functions
+
+        private void ImperfectBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
